@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://paveragilces.github.io/Lytiksweb/sitemap.xml
+Sitemap: https://lytiks.solutions/sitemap.xml
