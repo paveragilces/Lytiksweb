@@ -835,6 +835,78 @@ section.bg-navy{background:var(--navy);}
 /* ══════════════════════════════
    TEAM — founder spotlight
    ══════════════════════════════ */
+#media{background:var(--white);}
+.media-top{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:end;margin-bottom:3.5rem;
+}
+.media-layout{
+  display:grid;grid-template-columns:1.12fr .88fr;
+  gap:1rem;align-items:stretch;
+}
+.media-feature{
+  min-height:100%;
+  padding:2.4rem 2.45rem;
+  border-radius:1.8rem;
+  border:1px solid var(--rule);
+  background:
+    radial-gradient(circle at top right,rgba(88,136,178,.18),transparent 28%),
+    linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96));
+  box-shadow:0 22px 60px rgba(16,46,74,.08);
+}
+.media-stack{
+  display:grid;gap:1rem;
+}
+.media-card{
+  min-height:188px;
+  padding:1.35rem 1.4rem;
+  border-radius:1.35rem;
+  border:1px solid rgba(16,46,74,.08);
+  background:rgba(255,255,255,.94);
+  box-shadow:0 14px 32px rgba(16,46,74,.06);
+}
+.media-meta{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:.8rem;flex-wrap:wrap;
+}
+.media-source{
+  font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);
+}
+.media-kind{
+  font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(16,46,74,.42);
+}
+.media-title{
+  margin-top:.9rem;
+  font-family:var(--serif);font-size:clamp(1.35rem,2vw,2rem);
+  line-height:1.08;letter-spacing:-.03em;color:var(--ink);
+}
+.media-card .media-title{font-size:1.22rem;}
+.media-copy{
+  margin-top:.8rem;
+  font-size:.84rem;line-height:1.68;font-weight:300;color:var(--body);
+}
+.media-link{
+  display:inline-flex;align-items:center;gap:.55rem;
+  margin-top:1.15rem;
+  font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--navy);
+}
+.media-link svg{
+  width:14px;height:14px;
+  stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .2s var(--ease);
+}
+.media-link:hover svg{transform:translate(.15rem,-.15rem);}
+.media-link:hover{color:var(--blue);}
+.media-note{
+  margin-top:1.4rem;
+  padding-top:1rem;
+  border-top:1px solid var(--rule);
+  font-size:.72rem;line-height:1.65;color:var(--subtle);
+}
+
 #team{background:var(--white);}
 .team-layout{
   display:grid;grid-template-columns:380px 1fr;
@@ -1192,7 +1264,7 @@ footer{
    RESPONSIVE
    ══════════════════════════════ */
 @media(max-width:1024px){
-  .vision-layout,.svc-top,.algo-top,.algo-layout,.ai-layout,.impact-top,.team-layout,.location-layout,.cta-inner{grid-template-columns:1fr;gap:3rem;}
+  .vision-layout,.svc-top,.algo-top,.algo-layout,.ai-layout,.impact-top,.media-top,.media-layout,.team-layout,.location-layout,.cta-inner{grid-template-columns:1fr;gap:3rem;}
   .svc-grid{grid-template-columns:1fr;}
   .algo-cards{grid-template-columns:repeat(2,1fr);}
   .f-grid{grid-template-columns:1fr 1fr;gap:2.5rem;}
@@ -1220,6 +1292,7 @@ footer{
   .hero-brand-meta{font-size:.56rem;letter-spacing:.13em;}
   .team-frame{width:min(100%,280px);}
   .team-card{padding:2rem 1.4rem;border-radius:1.3rem;}
+  .media-feature,.media-card{padding:2rem 1.4rem;border-radius:1.3rem;}
   .algo-hero{padding:2rem 1.4rem;}
   .algo-cards{grid-template-columns:1fr;}
   .team-rank-grid{grid-template-columns:1fr;}
@@ -1699,6 +1772,72 @@ footer{
   </div>
 </section>
 
+<!-- ── MEDIA ── -->
+<section id="media">
+  <div class="wrap">
+    <div class="media-top">
+      <div>
+        <div class="s-label r">Lytiks en medios</div>
+        <h2 class="s-h2 r d1">Cobertura editorial, entrevistas y menciones donde <em>nuestra lectura de mercado</em> entra en la conversación.</h2>
+      </div>
+      <p class="s-lead r d2" style="margin-top:0;">Una selección inicial de apariciones en medios y publicaciones de negocio donde compartimos análisis sobre exportaciones, economía, tecnología y transformación basada en datos.</p>
+    </div>
+    <div class="media-layout">
+      <article class="media-feature r d1">
+        <div class="media-meta">
+          <span class="media-source">Ekos Negocios · Enero 2025</span>
+          <span class="media-kind">Artículo</span>
+        </div>
+        <h3 class="media-title">El auge global del banano: cómo la inflación y las complicaciones logísticas redefinen el mercado.</h3>
+        <p class="media-copy">Cobertura sobre el nuevo entorno del comercio bananero, con foco en inflación internacional, costos logísticos y señales que reconfiguran la toma de decisiones en la cadena exportadora.</p>
+        <a href="https://ekosnegocios.com/articulo/el-auge-global-del-banano-como-la-inflacion-y-las-complicaciones-logisticas-redefinen-el-mercado" target="_blank" rel="noopener" class="media-link">
+          Leer artículo
+          <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <p class="media-note">Título verificado en Ekos 368, enero de 2025. La descripción es una síntesis editorial a partir del encabezado y contexto de la publicación.</p>
+      </article>
+      <div class="media-stack">
+        <article class="media-card r d2">
+          <div class="media-meta">
+            <span class="media-source">Revista Ekos 380 · Enero 2026</span>
+            <span class="media-kind">Página 84</span>
+          </div>
+          <h3 class="media-title">Tendencias tecnológicas que impulsaron la eficiencia, productividad y competitividad en el sector bananero.</h3>
+          <p class="media-copy">Una aparición alineada con el eje tecnológico de Lytiks: analítica, eficiencia operativa y herramientas que convierten datos sectoriales en ventaja competitiva.</p>
+          <a href="https://revista.ekosnegocios.com/publication/470b5dbe/mobile/?p=84" target="_blank" rel="noopener" class="media-link">
+            Abrir publicación
+            <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </article>
+        <article class="media-card r d3">
+          <div class="media-meta">
+            <span class="media-source">Revista Ekos 381 · Febrero 2026</span>
+            <span class="media-kind">Página 66</span>
+          </div>
+          <h3 class="media-title">Sectores ganadores y perdedores en una economía en normalización.</h3>
+          <p class="media-copy">Lectura de contexto económico para identificar qué sectores capturan mejor el ajuste del ciclo y dónde la inteligencia sectorial se vuelve crítica para decidir.</p>
+          <a href="http://revista.ekosnegocios.com/publication/9f9812f1/?p=66" target="_blank" rel="noopener" class="media-link">
+            Ver referencia
+            <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </article>
+        <article class="media-card r d4">
+          <div class="media-meta">
+            <span class="media-source">AméricaEconomía Ecuador</span>
+            <span class="media-kind">Instagram</span>
+          </div>
+          <h3 class="media-title">Mención en redes de negocio y economía.</h3>
+          <p class="media-copy">Presencia en formato social desde la cuenta de AméricaEconomía Ecuador, ampliando el alcance de la conversación sobre datos, análisis y entorno empresarial.</p>
+          <a href="https://www.instagram.com/americaeconomia.ec/p/DUbNXHwkcHU/?hl=ms" target="_blank" rel="noopener" class="media-link">
+            Ver publicación
+            <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── TEAM ── -->
 <section id="team">
   <div class="wrap">
@@ -1877,6 +2016,7 @@ footer{
         <a href="#algorithms">Algoritmos &amp; AI</a>
         <a href="#impact">Impacto</a>
         <a href="#clients">Clientes</a>
+        <a href="#media">Medios</a>
         <a href="#team">Equipo</a>
         <a href="#location">Ubicación</a>
       </div>
