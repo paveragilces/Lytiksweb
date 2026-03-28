@@ -1052,8 +1052,8 @@ section.bg-navy{background:var(--navy);}
    ══════════════════════════════ */
 #events{background:var(--off);}
 .events-layout{
-  display:grid;grid-template-columns:.92fr 1.08fr;
-  gap:1.25rem;align-items:stretch;
+  display:grid;grid-template-columns:1.05fr .95fr;
+  gap:1.15rem;align-items:stretch;
 }
 .events-card,
 .events-viewer-card{
@@ -1069,16 +1069,16 @@ section.bg-navy{background:var(--navy);}
 }
 .event-lead{
   margin-top:0;
-  max-width:58ch;
+  max-width:54ch;
 }
 .event-date-line{
   display:flex;align-items:stretch;gap:1rem;flex-wrap:wrap;
-  margin-top:1.75rem;
+  margin-top:1.5rem;
 }
 .event-date-badge{
   min-width:126px;
   display:flex;flex-direction:column;justify-content:center;
-  padding:1rem 1.1rem;
+  padding:1rem 1.05rem;
   border-radius:1.25rem;
   background:linear-gradient(145deg,#0f2135,#102e4a 68%,#244e73 100%);
   color:#fff;
@@ -1114,36 +1114,39 @@ section.bg-navy{background:var(--navy);}
   margin-top:.35rem;
   font-size:.92rem;line-height:1.55;color:var(--ink);
 }
+.event-snapshot{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:.8rem;
+  margin-top:1.3rem;
+}
+.event-snapshot-card{
+  min-height:110px;
+  padding:1rem 1rem .95rem;
+  border-radius:1.15rem;
+  border:1px solid rgba(16,46,74,.08);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
+    radial-gradient(circle at top right,rgba(88,136,178,.12),transparent 34%);
+}
+.event-snapshot-card strong{
+  display:block;
+  font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);
+}
+.event-snapshot-card span{
+  display:block;
+  margin-top:.55rem;
+  font-size:.88rem;line-height:1.55;color:var(--ink);
+}
 .event-copy{
-  margin-top:1.55rem;
-  font-size:.95rem;line-height:1.8;font-weight:300;color:var(--body);
-}
-.event-highlights{
-  display:grid;gap:.95rem;
-  margin-top:1.7rem;padding-top:1.55rem;
+  margin-top:1.35rem;
+  padding-top:1.25rem;
   border-top:1px solid var(--rule);
-}
-.event-point{
-  display:grid;grid-template-columns:1.1rem 1fr;
-  gap:.8rem;align-items:flex-start;
-}
-.event-point svg{
-  width:1rem;height:1rem;margin-top:.18rem;
-  stroke:var(--blue);stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round;
-}
-.event-point strong{
-  display:block;
-  font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(16,46,74,.42);
-}
-.event-point span{
-  display:block;
-  margin-top:.2rem;
-  font-size:.9rem;line-height:1.7;color:var(--body);
+  font-size:.92rem;line-height:1.75;font-weight:300;color:var(--body);
 }
 .event-actions{
   display:flex;flex-wrap:wrap;gap:.75rem;
-  margin-top:1.8rem;
+  margin-top:1.45rem;
 }
 .event-btn{
   display:inline-flex;align-items:center;gap:.6rem;
@@ -1179,7 +1182,8 @@ section.bg-navy{background:var(--navy);}
     radial-gradient(circle at top right,rgba(88,136,178,.12),transparent 30%);
 }
 .events-viewer-head,
-.events-viewer-note{
+.events-viewer-note,
+.events-viewer-actions{
   display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
   padding:.1rem .25rem;
 }
@@ -1193,16 +1197,53 @@ section.bg-navy{background:var(--navy);}
   color:var(--navy);
 }
 .events-viewer-head a:hover{color:var(--blue);}
-.events-pdf-shell{
+.events-viewer-actions a{
+  font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--navy);
+}
+.events-viewer-actions a:hover{color:var(--blue);}
+.events-poster-link{
+  display:block;
+}
+.events-poster-shell{
   overflow:hidden;
   border-radius:1.25rem;
   border:1px solid rgba(16,46,74,.08);
-  background:#fff;
-  box-shadow:0 18px 36px rgba(16,46,74,.1);
+  background:
+    radial-gradient(circle at top left,rgba(88,136,178,.16),transparent 24%),
+    linear-gradient(145deg,#0f2135 0%,#102e4a 62%,#193954 100%);
+  box-shadow:0 18px 36px rgba(16,46,74,.12);
+  min-height:560px;
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  padding:1.6rem;
 }
-.events-viewer{
-  display:block;
-  width:100%;min-height:760px;border:0;background:#fff;
+.events-poster-shell::after{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:34px 34px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.8),transparent 80%);
+  pointer-events:none;
+}
+.events-poster-tag{
+  position:absolute;top:1rem;right:1rem;z-index:2;
+  display:inline-flex;align-items:center;gap:.45rem;
+  min-height:34px;padding:.45rem .8rem;border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.14);
+  color:#fff;
+  font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  backdrop-filter:blur(10px);
+}
+.events-poster{
+  position:relative;z-index:1;
+  width:min(100%,370px);height:auto;
+  border-radius:1rem;
+  box-shadow:0 34px 60px rgba(0,0,0,.28);
+  transform:rotate(-4.5deg) translateY(.3rem);
 }
 .events-viewer-note p{
   font-size:.84rem;line-height:1.65;color:var(--muted);max-width:38ch;
@@ -1573,7 +1614,8 @@ footer{
   .f-grid>div:first-child{grid-column:1/-1;}
   .stats-bar-inner{grid-template-columns:repeat(2,1fr);}
   .clients-viewport{grid-auto-columns:calc((100% - 1rem) / 2);}
-  .events-viewer{min-height:640px;}
+  .event-snapshot{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .events-poster-shell{min-height:480px;}
 }
 @media(max-width:768px){
   nav{padding:0 1.2rem;}
@@ -1604,7 +1646,9 @@ footer{
   .events-viewer-card{padding:.85rem;border-radius:1.3rem;}
   .event-date-badge{min-width:112px;}
   .event-date-badge strong{font-size:2.3rem;}
-  .events-viewer{min-height:440px;}
+  .event-snapshot{grid-template-columns:1fr;}
+  .events-poster-shell{min-height:360px;padding:1rem;}
+  .events-poster{width:min(100%,260px);transform:rotate(-3deg);}
   .algo-hero{padding:2rem 1.4rem;}
   .algo-cards{grid-template-columns:1fr;}
   .team-rank-grid{grid-template-columns:1fr;}
@@ -2258,31 +2302,22 @@ footer{
             </div>
           </div>
         </div>
-        <div class="event-copy">
-          <p>La sesión mostrará cómo convertir series históricas, validación rigurosa y modelado predictivo en una ventaja práctica para anticipar flujos exportadores y reaccionar antes que el mercado.</p>
+        <div class="event-snapshot" aria-label="Resumen rápido del evento">
+          <div class="event-snapshot-card">
+            <strong>Forecasting</strong>
+            <span>Modelo predictivo orientado a exportaciones y lectura temprana de mercado.</span>
+          </div>
+          <div class="event-snapshot-card">
+            <strong>Horizonte</strong>
+            <span>Hasta 8 semanas de anticipación para banano y camarón.</span>
+          </div>
+          <div class="event-snapshot-card">
+            <strong>Audiencia</strong>
+            <span>Encuentro ejecutivo para clientes, aliados y tomadores de decisión.</span>
+          </div>
         </div>
-        <div class="event-highlights" aria-label="Aspectos clave del evento">
-          <div class="event-point">
-            <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M3 12h18"/></svg>
-            <div>
-              <strong>Lanzamiento</strong>
-              <span>Presentación de la nueva capacidad de forecasting exportador desarrollada por Lytiks.</span>
-            </div>
-          </div>
-          <div class="event-point">
-            <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/></svg>
-            <div>
-              <strong>Casos de uso</strong>
-              <span>Aplicación sobre banano y camarón, con horizonte de anticipación de hasta ocho semanas.</span>
-            </div>
-          </div>
-          <div class="event-point">
-            <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="17" rx="2"/></svg>
-            <div>
-              <strong>Formato</strong>
-              <span>Encuentro ejecutivo orientado a empresas, aliados y tomadores de decisión interesados en inteligencia aplicada.</span>
-            </div>
-          </div>
+        <div class="event-copy">
+          <p>Condensamos la propuesta en un formato más ejecutivo: qué se lanza, para qué industrias aplica y cómo esta capacidad puede convertir datos atrasados en decisiones anticipadas.</p>
         </div>
         <div class="event-actions">
           <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener" class="event-btn event-btn-primary">
@@ -2297,15 +2332,22 @@ footer{
       </article>
       <div class="events-viewer-card r d2">
         <div class="events-viewer-head">
-          <span>Invitación oficial</span>
-          <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener">Descargar PDF</a>
+          <span>Vista previa</span>
+          <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener">Ver PDF completo</a>
         </div>
-        <div class="events-pdf-shell">
-          <iframe class="events-viewer" src="./INVITACION-LYTIKS.pdf#view=FitH&toolbar=0&navpanes=0" title="Invitación al evento AI-Powered Export Forecasting"></iframe>
+        <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener" class="events-poster-link" aria-label="Abrir invitación del evento en PDF">
+          <div class="events-poster-shell">
+            <div class="events-poster-tag">Evento próximo</div>
+            <img src="./invitacion-preview.png" alt="Vista previa de la invitación AI-Powered Export Forecasting" class="events-poster" loading="lazy" decoding="async">
+          </div>
+        </a>
+        <div class="events-viewer-actions">
+          <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener">Abrir invitación</a>
+          <a href="https://wa.me/593968993317?text=Hola%20Lytiks%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20evento%20AI-Powered%20Export%20Forecasting." target="_blank" rel="noopener">Pedir detalles</a>
         </div>
         <div class="events-viewer-note">
           <span>Puerto Santa Ana · Emporium</span>
-          <p>El PDF queda visible dentro del sitio y también puede abrirse en una pestaña nueva si tu navegador limita la vista embebida.</p>
+          <p>Ahora la invitación funciona como preview rápida: ves el arte del evento de inmediato y abres el PDF completo solo si quieres revisar el detalle.</p>
         </div>
       </div>
     </div>
