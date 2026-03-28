@@ -118,7 +118,12 @@ nav.hero-zone .nav-cta{background:#fff;color:var(--navy);}
 nav.hero-zone .nav-cta:hover{background:var(--off);}
 
 .nav-logo{display:flex;align-items:center;gap:.5rem;}
-.nav-logo svg{height:22px;width:auto;}
+.nav-logo img{display:block;height:24px;width:auto;}
+.nav-logo-light{display:none;}
+nav.hero-zone .nav-logo-light{display:block;}
+nav.hero-zone .nav-logo-dark{display:none;}
+nav:not(.hero-zone) .nav-logo-dark{display:block;}
+nav:not(.hero-zone) .nav-logo-light{display:none;}
 
 .nav-links{display:flex;align-items:center;gap:.15rem;list-style:none;}
 .nav-link{
@@ -282,28 +287,6 @@ nav.hero-zone .nav-cta:hover{background:var(--off);}
   transition:all .2s;letter-spacing:-.01em;
 }
 .btn-hero-ghost:hover{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);}
-
-/* Logo strip inside hero */
-.hero-trust{
-  position:relative;z-index:10;
-  border-top:1px solid rgba(255,255,255,.08);
-  padding:2rem 2.5rem;
-  max-width:1160px;margin:0 auto;width:100%;
-  display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;
-}
-.trust-label{
-  font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.3);font-weight:500;white-space:nowrap;
-}
-.trust-names{
-  display:flex;align-items:center;gap:2rem;flex-wrap:wrap;
-}
-.trust-name{
-  font-size:.85rem;font-weight:600;
-  color:rgba(255,255,255,.35);letter-spacing:.02em;
-  transition:color .2s;
-}
-.trust-name:hover{color:rgba(255,255,255,.6);}
 
 /* ══════════════════════════════
    STATS BAR — horizontal rule with numbers
@@ -810,7 +793,7 @@ footer{
   padding:4rem 0 0;
 }
 .f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3.5rem;}
-.f-brand svg{height:20px;display:block;margin-bottom:1.1rem;}
+.f-brand img{height:24px;display:block;margin-bottom:1.1rem;width:auto;}
 .f-tagline{font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.65;max-width:24ch;font-weight:300;}
 .f-col h5{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600;color:rgba(255,255,255,.35);margin-bottom:1.1rem;}
 .f-col a{display:block;font-size:.84rem;color:rgba(255,255,255,.38);margin-bottom:.6rem;transition:color .15s;}
@@ -883,7 +866,6 @@ footer{
   .hero-brand-plate{padding:1rem 1rem .9rem;border-radius:1.1rem 1.1rem 1.1rem .35rem;}
   .hero-brand-mark{width:min(70vw,220px);}
   .hero-brand-meta{font-size:.56rem;letter-spacing:.13em;}
-  .hero-trust{padding:1.5rem 1.25rem;}
   .stats-bar-inner{grid-template-columns:1fr 1fr;}
   .clients-band{align-items:flex-start;flex-direction:column;}
   .clients-viewport{grid-auto-columns:84%;}
@@ -912,11 +894,8 @@ footer{
 <header>
 <nav id="nav" class="hero-zone">
   <a href="./" class="nav-logo" aria-label="Lytiks inicio">
-    <svg id="nav-svg" viewBox="0 0 106 48" xmlns="http://www.w3.org/2000/svg">
-      <path id="lp1" fill="white" d="M11.86,8.13c1.33,0,2.41,1.08,2.41,2.41v9.85c0,7.98,6.47,14.46,14.46,14.46h3.14l-1.83,4.82h-2.92c-9.76,0-17.67-7.91-17.67-17.67v-11.45c0-1.33,1.08-2.41,2.41-2.41Z"/>
-      <path fill="#7aadd4" d="M46,15.92l-8.55,25.93c-1.09,3.31-4.18,5.54-7.66,5.54l4.81-14.79h-5.83l-7.51-16.68h5.83l7.51,16.68,5.55-16.68h5.84Z"/>
-      <path id="lp2" fill="white" d="M48.24,30.02V8.13h4.82v7.79h6.58v4.48h-6.58v9.62c0,1.32.47,2.46,1.42,3.4.95.95,2.08,1.42,3.4,1.42h1.76v4.82h-1.76c-2.64,0-4.91-.95-6.8-2.84-1.89-1.89-2.84-4.16-2.84-6.8ZM61.88,15.92h4.82v23.74h-4.82V15.92ZM68.94,8.13h4.82v17.26c1.02,0,1.99-.48,2.61-1.29l6.27-8.17h6.04l-9.1,11.89,9.1,11.85h-6.04l-6.27-8.17c-.62-.81-1.59-1.29-2.61-1.29v9.46h-4.82V8.13ZM88.78,32.58h4.82c0,.78.38,1.26,1.13,1.65.75.39,1.64.59,2.66.59.96,0,1.83-.18,2.61-.54.78-.36,1.17-.96,1.17-1.8,0-.57-.23-1.04-.68-1.4-.45-.36-1.04-.62-1.78-.77-.74-.15-1.54-.28-2.41-.41-.87-.12-1.75-.32-2.64-.59-.89-.27-1.7-.62-2.43-1.04-.74-.42-1.33-1.08-1.78-1.98-.45-.9-.68-1.98-.68-3.24,0-2.28.85-4.05,2.55-5.29,1.7-1.25,3.72-1.87,6.06-1.87s4.37.62,6.08,1.87c1.71,1.25,2.57,3.01,2.57,5.29h-4.87c0-.78-.37-1.37-1.1-1.76-.74-.39-1.63-.59-2.68-.59-.93,0-1.79.18-2.59.54-.8.36-1.19.96-1.19,1.8,0,.54.23.98.7,1.31.47.33,1.06.58,1.78.74.72.17,1.52.31,2.41.43.89.12,1.77.32,2.66.59.89.27,1.69.63,2.41,1.08.72.45,1.31,1.13,1.78,2.03.47.9.7,1.98.7,3.24,0,2.28-.85,4.05-2.55,5.29-1.7,1.25-3.72,1.87-6.08,1.87s-4.39-.62-6.08-1.87c-1.7-1.25-2.55-2.91-2.55-5.19Z"/>
-    </svg>
+    <img src="./LOGO%20WHITE.svg" alt="Lytiks" class="nav-logo-light" loading="eager" decoding="async">
+    <img src="./LOGO%20NEGATIVE.svg" alt="Lytiks" class="nav-logo-dark" loading="eager" decoding="async">
   </a>
   <ul class="nav-links" id="nav-links" role="list">
     <li><a href="#vision" class="nav-link">Visión</a></li>
@@ -958,20 +937,6 @@ footer{
     <div class="hero-actions r d3">
       <a href="#services" class="btn-hero-primary">Ver soluciones</a>
       <a href="#cta" class="btn-hero-ghost">Hablar con un experto →</a>
-    </div>
-  </div>
-
-  <div class="hero-trust">
-    <span class="trust-label">Confiado por</span>
-    <div class="trust-names">
-      <span class="trust-name">AEBE</span>
-      <span class="trust-name">CNA</span>
-      <span class="trust-name">FEDEXPOR</span>
-      <span class="trust-name">Agrotecban</span>
-      <span class="trust-name">Reybanpac</span>
-      <span class="trust-name">Symrise</span>
-      <span class="trust-name">CIL</span>
-      <span class="trust-name">CEE</span>
     </div>
   </div>
 </section>
@@ -1382,11 +1347,7 @@ footer{
     <div class="f-grid">
       <div>
         <div class="f-brand">
-          <svg viewBox="0 0 106 48" xmlns="http://www.w3.org/2000/svg">
-            <path fill="rgba(255,255,255,0.5)" d="M11.86,8.13c1.33,0,2.41,1.08,2.41,2.41v9.85c0,7.98,6.47,14.46,14.46,14.46h3.14l-1.83,4.82h-2.92c-9.76,0-17.67-7.91-17.67-17.67v-11.45c0-1.33,1.08-2.41,2.41-2.41Z"/>
-            <path fill="#5888b2" d="M46,15.92l-8.55,25.93c-1.09,3.31-4.18,5.54-7.66,5.54l4.81-14.79h-5.83l-7.51-16.68h5.83l7.51,16.68,5.55-16.68h5.84Z"/>
-            <path fill="rgba(255,255,255,0.5)" d="M48.24,30.02V8.13h4.82v7.79h6.58v4.48h-6.58v9.62c0,1.32.47,2.46,1.42,3.4.95.95,2.08,1.42,3.4,1.42h1.76v4.82h-1.76c-2.64,0-4.91-.95-6.8-2.84-1.89-1.89-2.84-4.16-2.84-6.8ZM61.88,15.92h4.82v23.74h-4.82V15.92ZM68.94,8.13h4.82v17.26c1.02,0,1.99-.48,2.61-1.29l6.27-8.17h6.04l-9.1,11.89,9.1,11.85h-6.04l-6.27-8.17c-.62-.81-1.59-1.29-2.61-1.29v9.46h-4.82V8.13ZM88.78,32.58h4.82c0,.78.38,1.26,1.13,1.65.75.39,1.64.59,2.66.59.96,0,1.83-.18,2.61-.54.78-.36,1.17-.96,1.17-1.8,0-.57-.23-1.04-.68-1.4-.45-.36-1.04-.62-1.78-.77-.74-.15-1.54-.28-2.41-.41-.87-.12-1.75-.32-2.64-.59-.89-.27-1.7-.62-2.43-1.04-.74-.42-1.33-1.08-1.78-1.98-.45-.9-.68-1.98-.68-3.24,0-2.28.85-4.05,2.55-5.29,1.7-1.25,3.72-1.87,6.06-1.87s4.37.62,6.08,1.87c1.71,1.25,2.57,3.01,2.57,5.29h-4.87c0-.78-.37-1.37-1.1-1.76-.74-.39-1.63-.59-2.68-.59-.93,0-1.79.18-2.59.54-.8.36-1.19.96-1.19,1.8,0,.54.23.98.7,1.31.47.33,1.06.58,1.78.74.72.17,1.52.31,2.41.43.89.12,1.77.32,2.66.59.89.27,1.69.63,2.41,1.08.72.45,1.31,1.13,1.78,2.03.47.9.7,1.98.7,3.24,0,2.28-.85,4.05-2.55,5.29-1.7,1.25-3.72,1.87-6.08,1.87s-4.39-.62-6.08-1.87c-1.7-1.25-2.55-2.91-2.55-5.19Z"/>
-          </svg>
+          <img src="./LOGO%20WHITE.svg" alt="Lytiks" loading="lazy" decoding="async">
         </div>
         <p class="f-tagline">Inteligencia artificial y analítica avanzada para empresas que quieren decidir mejor. Guayaquil, Ecuador.</p>
       </div>
@@ -1449,13 +1410,10 @@ if(window.matchMedia('(hover:hover)').matches){
 
 // ── Nav: hero-zone toggle + logo color
 const nav=document.getElementById('nav');
-const lp1=document.getElementById('lp1'),lp2=document.getElementById('lp2');
 function updateNav(){
   const heroH=document.getElementById('hero').offsetHeight;
   const past=scrollY>heroH-80;
   nav.classList.toggle('hero-zone',!past);
-  if(lp1)lp1.style.fill=past?'#102e4a':'white';
-  if(lp2)lp2.style.fill=past?'#102e4a':'white';
 }
 window.addEventListener('scroll',updateNav,{passive:true});
 updateNav();
