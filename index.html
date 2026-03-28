@@ -1195,48 +1195,106 @@ section.bg-navy{background:var(--navy);}
   color:var(--navy);
 }
 .events-viewer-actions a:hover{color:var(--blue);}
-.events-poster-link{
-  display:block;
-}
-.events-poster-shell{
+.events-invite-shell{
+  position:relative;
   overflow:hidden;
   border-radius:1.25rem;
   border:1px solid rgba(16,46,74,.08);
   background:
-    radial-gradient(circle at top left,rgba(88,136,178,.16),transparent 24%),
+    radial-gradient(circle at top right,rgba(122,173,212,.24),transparent 28%),
     linear-gradient(145deg,#0f2135 0%,#102e4a 62%,#193954 100%);
   box-shadow:0 18px 36px rgba(16,46,74,.12);
-  min-height:560px;
-  position:relative;
-  display:flex;align-items:center;justify-content:center;
+  min-height:480px;
   padding:1.6rem;
+  display:flex;flex-direction:column;
 }
-.events-poster-shell::after{
+.events-invite-shell::after{
   content:'';
   position:absolute;inset:0;
   background-image:
     linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
   background-size:34px 34px;
-  mask-image:linear-gradient(180deg,rgba(0,0,0,.8),transparent 80%);
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.82),transparent 82%);
   pointer-events:none;
 }
-.events-poster-tag{
-  position:absolute;top:1rem;right:1rem;z-index:2;
-  display:inline-flex;align-items:center;gap:.45rem;
-  min-height:34px;padding:.45rem .8rem;border-radius:999px;
-  background:rgba(255,255,255,.12);
+.events-invite-pill,
+.events-invite-date{
+  position:relative;z-index:1;
+  display:inline-flex;align-items:center;
+  min-height:36px;padding:.5rem .85rem;border-radius:999px;
   border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.08);
   color:#fff;
   font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+}
+.events-invite-top{
+  position:relative;z-index:1;
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;
+}
+.events-invite-title{
+  position:relative;z-index:1;
+  margin-top:1.2rem;
+  font-family:var(--serif);font-size:clamp(2rem,3vw,2.8rem);
+  line-height:1.02;letter-spacing:-.035em;color:#fff;
+  max-width:10ch;
+}
+.events-invite-sub{
+  position:relative;z-index:1;
+  margin-top:.7rem;
+  max-width:36ch;
+  font-size:.95rem;line-height:1.7;color:rgba(255,255,255,.7);
+}
+.events-invite-grid{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:.8rem;margin-top:1.45rem;
+}
+.events-invite-block{
+  min-height:112px;
+  padding:1rem 1rem .95rem;
+  border-radius:1.1rem;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.06);
   backdrop-filter:blur(10px);
 }
-.events-poster{
+.events-invite-block strong{
+  display:block;
+  font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue-lt);
+}
+.events-invite-block span{
+  display:block;
+  margin-top:.5rem;
+  font-size:1rem;line-height:1.55;color:#fff;
+}
+.events-invite-list{
   position:relative;z-index:1;
-  width:min(100%,370px);height:auto;
-  border-radius:1rem;
-  box-shadow:0 34px 60px rgba(0,0,0,.28);
-  transform:rotate(-4.5deg) translateY(.3rem);
+  display:grid;gap:.85rem;
+  margin-top:1.35rem;
+}
+.events-invite-item{
+  display:grid;grid-template-columns:1rem 1fr;
+  gap:.75rem;align-items:flex-start;
+}
+.events-invite-item svg{
+  width:1rem;height:1rem;
+  margin-top:.18rem;
+  stroke:var(--blue-lt);stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round;
+}
+.events-invite-item span{
+  font-size:.9rem;line-height:1.65;color:rgba(255,255,255,.78);
+}
+.events-invite-foot{
+  position:relative;z-index:1;
+  margin-top:auto;
+  padding-top:1.15rem;
+  border-top:1px solid rgba(255,255,255,.1);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+}
+.events-invite-foot span{
+  font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.62);
 }
 #team{background:var(--white);}
 .team-layout{
@@ -1636,8 +1694,8 @@ footer{
   .event-date-badge{min-width:112px;}
   .event-date-badge strong{font-size:2.3rem;}
   .event-snapshot{grid-template-columns:1fr;}
-  .events-poster-shell{min-height:360px;padding:1rem;}
-  .events-poster{width:min(100%,260px);transform:rotate(-3deg);}
+  .events-invite-shell{min-height:auto;padding:1.25rem;}
+  .events-invite-grid{grid-template-columns:1fr;}
   .algo-hero{padding:2rem 1.4rem;}
   .algo-cards{grid-template-columns:1fr;}
   .team-rank-grid{grid-template-columns:1fr;}
@@ -2318,15 +2376,41 @@ footer{
       </article>
       <div class="events-viewer-card r d2">
         <div class="events-viewer-head">
-          <span>Vista previa</span>
+          <span>Invitación oficial</span>
           <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener">Ver PDF completo</a>
         </div>
-        <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener" class="events-poster-link" aria-label="Abrir invitación del evento en PDF">
-          <div class="events-poster-shell">
-            <div class="events-poster-tag">Evento próximo</div>
-            <img src="./invitacion-preview.png" alt="Vista previa de la invitación AI-Powered Export Forecasting" class="events-poster" loading="lazy" decoding="async">
+        <div class="events-invite-shell">
+          <div class="events-invite-top">
+            <div class="events-invite-pill">Evento próximo</div>
+            <div class="events-invite-date">08 Abril 2026</div>
           </div>
-        </a>
+          <h3 class="events-invite-title">AI-Powered Export Forecasting</h3>
+          <p class="events-invite-sub">De datos atrasados a decisiones anticipadas para sectores exportadores que necesitan reaccionar antes que el mercado.</p>
+          <div class="events-invite-grid">
+            <div class="events-invite-block">
+              <strong>Lugar</strong>
+              <span>Edificio Emporium, Puerto Santa Ana, Guayaquil.</span>
+            </div>
+            <div class="events-invite-block">
+              <strong>Formato</strong>
+              <span>Lanzamiento ejecutivo con foco en forecasting para banano y camarón.</span>
+            </div>
+          </div>
+          <div class="events-invite-list">
+            <div class="events-invite-item">
+              <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/></svg>
+              <span>Modelo diseñado para anticipar el volumen de exportaciones con hasta 8 semanas de antelación.</span>
+            </div>
+            <div class="events-invite-item">
+              <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="17" rx="2"/></svg>
+              <span>Sesión pensada para aliados, clientes y líderes que buscan decisiones basadas en inteligencia aplicada.</span>
+            </div>
+          </div>
+          <div class="events-invite-foot">
+            <span>Cupos limitados</span>
+            <span>Confirmación previa requerida</span>
+          </div>
+        </div>
         <div class="events-viewer-actions">
           <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener">Abrir invitación</a>
           <a href="https://wa.me/593968993317?text=Hola%20Lytiks%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20evento%20AI-Powered%20Export%20Forecasting." target="_blank" rel="noopener">Pedir detalles</a>
