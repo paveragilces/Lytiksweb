@@ -773,16 +773,22 @@ section.bg-navy{background:var(--navy);}
   font-size:.95rem;line-height:1.8;font-weight:300;color:var(--body);
 }
 .team-copy p+p{margin-top:.95rem;}
-.team-highlights{
-  display:flex;flex-wrap:wrap;gap:.55rem;
-  margin-top:1.6rem;
+.team-link{
+  display:inline-flex;align-items:center;gap:.7rem;
+  margin-top:1.5rem;
+  max-width:100%;
+  color:var(--navy);
+  font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
 }
-.team-pill{
-  display:inline-flex;align-items:center;
-  padding:.48rem .9rem;border-radius:999px;
-  background:var(--navy-10);color:var(--navy);
-  font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+.team-link span{line-height:1.5;}
+.team-link svg{
+  width:14px;height:14px;
+  flex-shrink:0;
+  stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .2s var(--ease);
 }
+.team-link:hover svg{transform:translate(.15rem,-.15rem);}
+.team-link:hover{color:var(--blue);}
 
 /* ══════════════════════════════
    CONTACT — split layout
@@ -979,6 +985,7 @@ footer{
     <li><a href="#asistente" class="nav-link">Asistente IA</a></li>
     <li><a href="#impact" class="nav-link">Impacto</a></li>
     <li><a href="#clients" class="nav-link">Clientes</a></li>
+    <li><a href="#team" class="nav-link">Equipo</a></li>
   </ul>
   <div class="nav-right">
     <a href="mailto:info@lytiks.solutions" class="nav-contact">info@lytiks.solutions</a>
@@ -1368,16 +1375,13 @@ footer{
         <div class="team-role">Founder &amp; CEO</div>
         <h2 class="team-name">Paúl Vera Gilces</h2>
         <div class="team-copy">
-          <p>Economista graduado de ESPOL, con estudios de postgrado en investigación económica y administración de empresas. Ha publicado más de 10 artículos científicos sobre economía, negocios y agricultura.</p>
-          <p>Dirige observatorios estratégicos para AEBE, el sector lácteo, el Comité Empresarial Ecuatoriano y el sector platanero, además de liderar Lytiks como plataforma de inteligencia para sectores productivos y exportadores en Ecuador.</p>
-          <p>Ha colaborado con la Cooperación Alemana GIZ en digitalización de datos e implementación de estaciones meteorológicas, y actualmente lidera proyectos de bioseguridad y analítica aplicada para riesgos como Fusarium R4T y Moko, con experiencia junto a empresas como Symrise y Reybanpac.</p>
+          <p>Economista graduado de ESPOL, con estudios de postgrado en investigación económica y administración de empresas. Ha publicado más de 10 artículos científicos y lidera Lytiks como firma de inteligencia y analítica aplicada para sectores productivos y exportadores en Ecuador.</p>
+          <p>Ha dirigido observatorios estratégicos para AEBE, el sector lácteo, el Comité Empresarial Ecuatoriano y el sector platanero, y ha gestionado fondos de cooperación por más de USD 1.5 millones en proyectos de digitalización, bioseguridad y monitoreo junto a aliados como GIZ, Symrise y Reybanpac.</p>
         </div>
-        <div class="team-highlights" aria-label="Destacados de Paúl Vera Gilces">
-          <span class="team-pill">ESPOL</span>
-          <span class="team-pill">10+ publicaciones</span>
-          <span class="team-pill">Observatorios sectoriales</span>
-          <span class="team-pill">GIZ · Bioseguridad</span>
-        </div>
+        <a href="https://scholar.google.com/citations?user=BO-SOJIAAAAJ&amp;hl=es&amp;oi=ao" target="_blank" rel="noopener" class="team-link">
+          <span>Ver perfil académico y publicaciones científicas</span>
+          <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
       </article>
     </div>
   </div>
@@ -1458,6 +1462,7 @@ footer{
         <a href="#asistente">Asistente IA</a>
         <a href="#impact">Impacto</a>
         <a href="#clients">Clientes</a>
+        <a href="#team">Equipo</a>
       </div>
       <div class="f-col">
         <h5>Sectores</h5>
