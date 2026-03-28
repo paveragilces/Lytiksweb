@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lytiks – Inteligencia Artificial para Empresas e Industrias en Ecuador</title>
+<meta name="description" content="Convertimos datos complejos en decisiones estratégicas. Analítica avanzada, Machine Learning y Asistente IA Gerencial 24/7 para empresas, gremios e industrias del Ecuador.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://paveragilces.github.io/Lytiksweb/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://paveragilces.github.io/Lytiksweb/">
+<meta property="og:title" content="Lytiks – Inteligencia que transforma tu empresa">
+<meta property="og:description" content="Analítica avanzada, modelos predictivos y Asistente IA Gerencial 24/7 para empresas, gremios e industrias del Ecuador.">
+<meta property="og:locale" content="es_EC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lytiks – IA Avanzada en Ecuador">
+<meta name="twitter:description" content="Analítica avanzada, modelos predictivos y Asistente IA Gerencial 24/7 para empresas, gremios e industrias del Ecuador.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Lytiks","url":"https://paveragilces.github.io/Lytiksweb/","description":"Startup ecuatoriana de analítica avanzada e IA para sectores productivos.","address":{"@type":"PostalAddress","addressLocality":"Guayaquil","addressCountry":"EC"},"contactPoint":{"@type":"ContactPoint","email":"info@lytiks.ai","contactType":"sales"},"sameAs":["https://linkedin.com/company/lytiks"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════
+   DESIGN TOKENS — Editorial Light
+   Inspirado en McKinsey · BCG · The Economist
+   ══════════════════════════════ */
+:root {
+  /* Brand */
+  --navy:       #102e4a;
+  --navy-90:    rgba(16,46,74,.9);
+  --navy-10:    rgba(16,46,74,.08);
+  --navy-05:    rgba(16,46,74,.04);
+  --blue:       #5888b2;
+  --blue-lt:    #7aadd4;
+  --blue-pale:  #dcedf8;
+
+  /* Neutrals — pure editorial */
+  --white:      #ffffff;
+  --off:        #f7f6f3;  /* cream off-white — not cold */
+  --ink:        #0d1b2a;  /* near-black for headlines */
+  --body:       #374151;  /* warm dark gray for body */
+  --muted:      #6b7280;  /* secondary text */
+  --subtle:     #9ca3af;  /* tertiary */
+  --rule:       #e5e7eb;  /* dividers */
+  --rule-heavy: #d1d5db;
+
+  /* Accent — minimal use */
+  --accent:     var(--navy);
+  --accent-on:  #ffffff;
+
+  /* Typography */
+  --serif: 'Playfair Display', 'Georgia', serif;
+  --sans:  'DM Sans', system-ui, -apple-system, sans-serif;
+
+  /* Spacing scale */
+  --sp-xs: .5rem;
+  --sp-sm: 1rem;
+  --sp-md: 2rem;
+  --sp-lg: 4rem;
+  --sp-xl: 7rem;
+  --sp-2xl: 10rem;
+
+  /* Easing */
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+
+/* ══════════════════════════════
+   RESET
+   ══════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;scroll-padding-top:68px;}
+body{
+  background:var(--white);
+  color:var(--body);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+button{font-family:var(--sans);cursor:pointer;}
+:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:3px;}
+
+/* Skip link */
+.skip{
+  position:absolute;top:-60px;left:1rem;
+  background:var(--navy);color:#fff;
+  padding:.5rem 1rem;border-radius:4px;font-size:.85rem;z-index:999;
+  transition:top .2s;
+}
+.skip:focus{top:1rem;}
+
+/* ══════════════════════════════
+   NAV — clean editorial bar
+   ══════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:400;
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(12px) saturate(180%);
+  -webkit-backdrop-filter:blur(12px) saturate(180%);
+  border-bottom:1px solid var(--rule);
+  transition:border-color .3s;
+}
+nav.hero-zone{
+  background:transparent;
+  border-color:transparent;
+  backdrop-filter:none;
+}
+nav.hero-zone .nav-link{color:rgba(255,255,255,.75);}
+nav.hero-zone .nav-link:hover{color:#fff;}
+nav.hero-zone .nav-cta{background:#fff;color:var(--navy);}
+nav.hero-zone .nav-cta:hover{background:var(--off);}
+
+.nav-logo{display:flex;align-items:center;gap:.5rem;}
+.nav-logo svg{height:22px;width:auto;}
+
+.nav-links{display:flex;align-items:center;gap:.15rem;list-style:none;}
+.nav-link{
+  font-size:.81rem;font-weight:500;
+  color:var(--muted);letter-spacing:.01em;
+  padding:.45rem .85rem;border-radius:5px;
+  transition:color .15s,background .15s;
+  white-space:nowrap;
+}
+.nav-link:hover{color:var(--ink);background:var(--navy-05);}
+
+.nav-right{display:flex;align-items:center;gap:.75rem;}
+.nav-contact{font-size:.8rem;color:var(--muted);padding:.45rem .6rem;transition:color .15s;}
+.nav-contact:hover{color:var(--navy);}
+.nav-cta{
+  font-size:.82rem;font-weight:600;letter-spacing:.01em;
+  padding:.52rem 1.25rem;border-radius:6px;
+  background:var(--navy);color:#fff;
+  border:none;transition:opacity .2s,transform .2s;
+  box-shadow:0 1px 3px rgba(16,46,74,.25);
+}
+.nav-cta:hover{opacity:.88;transform:translateY(-1px);}
+
+.burger{
+  display:none;background:none;border:none;padding:5px;
+  flex-direction:column;gap:5px;
+}
+.burger span{display:block;width:20px;height:1.5px;background:var(--ink);border-radius:2px;transition:.3s;}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);}
+
+/* ══════════════════════════════
+   HERO — dark navy editorial
+   ══════════════════════════════ */
+#hero{
+  background:var(--navy);
+  position:relative;overflow:hidden;
+  min-height:100svh;
+  display:flex;flex-direction:column;
+}
+
+/* Subtle texture: tight grid */
+.hero-texture{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+/* One single large light wash — not a gradient gimmick */
+.hero-wash{
+  position:absolute;
+  width:900px;height:900px;
+  top:-200px;right:-100px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(88,136,178,.14) 0%,transparent 65%);
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;z-index:10;
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding:9rem 2.5rem 4rem;
+  max-width:1160px;margin:0 auto;width:100%;
+}
+
+/* Overline — McKinsey uses a tight category label above headlines */
+.hero-overline{
+  display:inline-flex;align-items:center;gap:.75rem;
+  font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue-lt);margin-bottom:2rem;
+}
+.hero-overline::before{
+  content:'';width:24px;height:1px;background:var(--blue-lt);flex-shrink:0;
+}
+
+/* The hero headline — Playfair Display, very large, italic em */
+.hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(3rem,7vw,6.4rem);
+  font-weight:800;
+  line-height:1.04;
+  letter-spacing:-.025em;
+  color:#fff;
+  max-width:14ch;
+}
+.hero-h1 em{
+  font-style:italic;
+  color:var(--blue-lt);
+}
+
+/* Sub — clean, spare */
+.hero-sub{
+  max-width:50ch;
+  font-size:clamp(1rem,1.6vw,1.12rem);
+  font-weight:300;
+  color:rgba(255,255,255,.52);
+  line-height:1.76;
+  margin-top:1.8rem;
+}
+
+.hero-actions{
+  display:flex;align-items:center;gap:1rem;
+  margin-top:2.8rem;flex-wrap:wrap;
+}
+.btn-hero-primary{
+  font-size:.9rem;font-weight:600;
+  padding:.82rem 2rem;border-radius:5px;
+  background:#fff;color:var(--navy);
+  border:none;transition:all .2s;
+  box-shadow:0 1px 3px rgba(0,0,0,.15);
+  letter-spacing:-.01em;
+}
+.btn-hero-primary:hover{background:var(--off);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.2);}
+.btn-hero-ghost{
+  font-size:.9rem;font-weight:500;
+  padding:.82rem 2rem;border-radius:5px;
+  background:transparent;color:rgba(255,255,255,.7);
+  border:1px solid rgba(255,255,255,.2);
+  transition:all .2s;letter-spacing:-.01em;
+}
+.btn-hero-ghost:hover{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);}
+
+/* Logo strip inside hero */
+.hero-trust{
+  position:relative;z-index:10;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:2rem 2.5rem;
+  max-width:1160px;margin:0 auto;width:100%;
+  display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;
+}
+.trust-label{
+  font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);font-weight:500;white-space:nowrap;
+}
+.trust-names{
+  display:flex;align-items:center;gap:2rem;flex-wrap:wrap;
+}
+.trust-name{
+  font-size:.85rem;font-weight:600;
+  color:rgba(255,255,255,.35);letter-spacing:.02em;
+  transition:color .2s;
+}
+.trust-name:hover{color:rgba(255,255,255,.6);}
+
+/* ══════════════════════════════
+   STATS BAR — horizontal rule with numbers
+   McKinsey style: numbers speak, no decoration
+   ══════════════════════════════ */
+.stats-bar{
+  background:var(--off);
+  border-bottom:1px solid var(--rule);
+  padding:0;
+}
+.stats-bar-inner{
+  max-width:1160px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.sbi{
+  padding:2.2rem 2.5rem;
+  border-right:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:.3rem;
+}
+.sbi:last-child{border-right:none;}
+.sbi-n{
+  font-family:var(--serif);
+  font-size:2.4rem;font-weight:900;
+  color:var(--navy);line-height:1;letter-spacing:-.03em;
+}
+.sbi-n sup{font-size:1.1rem;color:var(--blue);}
+.sbi-l{font-size:.74rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:500;}
+
+/* ══════════════════════════════
+   TICKER — thin blue band
+   ══════════════════════════════ */
+.ticker{
+  background:var(--navy);overflow:hidden;
+  padding:.75rem 0;
+}
+.ticker-track{display:flex;white-space:nowrap;animation:tick 45s linear infinite;}
+.ticker-track:hover{animation-play-state:paused;}
+.ti{
+  display:inline-flex;align-items:center;gap:1.2rem;
+  padding:0 2.5rem;
+  font-size:.67rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.4);
+}
+.ti-dot{width:2px;height:2px;border-radius:50%;background:var(--blue-lt);opacity:.6;}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ══════════════════════════════
+   SECTION SYSTEM
+   ══════════════════════════════ */
+.wrap{max-width:1160px;margin:0 auto;padding:0 2.5rem;}
+section{padding:var(--sp-xl) 0;}
+section.bg-off{background:var(--off);}
+section.bg-navy{background:var(--navy);}
+
+/* Editorial section label — McKinsey uses thin uppercase category labels */
+.s-label{
+  font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.s-label::before{content:'';width:20px;height:1px;background:var(--blue);}
+.s-label.on-dark{color:var(--blue-lt);}
+.s-label.on-dark::before{background:var(--blue-lt);}
+
+.s-h2{
+  font-family:var(--serif);
+  font-size:clamp(2.2rem,4vw,3.4rem);
+  font-weight:800;letter-spacing:-.03em;line-height:1.1;
+  color:var(--ink);
+}
+.s-h2 em{font-style:italic;color:var(--blue);}
+.s-h2.on-dark{color:#fff;}
+.s-h2.on-dark em{color:var(--blue-lt);}
+
+.s-lead{
+  font-size:1rem;color:var(--muted);line-height:1.77;
+  margin-top:1rem;max-width:56ch;
+  font-weight:300;
+}
+.s-lead.on-dark{color:rgba(255,255,255,.48);}
+
+/* ══════════════════════════════
+   VISION — two-column editorial
+   ══════════════════════════════ */
+#vision{background:var(--white);}
+.vision-layout{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6rem;align-items:start;
+}
+.vision-left{}
+.vision-body{
+  font-size:1rem;color:var(--body);line-height:1.78;
+  margin-top:1.5rem;font-weight:300;
+}
+.vision-body p+p{margin-top:1rem;}
+
+/* Numbered pillars — BCG/McKinsey list style */
+.pillars{display:flex;flex-direction:column;margin-top:2.5rem;}
+.pillar{
+  display:grid;grid-template-columns:3rem 1fr;gap:1.2rem;
+  padding:1.4rem 0;border-top:1px solid var(--rule);
+  transition:padding-left .25s var(--ease);cursor:default;
+}
+.pillar:last-child{border-bottom:1px solid var(--rule);}
+.pillar:hover{padding-left:.4rem;}
+.pillar:hover .pn{color:var(--navy);}
+.pn{
+  font-family:var(--serif);font-size:1.1rem;font-weight:700;
+  color:var(--rule-heavy);line-height:1;margin-top:.1rem;
+  transition:color .2s;
+  font-style:italic;
+}
+.pt{font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:.25rem;}
+.pd{font-size:.84rem;color:var(--muted);line-height:1.65;}
+
+/* Pull stat + quote — right column */
+.vision-right{display:flex;flex-direction:column;gap:1.5rem;}
+.pull-stat{
+  border:1px solid var(--rule);border-radius:4px;
+  padding:2.2rem;background:var(--off);
+}
+.pull-stat-n{
+  font-family:var(--serif);
+  font-size:4rem;font-weight:900;
+  color:var(--navy);line-height:1;letter-spacing:-.04em;
+}
+.pull-stat-n sub{font-size:1.8rem;}
+.pull-stat-l{font-size:.84rem;color:var(--body);margin-top:.75rem;line-height:1.65;font-weight:300;}
+
+.pull-quote{
+  border-left:3px solid var(--navy);
+  padding:1.6rem 1.8rem;
+  background:var(--white);
+}
+.pq-text{
+  font-family:var(--serif);font-style:italic;
+  font-size:1.08rem;color:var(--ink);line-height:1.7;
+}
+.pq-source{font-size:.76rem;color:var(--subtle);margin-top:.8rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;}
+
+.vision-link{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.84rem;font-weight:600;color:var(--navy);
+  border-bottom:1px solid var(--navy);padding-bottom:1px;
+  transition:gap .2s;margin-top:.5rem;
+}
+.vision-link:hover{gap:.9rem;}
+.vision-link svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ══════════════════════════════
+   SERVICES — full width editorial grid
+   ══════════════════════════════ */
+#services{background:var(--off);}
+.svc-top{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:end;margin-bottom:4rem;
+}
+/* Service cards — white on off-white bg, strong left border */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);}
+.sc{
+  background:var(--white);
+  padding:2.8rem;position:relative;
+  transition:background .3s;
+  border-top:3px solid transparent;
+}
+.sc:hover{background:var(--off);}
+.sc:hover{border-top-color:var(--navy);}
+.sc-num{
+  font-family:var(--serif);font-size:3.5rem;font-weight:900;font-style:italic;
+  color:rgba(16,46,74,.05);line-height:1;margin-bottom:1.4rem;letter-spacing:-.04em;
+}
+.sc-label{
+  font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:.6rem;
+}
+.sc-title{
+  font-family:var(--serif);font-size:1.35rem;font-weight:800;
+  color:var(--ink);line-height:1.2;margin-bottom:.85rem;letter-spacing:-.02em;
+}
+.sc-desc{font-size:.88rem;color:var(--body);line-height:1.72;font-weight:300;}
+.sc-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1.3rem;}
+.tag{
+  font-size:.65rem;font-weight:500;padding:.22rem .7rem;
+  border-radius:3px;
+  background:var(--blue-pale);color:var(--navy);
+  letter-spacing:.03em;
+}
+
+/* ══════════════════════════════
+   AI ASSISTANT — navy bg, editorial
+   ══════════════════════════════ */
+#asistente{background:var(--navy);}
+.ai-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+
+.ai-feats{display:flex;flex-direction:column;gap:0;margin-top:2rem;}
+.ai-feat{
+  display:grid;grid-template-columns:2.4rem 1fr;gap:1rem;
+  padding:1.3rem 0;border-top:1px solid rgba(255,255,255,.07);
+  align-items:start;
+}
+.ai-feat:last-child{border-bottom:1px solid rgba(255,255,255,.07);}
+.ai-feat-ico{
+  width:32px;height:32px;border-radius:5px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.ai-feat-ico svg{width:14px;height:14px;stroke:var(--blue-lt);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ai-feat-t{font-size:.88rem;font-weight:600;color:#fff;margin-bottom:.15rem;}
+.ai-feat-d{font-size:.8rem;color:rgba(255,255,255,.42);line-height:1.58;font-weight:300;}
+
+.ai-caps{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:2rem;}
+.cap{
+  font-size:.7rem;font-weight:500;padding:.3rem .8rem;
+  border-radius:3px;
+  border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);
+  letter-spacing:.03em;transition:border-color .2s,color .2s;
+}
+.cap:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);}
+
+/* Chat window — refined dark terminal */
+.chat-win{
+  background:rgba(5,12,22,.6);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.cw-bar{
+  display:flex;align-items:center;gap:.7rem;
+  padding:.85rem 1.2rem;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.03);
+}
+.cw-dots{display:flex;gap:.3rem;}
+.cw-dots span{width:7px;height:7px;border-radius:50%;}
+.cw-dots span:nth-child(1){background:rgba(255,80,80,.5);}
+.cw-dots span:nth-child(2){background:rgba(255,200,0,.4);}
+.cw-dots span:nth-child(3){background:rgba(50,200,100,.4);}
+.cw-title{font-size:.67rem;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.22);font-weight:500;flex:1;text-align:center;}
+.cw-live{display:flex;align-items:center;gap:.35rem;font-size:.6rem;color:#34d399;font-weight:600;letter-spacing:.05em;text-transform:uppercase;}
+.cw-live::before{content:'';width:4px;height:4px;border-radius:50%;background:#34d399;animation:lvblink 2s ease-in-out infinite;}
+@keyframes lvblink{0%,100%{opacity:1;}50%{opacity:.2;}}
+
+.cw-chat{padding:1.2rem;display:flex;flex-direction:column;gap:.75rem;height:305px;overflow:hidden;}
+.cm{display:flex;gap:.6rem;align-items:flex-start;}
+.cm.u{flex-direction:row-reverse;}
+.cav{width:22px;height:22px;border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:700;}
+.cav.a{background:var(--blue);color:#fff;}
+.cav.u{background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);}
+.cbub{max-width:85%;padding:.6rem .85rem;border-radius:5px;font-size:.75rem;line-height:1.62;}
+.cm:not(.u) .cbub{background:rgba(88,136,178,.15);color:rgba(255,255,255,.82);border-radius:2px 5px 5px 5px;border:1px solid rgba(88,136,178,.2);}
+.cm.u .cbub{background:rgba(255,255,255,.05);color:rgba(255,255,255,.6);border-radius:5px 2px 5px 5px;border:1px solid rgba(255,255,255,.08);}
+.cm:nth-child(1){animation:mfade .4s .3s ease both;}
+.cm:nth-child(2){animation:mfade .4s 2s ease both;}
+.cm:nth-child(3){animation:mfade .4s 5s ease both;}
+.cm:nth-child(4){animation:mfade .4s 7.2s ease both;}
+@keyframes mfade{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:none;}}
+.ctyp{display:flex;gap:.6rem;align-items:center;}
+.ctyp:nth-of-type(1){animation:tS .3s 1.2s ease both,tH .2s 1.8s ease forwards;}
+.ctyp:nth-of-type(2){animation:tS .3s 6.1s ease both,tH .2s 6.8s ease forwards;}
+@keyframes tS{to{opacity:1;}} @keyframes tH{to{opacity:0;}}
+.tdots{display:flex;gap:.25rem;align-items:center;padding:.4rem .6rem;}
+.tdots span{width:4px;height:4px;border-radius:50%;background:var(--blue-lt);animation:tdb 1.1s ease-in-out infinite;}
+.tdots span:nth-child(2){animation-delay:.18s;}.tdots span:nth-child(3){animation-delay:.36s;}
+@keyframes tdb{0%,80%,100%{transform:scale(.5);opacity:.3;}40%{transform:scale(1);opacity:1;}}
+.mbars{display:flex;align-items:flex-end;gap:2px;height:40px;margin-top:.6rem;padding:.5rem;background:rgba(0,0,0,.3);border-radius:4px;border:1px solid rgba(255,255,255,.06);}
+.mb{flex:1;border-radius:2px 2px 0 0;animation:bup .65s var(--bd,0s) var(--ease) both;}
+.mb:nth-child(odd){background:var(--blue);opacity:.75;}
+.mb:nth-child(even){background:var(--blue-lt);opacity:.55;}
+@keyframes bup{from{height:2px;opacity:0;}}
+.mbl{font-size:.55rem;color:rgba(255,255,255,.22);margin-top:.3rem;text-align:center;letter-spacing:.05em;text-transform:uppercase;}
+.cw-input{border-top:1px solid rgba(255,255,255,.07);padding:.8rem 1.1rem;display:flex;gap:.5rem;align-items:center;background:rgba(0,0,0,.2);}
+.cw-if{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:.45rem .75rem;font-size:.74rem;color:rgba(255,255,255,.3);font-family:var(--sans);}
+.cw-send{width:26px;height:26px;border-radius:4px;background:var(--blue);display:flex;align-items:center;justify-content:center;border:none;flex-shrink:0;}
+.cw-send svg{width:11px;height:11px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ══════════════════════════════
+   IMPACT — white, numbered list editorial
+   ══════════════════════════════ */
+#impact{background:var(--white);}
+.impact-top{display:grid;grid-template-columns:5fr 4fr;gap:4rem;align-items:end;margin-bottom:3.5rem;}
+.cases{display:flex;flex-direction:column;}
+.caserow{
+  display:grid;grid-template-columns:4.5rem 1fr auto;gap:2rem;align-items:center;
+  padding:1.8rem 0;border-top:1px solid var(--rule);
+  transition:padding-left .2s var(--ease);cursor:default;
+}
+.caserow:last-child{border-bottom:1px solid var(--rule);}
+.caserow:hover{padding-left:.4rem;}
+.caserow:hover .cn{color:var(--navy);}
+.cn{
+  font-family:var(--serif);font-size:2.2rem;font-weight:900;font-style:italic;
+  color:var(--rule-heavy);letter-spacing:-.04em;line-height:1;
+  transition:color .2s;
+}
+.ct{font-size:.97rem;font-weight:600;color:var(--ink);margin-bottom:.3rem;letter-spacing:-.01em;}
+.cd{font-size:.84rem;color:var(--muted);line-height:1.62;font-weight:300;}
+.ctag{
+  background:var(--navy-10);color:var(--navy);
+  font-size:.63rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;padding:.3rem .85rem;border-radius:3px;
+  white-space:nowrap;
+}
+
+/* ══════════════════════════════
+   CLIENTS — editorial grid
+   ══════════════════════════════ */
+#clients{background:var(--off);}
+.clients-top{text-align:center;margin-bottom:3.5rem;}
+.clients-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  border:1px solid var(--rule);border-radius:4px;overflow:hidden;
+  background:var(--rule);gap:1px;
+}
+.cc{
+  background:var(--white);padding:1.8rem 1.4rem;
+  transition:background .2s;cursor:default;
+}
+.cc:hover{background:var(--off);}
+.cc-abbr{
+  font-family:var(--serif);font-size:1.3rem;font-weight:800;
+  color:var(--navy);letter-spacing:-.02em;font-style:italic;
+}
+.cc-name{font-size:.63rem;color:var(--muted);margin-top:.25rem;line-height:1.4;font-weight:300;}
+.cc-type{
+  font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--blue);margin-top:.5rem;font-weight:600;
+}
+
+/* ══════════════════════════════
+   CONTACT — split layout
+   ══════════════════════════════ */
+#cta{background:var(--white);}
+.cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+
+.cta-left{}
+.cta-h{
+  font-family:var(--serif);
+  font-size:clamp(2.2rem,4vw,3.2rem);
+  font-weight:800;letter-spacing:-.03em;line-height:1.1;
+  color:var(--ink);margin-bottom:1rem;
+}
+.cta-h em{font-style:italic;color:var(--blue);}
+.cta-sub{font-size:.95rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:2rem;}
+.cta-promise{
+  display:flex;align-items:flex-start;gap:.75rem;
+  padding:1.2rem 1.4rem;
+  background:var(--off);border:1px solid var(--rule);border-radius:4px;
+  margin-bottom:2rem;
+}
+.cta-promise-ico{color:var(--navy);flex-shrink:0;margin-top:.1rem;}
+.cta-promise-ico svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cta-promise p{font-size:.85rem;color:var(--body);line-height:1.6;font-weight:300;}
+.cta-promise strong{color:var(--ink);font-weight:600;}
+
+.cta-channels{display:flex;flex-direction:column;gap:.6rem;}
+.ch{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.85rem 1.1rem;border-radius:5px;font-size:.86rem;font-weight:500;
+  transition:transform .2s,box-shadow .2s;border:none;
+}
+.ch:hover{transform:translateX(3px);}
+.ch svg{width:17px;height:17px;flex-shrink:0;}
+.ch-email{background:var(--navy);color:#fff;box-shadow:0 1px 3px rgba(16,46,74,.3);}
+.ch-email:hover{box-shadow:0 4px 12px rgba(16,46,74,.35);}
+.ch-wa{background:#22c55e;color:#fff;box-shadow:0 1px 3px rgba(34,197,94,.3);}
+.ch-wa:hover{box-shadow:0 4px 12px rgba(34,197,94,.35);}
+
+/* Form */
+.cta-form{
+  background:var(--off);border:1px solid var(--rule);
+  border-radius:4px;padding:2.2rem;
+}
+.form-title{
+  font-family:var(--serif);font-size:1.4rem;font-weight:800;
+  color:var(--ink);letter-spacing:-.02em;margin-bottom:1.5rem;
+}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+.fg{display:flex;flex-direction:column;gap:.35rem;}
+.fg.span2{grid-column:1/-1;}
+label{font-size:.7rem;font-weight:600;color:var(--body);letter-spacing:.04em;text-transform:uppercase;}
+input,select,textarea{
+  padding:.65rem .9rem;border-radius:4px;
+  border:1.5px solid var(--rule);background:var(--white);
+  font-family:var(--sans);font-size:.87rem;color:var(--ink);
+  outline:none;width:100%;transition:border-color .2s;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--navy);}
+input::placeholder,textarea::placeholder{color:var(--subtle);}
+select{cursor:pointer;-webkit-appearance:none;appearance:none;}
+textarea{resize:vertical;min-height:95px;}
+.btn-send{
+  width:100%;padding:.85rem;border-radius:5px;
+  background:var(--navy);color:#fff;border:none;
+  font-family:var(--sans);font-size:.9rem;font-weight:600;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  transition:opacity .2s,transform .2s;margin-top:.25rem;
+  box-shadow:0 1px 3px rgba(16,46,74,.3);
+}
+.btn-send:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 12px rgba(16,46,74,.3);}
+.btn-send svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.form-note{font-size:.7rem;color:var(--subtle);text-align:center;margin-top:.8rem;}
+
+/* ══════════════════════════════
+   FOOTER — editorial, minimal
+   ══════════════════════════════ */
+footer{
+  background:var(--ink);
+  padding:4rem 0 0;
+}
+.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3.5rem;}
+.f-brand svg{height:20px;display:block;margin-bottom:1.1rem;}
+.f-tagline{font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.65;max-width:24ch;font-weight:300;}
+.f-col h5{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600;color:rgba(255,255,255,.35);margin-bottom:1.1rem;}
+.f-col a{display:block;font-size:.84rem;color:rgba(255,255,255,.38);margin-bottom:.6rem;transition:color .15s;}
+.f-col a:hover{color:rgba(255,255,255,.75);}
+.f-bottom{
+  padding:1.6rem 0;border-top:1px solid rgba(255,255,255,.07);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;
+}
+.f-bottom span,.f-bottom a{font-size:.74rem;color:rgba(255,255,255,.28);}
+.f-bottom a{transition:color .15s;}
+.f-bottom a:hover{color:rgba(255,255,255,.5);}
+.f-blinks{display:flex;gap:1.5rem;}
+
+/* ══════════════════════════════
+   WHATSAPP FLOAT
+   ══════════════════════════════ */
+.wa-float{
+  position:fixed;bottom:1.8rem;right:1.8rem;z-index:300;
+  width:50px;height:50px;border-radius:50%;
+  background:#22c55e;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 18px rgba(34,197,94,.35);text-decoration:none;
+  animation:wap 2.5s ease-in-out infinite;transition:transform .2s;
+}
+.wa-float:hover{transform:scale(1.1);animation:none;box-shadow:0 6px 24px rgba(34,197,94,.5);}
+.wa-float svg{width:24px;height:24px;fill:#fff;}
+.wa-tooltip{
+  position:absolute;right:62px;top:50%;transform:translateY(-50%);
+  background:var(--ink);color:#fff;font-size:.75rem;font-weight:500;
+  padding:.4rem .85rem;border-radius:4px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.wa-float:hover .wa-tooltip{opacity:1;}
+.wa-tooltip::after{content:'';position:absolute;left:100%;top:50%;transform:translateY(-50%);border:5px solid transparent;border-left-color:var(--ink);}
+@keyframes wap{0%{box-shadow:0 4px 18px rgba(34,197,94,.35),0 0 0 0 rgba(34,197,94,.35);}70%{box-shadow:0 4px 18px rgba(34,197,94,.35),0 0 0 12px rgba(34,197,94,0);}100%{box-shadow:0 4px 18px rgba(34,197,94,.35),0 0 0 0 rgba(34,197,94,0);}}
+
+/* ══════════════════════════════
+   REVEAL
+   ══════════════════════════════ */
+.r{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.r.pre{opacity:0;transform:translateY(18px);}
+.r.in{opacity:1;transform:none;}
+.d1{transition-delay:.07s;}.d2{transition-delay:.14s;}.d3{transition-delay:.21s;}.d4{transition-delay:.28s;}
+
+/* ══════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════ */
+@media(max-width:1024px){
+  .vision-layout,.ai-layout,.svc-top,.impact-top,.cta-inner{grid-template-columns:1fr;gap:3rem;}
+  .svc-grid{grid-template-columns:1fr;}
+  .f-grid{grid-template-columns:1fr 1fr;gap:2.5rem;}
+  .f-grid>div:first-child{grid-column:1/-1;}
+  .stats-bar-inner{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  nav{padding:0 1.2rem;}
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .nav-links.open{
+    display:flex;flex-direction:column;
+    position:fixed;top:64px;left:0;right:0;
+    background:rgba(255,255,255,.98);backdrop-filter:blur(12px);
+    padding:1.5rem;gap:.35rem;border-bottom:1px solid var(--rule);z-index:399;
+  }
+  .nav-links.open .nav-link{font-size:1rem;color:var(--ink);padding:.7rem .85rem;}
+  .wrap{padding:0 1.25rem;}
+  section{padding:5rem 0;}
+  .hero-inner{padding:8rem 1.25rem 3rem;}
+  .hero-trust{padding:1.5rem 1.25rem;}
+  .stats-bar-inner{grid-template-columns:1fr 1fr;}
+  .clients-grid{grid-template-columns:repeat(2,1fr);}
+  .caserow{grid-template-columns:3.5rem 1fr;}.ctag{display:none;}
+  .form-grid{grid-template-columns:1fr;}
+  .f-grid{grid-template-columns:1fr;}
+  .f-bottom{flex-direction:column;text-align:center;}
+  .f-blinks{flex-wrap:wrap;justify-content:center;gap:1rem;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<!-- WA Float -->
+<a class="wa-float" href="https://wa.me/593XXXXXXXXX?text=Hola%20Lytiks%2C%20quisiera%20conocer%20m%C3%A1s." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="wa-tooltip">¿Hablamos?</span>
+</a>
+
+<!-- NAV -->
+<header>
+<nav id="nav" class="hero-zone">
+  <a href="./" class="nav-logo" aria-label="Lytiks inicio">
+    <svg id="nav-svg" viewBox="0 0 106 48" xmlns="http://www.w3.org/2000/svg">
+      <path id="lp1" fill="white" d="M11.86,8.13c1.33,0,2.41,1.08,2.41,2.41v9.85c0,7.98,6.47,14.46,14.46,14.46h3.14l-1.83,4.82h-2.92c-9.76,0-17.67-7.91-17.67-17.67v-11.45c0-1.33,1.08-2.41,2.41-2.41Z"/>
+      <path fill="#7aadd4" d="M46,15.92l-8.55,25.93c-1.09,3.31-4.18,5.54-7.66,5.54l4.81-14.79h-5.83l-7.51-16.68h5.83l7.51,16.68,5.55-16.68h5.84Z"/>
+      <path id="lp2" fill="white" d="M48.24,30.02V8.13h4.82v7.79h6.58v4.48h-6.58v9.62c0,1.32.47,2.46,1.42,3.4.95.95,2.08,1.42,3.4,1.42h1.76v4.82h-1.76c-2.64,0-4.91-.95-6.8-2.84-1.89-1.89-2.84-4.16-2.84-6.8ZM61.88,15.92h4.82v23.74h-4.82V15.92ZM68.94,8.13h4.82v17.26c1.02,0,1.99-.48,2.61-1.29l6.27-8.17h6.04l-9.1,11.89,9.1,11.85h-6.04l-6.27-8.17c-.62-.81-1.59-1.29-2.61-1.29v9.46h-4.82V8.13ZM88.78,32.58h4.82c0,.78.38,1.26,1.13,1.65.75.39,1.64.59,2.66.59.96,0,1.83-.18,2.61-.54.78-.36,1.17-.96,1.17-1.8,0-.57-.23-1.04-.68-1.4-.45-.36-1.04-.62-1.78-.77-.74-.15-1.54-.28-2.41-.41-.87-.12-1.75-.32-2.64-.59-.89-.27-1.7-.62-2.43-1.04-.74-.42-1.33-1.08-1.78-1.98-.45-.9-.68-1.98-.68-3.24,0-2.28.85-4.05,2.55-5.29,1.7-1.25,3.72-1.87,6.06-1.87s4.37.62,6.08,1.87c1.71,1.25,2.57,3.01,2.57,5.29h-4.87c0-.78-.37-1.37-1.1-1.76-.74-.39-1.63-.59-2.68-.59-.93,0-1.79.18-2.59.54-.8.36-1.19.96-1.19,1.8,0,.54.23.98.7,1.31.47.33,1.06.58,1.78.74.72.17,1.52.31,2.41.43.89.12,1.77.32,2.66.59.89.27,1.69.63,2.41,1.08.72.45,1.31,1.13,1.78,2.03.47.9.7,1.98.7,3.24,0,2.28-.85,4.05-2.55,5.29-1.7,1.25-3.72,1.87-6.08,1.87s-4.39-.62-6.08-1.87c-1.7-1.25-2.55-2.91-2.55-5.19Z"/>
+    </svg>
+  </a>
+  <ul class="nav-links" id="nav-links" role="list">
+    <li><a href="#vision" class="nav-link">Visión</a></li>
+    <li><a href="#services" class="nav-link">Soluciones</a></li>
+    <li><a href="#asistente" class="nav-link">Asistente IA</a></li>
+    <li><a href="#impact" class="nav-link">Impacto</a></li>
+    <li><a href="#clients" class="nav-link">Clientes</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="mailto:info@lytiks.ai" class="nav-contact">info@lytiks.ai</a>
+    <a href="#cta" class="nav-cta">Hablar con un experto</a>
+    <button class="burger" id="burger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+</header>
+
+<main id="main">
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-texture" aria-hidden="true"></div>
+  <div class="hero-wash" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-overline">Inteligencia de negocios · Ecuador</div>
+    <h1 class="hero-h1">
+      Inteligencia que<br><em>transforma</em><br>tu empresa.
+    </h1>
+    <p class="hero-sub">
+      Convertimos datos complejos en decisiones estratégicas. Analítica avanzada, modelos predictivos y sistemas de IA diseñados para empresas que quieren anticiparse, no reaccionar.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-hero-primary">Ver soluciones</a>
+      <a href="#cta" class="btn-hero-ghost">Hablar con un experto →</a>
+    </div>
+  </div>
+
+  <div class="hero-trust">
+    <span class="trust-label">Confiado por</span>
+    <div class="trust-names">
+      <span class="trust-name">AEBE</span>
+      <span class="trust-name">CNA</span>
+      <span class="trust-name">FEDEXPOR</span>
+      <span class="trust-name">Arca Continental</span>
+      <span class="trust-name">Coca‑Cola</span>
+      <span class="trust-name">CIL</span>
+      <span class="trust-name">CEE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS BAR ── -->
+<div class="stats-bar" role="region" aria-label="Métricas clave">
+  <div class="stats-bar-inner">
+    <div class="sbi"><div class="sbi-n">+10<sup>×</sup></div><div class="sbi-l">Industrias y sectores analizados</div></div>
+    <div class="sbi"><div class="sbi-n">100<sup>k+</sup></div><div class="sbi-l">Registros procesados diariamente</div></div>
+    <div class="sbi"><div class="sbi-n">6<sup>+</sup></div><div class="sbi-l">Gremios e instituciones aliadas</div></div>
+    <div class="sbi"><div class="sbi-n">24<sup>/7</sup></div><div class="sbi-l">Asistente IA disponible</div></div>
+  </div>
+</div>
+
+<!-- ── TICKER ── -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ti">Machine Learning<span class="ti-dot"></span></span>
+    <span class="ti">Analítica Geoespacial<span class="ti-dot"></span></span>
+    <span class="ti">Modelos Predictivos<span class="ti-dot"></span></span>
+    <span class="ti">Asistente IA 24/7<span class="ti-dot"></span></span>
+    <span class="ti">Sentinel-1 Radar<span class="ti-dot"></span></span>
+    <span class="ti">NDVI · Hiperespectrales<span class="ti-dot"></span></span>
+    <span class="ti">Market Share<span class="ti-dot"></span></span>
+    <span class="ti">Observatorios Sectoriales<span class="ti-dot"></span></span>
+    <span class="ti">Computer Vision<span class="ti-dot"></span></span>
+    <span class="ti">Inteligencia Competitiva<span class="ti-dot"></span></span>
+    <span class="ti">Machine Learning<span class="ti-dot"></span></span>
+    <span class="ti">Analítica Geoespacial<span class="ti-dot"></span></span>
+    <span class="ti">Modelos Predictivos<span class="ti-dot"></span></span>
+    <span class="ti">Asistente IA 24/7<span class="ti-dot"></span></span>
+    <span class="ti">Sentinel-1 Radar<span class="ti-dot"></span></span>
+    <span class="ti">NDVI · Hiperespectrales<span class="ti-dot"></span></span>
+    <span class="ti">Market Share<span class="ti-dot"></span></span>
+    <span class="ti">Observatorios Sectoriales<span class="ti-dot"></span></span>
+    <span class="ti">Computer Vision<span class="ti-dot"></span></span>
+    <span class="ti">Inteligencia Competitiva<span class="ti-dot"></span></span>
+  </div>
+</div>
+
+<!-- ── VISION ── -->
+<section id="vision">
+  <div class="wrap">
+    <div class="vision-layout">
+      <div>
+        <div class="s-label r">Propósito</div>
+        <h2 class="s-h2 r d1">No analizamos el pasado.<br><em>Predecimos el futuro.</em></h2>
+        <div class="vision-body r d2">
+          <p>El verdadero valor de los datos no está en describirlos — está en anticiparse a lo que viene. Construimos sistemas de inteligencia que detectan patrones, proyectan escenarios y recomiendan decisiones antes de que el mercado los haga evidentes.</p>
+          <p>No somos una consultora. Somos infraestructura de decisión: la capa de inteligencia que cualquier empresa ambiciosa necesita para competir con ventaja real.</p>
+        </div>
+        <div class="pillars r d3">
+          <div class="pillar"><div class="pn">01</div><div><div class="pt">Datos propios, no genéricos</div><div class="pd">Acceso directo a información de negocio real, integrada desde tus sistemas y fuentes externas relevantes para tu industria.</div></div></div>
+          <div class="pillar"><div class="pn">02</div><div><div class="pt">Modelos a medida, no plantillas</div><div class="pd">ML y AI entrenados con tu data específica. No adaptamos soluciones genéricas: construimos lo que tu empresa necesita.</div></div></div>
+          <div class="pillar"><div class="pn">03</div><div><div class="pt">Ejecución, no solo estrategia</div><div class="pd">Desplegamos sistemas que funcionan hoy. Código en producción, métricas reales, impacto medible desde el primer mes.</div></div></div>
+        </div>
+      </div>
+
+      <div class="vision-right r d2">
+        <div class="pull-stat">
+          <div class="pull-stat-n">+8.3<sub>%</sub></div>
+          <p class="pull-stat-l">Incremento en volumen de exportación detectado y proyectado por nuestros modelos antes de que se publicaran los datos oficiales del sector — semanas de ventaja para la toma de decisiones.</p>
+        </div>
+        <div class="pull-quote">
+          <p class="pq-text">"Lytiks nos dio visibilidad sobre el mercado que ninguna otra herramienta había podido darnos. Pasamos de reaccionar a anticipar."</p>
+          <p class="pq-source">— Directivo de organización exportadora, Ecuador</p>
+        </div>
+        <a href="#services" class="vision-link">
+          Explorar nuestras soluciones
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services" class="bg-off">
+  <div class="wrap">
+    <div class="svc-top">
+      <div>
+        <div class="s-label r">Soluciones</div>
+        <h2 class="s-h2 r d1">Lo que construimos <em>para ti.</em></h2>
+      </div>
+      <p class="s-lead r d1" style="margin-top:0;">Cuatro capacidades que se combinan para crear sistemas de inteligencia completos. Aplicables a cualquier industria donde los datos son fuente de ventaja competitiva.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="sc r d1">
+        <div class="sc-num">01</div>
+        <div class="sc-label">Entorno · Variables externas</div>
+        <h3 class="sc-title">Inteligencia de Contexto y Entorno</h3>
+        <p class="sc-desc">Integramos variables externas — clima, mercados internacionales, indicadores económicos — para anticipar su impacto en tu operación antes de que ocurra.</p>
+        <div class="sc-tags"><span class="tag">Geoespacial</span><span class="tag">Datos satelitales</span><span class="tag">Variables macro</span><span class="tag">Tiempo real</span></div>
+      </article>
+      <article class="sc r d2">
+        <div class="sc-num">02</div>
+        <div class="sc-label">Demanda · Planificación</div>
+        <h3 class="sc-title">Pronóstico de Demanda y Mercado</h3>
+        <p class="sc-desc">Modelos predictivos para proyectar ventas, volúmenes y comportamiento de mercado. Reduce la incertidumbre en planificación, inventarios y decisiones comerciales.</p>
+        <div class="sc-tags"><span class="tag">Modelos predictivos</span><span class="tag">Forecasting</span><span class="tag">Planificación</span><span class="tag">Cadena de valor</span></div>
+      </article>
+      <article class="sc r d3">
+        <div class="sc-num">03</div>
+        <div class="sc-label">Competencia · Posicionamiento</div>
+        <h3 class="sc-title">Inteligencia Competitiva y de Mercado</h3>
+        <p class="sc-desc">Monitoreo de participación de mercado, análisis de competencia y benchmarking. Sabe exactamente dónde estás parado antes de decidir a dónde ir.</p>
+        <div class="sc-tags"><span class="tag">Market Share</span><span class="tag">Benchmarking</span><span class="tag">Segmentación</span><span class="tag">Posicionamiento</span></div>
+      </article>
+      <article class="sc r d4">
+        <div class="sc-num">04</div>
+        <div class="sc-label">Plataformas · Visualización</div>
+        <h3 class="sc-title">Plataformas de Datos y Observatorios</h3>
+        <p class="sc-desc">Aplicaciones web a medida para que tu equipo vea, entienda y actúe sobre los datos en tiempo real. Desde dashboards ejecutivos hasta sistemas de alerta temprana.</p>
+        <div class="sc-tags"><span class="tag">Dashboards</span><span class="tag">Data Hubs</span><span class="tag">Alertas</span><span class="tag">Tiempo real</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── ASISTENTE IA ── -->
+<section id="asistente" class="bg-navy">
+  <div class="wrap">
+    <div class="ai-layout">
+      <div>
+        <div class="s-label on-dark r">Asistente IA Gerencial</div>
+        <h2 class="s-h2 on-dark r d1">Tu analista de IA,<br><em>siempre disponible.</em></h2>
+        <p class="s-lead on-dark r d2">Contextualizamos modelos de lenguaje con el conocimiento específico de tu empresa, tu sector y tus datos históricos. El resultado: un analista que entiende tu negocio, responde en lenguaje natural y genera reportes al instante.</p>
+        <div class="ai-feats r d3">
+          <div class="ai-feat">
+            <div class="ai-feat-ico"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h8"/></svg></div>
+            <div><div class="ai-feat-t">Conectado a tus fuentes de datos</div><div class="ai-feat-d">ERP, CRM, bases de datos propias o cualquier sistema donde vive la información de tu negocio.</div></div>
+          </div>
+          <div class="ai-feat">
+            <div class="ai-feat-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div><div class="ai-feat-t">Reportes y análisis en segundos</div><div class="ai-feat-d">Tablas, gráficos y comparativas generadas al instante. Sin SQL, sin esperar al equipo de datos.</div></div>
+          </div>
+          <div class="ai-feat">
+            <div class="ai-feat-ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div><div class="ai-feat-t">Diseñado para quien decide</div><div class="ai-feat-d">Directivos, gerentes y equipos comerciales obtienen respuestas precisas en el lenguaje de su negocio.</div></div>
+          </div>
+        </div>
+        <div class="ai-caps r d4">
+          <span class="cap">Análisis predictivo</span>
+          <span class="cap">24/7 disponible</span>
+          <span class="cap">Contexto sectorial</span>
+          <span class="cap">Reportes automáticos</span>
+        </div>
+      </div>
+
+      <div class="chat-win r d2">
+        <div class="cw-bar">
+          <div class="cw-dots"><span></span><span></span><span></span></div>
+          <div class="cw-title">Lytiks AI · Analista Gerencial</div>
+          <div class="cw-live">En línea</div>
+        </div>
+        <div class="cw-chat">
+          <div class="cm u"><div class="cav u">Ud</div><div class="cbub">¿Cuál fue el volumen de exportaciones de banano en marzo?</div></div>
+          <div class="ctyp"><div class="cav a">AI</div><div class="cbub"><div class="tdots"><span></span><span></span><span></span></div></div></div>
+          <div class="cm"><div class="cav a">AI</div><div class="cbub">En marzo se exportaron <strong>4.2M de cajas</strong>, un aumento del 8.3% vs. el año anterior. Precio FOB promedio: $9.40/caja.<div class="mbars"><div class="mb" style="height:55%;--bd:.1s"></div><div class="mb" style="height:72%;--bd:.15s"></div><div class="mb" style="height:48%;--bd:.2s"></div><div class="mb" style="height:88%;--bd:.25s"></div><div class="mb" style="height:63%;--bd:.3s"></div><div class="mb" style="height:79%;--bd:.35s"></div><div class="mb" style="height:95%;--bd:.4s"></div><div class="mb" style="height:84%;--bd:.45s"></div></div><div class="mbl">Volumen semanal — últimas 8 semanas</div></div></div>
+          <div class="ctyp"><div class="cav a">AI</div><div class="cbub"><div class="tdots"><span></span><span></span><span></span></div></div></div>
+          <div class="cm u"><div class="cav u">Ud</div><div class="cbub">¿Qué mercados concentran el mayor volumen?</div></div>
+          <div class="cm"><div class="cav a">AI</div><div class="cbub">Top destinos: <strong>UE</strong> 41% · <strong>Rusia</strong> 22% · <strong>EE.UU.</strong> 18%. Rusia registró la mayor variación positiva: +14%.</div></div>
+        </div>
+        <div class="cw-input">
+          <div class="cw-if">¿Cómo estamos vs. el forecast del trimestre?</div>
+          <button class="cw-send" aria-label="Enviar"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IMPACT ── -->
+<section id="impact">
+  <div class="wrap">
+    <div class="impact-top">
+      <div>
+        <div class="s-label r">Casos de impacto</div>
+        <h2 class="s-h2 r d1">Resultados concretos en<br><em>problemas reales.</em></h2>
+      </div>
+      <p class="s-lead r d1" style="margin-top:0;">Resultados concretos en organizaciones reales. Los detalles cambian según la industria — el método es siempre el mismo: datos, modelos y decisiones mejores.</p>
+    </div>
+    <div class="cases">
+      <article class="caserow r d1">
+        <div class="cn">01</div>
+        <div><div class="ct">Anticipación de riesgos operativos por variables climáticas</div><div class="cd">Sistema que integra datos climáticos y geoespaciales para proyectar el impacto en la producción semanas antes de que ocurra, permitiendo ajustes proactivos en la cadena de valor.</div></div>
+        <span class="ctag">Agroindustria</span>
+      </article>
+      <article class="caserow r d2">
+        <div class="cn">02</div>
+        <div><div class="ct">Observatorio de posicionamiento competitivo internacional</div><div class="cd">Plataforma que monitorea en tiempo real la participación de mercado y el desempeño frente a competidores en múltiples destinos, para una toma de decisiones gremial y comercial más precisa.</div></div>
+        <span class="ctag">Exportaciones</span>
+      </article>
+      <article class="caserow r d3">
+        <div class="cn">03</div>
+        <div><div class="ct">Sistema de alerta temprana para asignación de recursos</div><div class="cd">Modelo que detecta zonas de atención prioritaria y automatiza la asignación de recursos y presupuesto con criterios objetivos basados en datos en tiempo real.</div></div>
+        <span class="ctag">Sector público</span>
+      </article>
+      <article class="caserow r d4">
+        <div class="cn">04</div>
+        <div><div class="ct">Optimización de planificación comercial por canal y región</div><div class="cd">Modelos que anticipan la demanda por categoría, canal y zona geográfica, reduciendo el error de planificación y mejorando la eficiencia operativa y logística.</div></div>
+        <span class="ctag">Consumo masivo</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLIENTS ── -->
+<section id="clients" class="bg-off">
+  <div class="wrap">
+    <div class="clients-top">
+      <div class="s-label r" style="justify-content:center;">Alianzas estratégicas</div>
+      <h2 class="s-h2 r d1">Organizaciones que confían<br>en <em>Lytiks</em> para decidir mejor.</h2>
+      <p class="s-lead r d2" style="margin:1rem auto 0;text-align:center;">Empresas, gremios e instituciones de distintas industrias que utilizan nuestra inteligencia como ventaja competitiva.</p>
+    </div>
+    <div class="clients-grid r d1">
+      <div class="cc"><div class="cc-abbr">AEBE</div><div class="cc-name">Asoc. de Exportadores de Banano del Ecuador</div><div class="cc-type">Gremio</div></div>
+      <div class="cc"><div class="cc-abbr">CNA</div><div class="cc-name">Cámara Nacional de Acuacultura</div><div class="cc-type">Gremio</div></div>
+      <div class="cc"><div class="cc-abbr">CIL</div><div class="cc-name">Centro de la Industria Láctea</div><div class="cc-type">Gremio</div></div>
+      <div class="cc"><div class="cc-abbr">CEE</div><div class="cc-name">Comité Empresarial Ecuatoriano</div><div class="cc-type">Gremio</div></div>
+      <div class="cc"><div class="cc-abbr">FEDEXPOR</div><div class="cc-name">Fed. Ecuatoriana de Exportadores</div><div class="cc-type">Gremio</div></div>
+      <div class="cc"><div class="cc-abbr">ASOEXPLA</div><div class="cc-name">Asoc. Exportadores de Plátano</div><div class="cc-type">Gremio</div></div>
+      <div class="cc"><div class="cc-abbr">Arca</div><div class="cc-name">Arca Continental</div><div class="cc-type">Empresa</div></div>
+      <div class="cc"><div class="cc-abbr">Toni</div><div class="cc-name">Industria Láctea Toni</div><div class="cc-type">Empresa</div></div>
+      <div class="cc"><div class="cc-abbr">Coca‑Cola</div><div class="cc-name">The Coca-Cola Company</div><div class="cc-type">Empresa</div></div>
+      <div class="cc" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.3rem;">
+        <div style="font-family:var(--serif);font-size:1.5rem;font-weight:900;color:var(--rule-heavy);font-style:italic;">+</div>
+        <div style="font-size:.62rem;color:var(--subtle);letter-spacing:.08em;text-transform:uppercase;">Más alianzas<br>próximamente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA + FORM ── -->
+<section id="cta">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="cta-left">
+        <div class="s-label r">El siguiente paso</div>
+        <h2 class="cta-h r d1">El poder de tus datos,<br><em>desatado.</em></h2>
+        <p class="cta-sub r d2">Sin importar tu industria, si tus decisiones dependen de datos, podemos ayudarte a tomarlas mejor. Respondemos en menos de 24 horas con una evaluación inicial sin costo.</p>
+        <div class="cta-promise r d3">
+          <div class="cta-promise-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <p><strong>Respuesta garantizada en menos de 24 horas.</strong> Nuestro equipo revisará tu caso y te contactará con una propuesta inicial sin costo.</p>
+        </div>
+        <div class="cta-channels r d4">
+          <a href="mailto:info@lytiks.ai" class="ch ch-email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            info@lytiks.ai
+          </a>
+          <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Lytiks%2C%20quisiera%20iniciar%20un%20proyecto." target="_blank" rel="noopener" class="ch ch-wa">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="cta-form r d2">
+        <h3 class="form-title">Cuéntanos tu proyecto</h3>
+        <form action="https://formsubmit.co/info@lytiks.ai" method="POST">
+          <input type="hidden" name="_subject" value="Nuevo contacto - Lytiksweb">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://paveragilces.github.io/Lytiksweb/gracias.html">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-grid">
+            <div class="fg"><label for="f-nm">Nombre *</label><input type="text" id="f-nm" name="nombre" placeholder="Tu nombre" required autocomplete="given-name"></div>
+            <div class="fg"><label for="f-co">Empresa *</label><input type="text" id="f-co" name="empresa" placeholder="Tu empresa" required autocomplete="organization"></div>
+            <div class="fg"><label for="f-em">Email *</label><input type="email" id="f-em" name="email" placeholder="tu@empresa.com" required autocomplete="email"></div>
+            <div class="fg"><label for="f-se">Sector</label>
+              <select id="f-se" name="sector">
+                <option value="">Selecciona tu sector</option>
+                <option>Agroindustria – Banano</option>
+                <option>Agroindustria – Camarón</option>
+                <option>Alimentos y Bebidas</option>
+                <option>Gremio Empresarial</option>
+                <option>Logística y Exportaciones</option>
+                <option>Sector Público</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="fg span2"><label for="f-ms">¿Cómo podemos ayudarte? *</label><textarea id="f-ms" name="mensaje" placeholder="Cuéntanos sobre tu proyecto..." required></textarea></div>
+          </div>
+          <button type="submit" class="btn-send">
+            Enviar mensaje
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p class="form-note">🔒 Tu información es confidencial. Respuesta en menos de 24h.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-brand">
+          <svg viewBox="0 0 106 48" xmlns="http://www.w3.org/2000/svg">
+            <path fill="rgba(255,255,255,0.5)" d="M11.86,8.13c1.33,0,2.41,1.08,2.41,2.41v9.85c0,7.98,6.47,14.46,14.46,14.46h3.14l-1.83,4.82h-2.92c-9.76,0-17.67-7.91-17.67-17.67v-11.45c0-1.33,1.08-2.41,2.41-2.41Z"/>
+            <path fill="#5888b2" d="M46,15.92l-8.55,25.93c-1.09,3.31-4.18,5.54-7.66,5.54l4.81-14.79h-5.83l-7.51-16.68h5.83l7.51,16.68,5.55-16.68h5.84Z"/>
+            <path fill="rgba(255,255,255,0.5)" d="M48.24,30.02V8.13h4.82v7.79h6.58v4.48h-6.58v9.62c0,1.32.47,2.46,1.42,3.4.95.95,2.08,1.42,3.4,1.42h1.76v4.82h-1.76c-2.64,0-4.91-.95-6.8-2.84-1.89-1.89-2.84-4.16-2.84-6.8ZM61.88,15.92h4.82v23.74h-4.82V15.92ZM68.94,8.13h4.82v17.26c1.02,0,1.99-.48,2.61-1.29l6.27-8.17h6.04l-9.1,11.89,9.1,11.85h-6.04l-6.27-8.17c-.62-.81-1.59-1.29-2.61-1.29v9.46h-4.82V8.13ZM88.78,32.58h4.82c0,.78.38,1.26,1.13,1.65.75.39,1.64.59,2.66.59.96,0,1.83-.18,2.61-.54.78-.36,1.17-.96,1.17-1.8,0-.57-.23-1.04-.68-1.4-.45-.36-1.04-.62-1.78-.77-.74-.15-1.54-.28-2.41-.41-.87-.12-1.75-.32-2.64-.59-.89-.27-1.7-.62-2.43-1.04-.74-.42-1.33-1.08-1.78-1.98-.45-.9-.68-1.98-.68-3.24,0-2.28.85-4.05,2.55-5.29,1.7-1.25,3.72-1.87,6.06-1.87s4.37.62,6.08,1.87c1.71,1.25,2.57,3.01,2.57,5.29h-4.87c0-.78-.37-1.37-1.1-1.76-.74-.39-1.63-.59-2.68-.59-.93,0-1.79.18-2.59.54-.8.36-1.19.96-1.19,1.8,0,.54.23.98.7,1.31.47.33,1.06.58,1.78.74.72.17,1.52.31,2.41.43.89.12,1.77.32,2.66.59.89.27,1.69.63,2.41,1.08.72.45,1.31,1.13,1.78,2.03.47.9.7,1.98.7,3.24,0,2.28-.85,4.05-2.55,5.29-1.7,1.25-3.72,1.87-6.08,1.87s-4.39-.62-6.08-1.87c-1.7-1.25-2.55-2.91-2.55-5.19Z"/>
+          </svg>
+        </div>
+        <p class="f-tagline">Inteligencia artificial y analítica avanzada para empresas que quieren decidir mejor. Guayaquil, Ecuador.</p>
+      </div>
+      <div class="f-col">
+        <h5>Empresa</h5>
+        <a href="#vision">Visión</a>
+        <a href="#services">Soluciones</a>
+        <a href="#asistente">Asistente IA</a>
+        <a href="#impact">Impacto</a>
+        <a href="#clients">Clientes</a>
+      </div>
+      <div class="f-col">
+        <h5>Sectores</h5>
+        <a href="#services">Agroindustria</a>
+        <a href="#services">Exportaciones</a>
+        <a href="#services">Industria</a>
+        <a href="#services">Sector Público</a>
+        <a href="#services">Gremios</a>
+      </div>
+      <div class="f-col">
+        <h5>Contacto</h5>
+        <a href="mailto:info@lytiks.ai">info@lytiks.ai</a>
+        <a href="https://wa.me/593XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://linkedin.com/company/lytiks" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="./sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Lytiks · Guayaquil, Ecuador</span>
+      <div class="f-blinks">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="./robots.txt">robots.txt</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Cursor (desktop only)
+if(window.matchMedia('(hover:hover)').matches){
+  const body=document.body;
+  let curEl=document.createElement('div'),ringEl=document.createElement('div');
+  Object.assign(curEl.style,{position:'fixed',width:'8px',height:'8px',background:'#102e4a',borderRadius:'50%',pointerEvents:'none',zIndex:'9999',transform:'translate(-50%,-50%)',mixBlendMode:'multiply',transition:'width .2s,height .2s',willChange:'left,top'});
+  Object.assign(ringEl.style,{position:'fixed',width:'30px',height:'30px',border:'1px solid rgba(16,46,74,.3)',borderRadius:'50%',pointerEvents:'none',zIndex:'9998',transform:'translate(-50%,-50%)',transition:'width .3s,height .3s',willChange:'left,top'});
+  body.appendChild(curEl);body.appendChild(ringEl);
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+  (function loop(){
+    curEl.style.left=mx+'px';curEl.style.top=my+'px';
+    rx+=(mx-rx)*.13;ry+=(my-ry)*.13;
+    ringEl.style.left=rx+'px';ringEl.style.top=ry+'px';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button,.sc,.caserow,.pillar,.cc,.ai-feat').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{curEl.style.width='16px';curEl.style.height='16px';ringEl.style.width='46px';ringEl.style.height='46px';},{passive:true});
+    el.addEventListener('mouseleave',()=>{curEl.style.width='8px';curEl.style.height='8px';ringEl.style.width='30px';ringEl.style.height='30px';},{passive:true});
+  });
+}
+
+// ── Nav: hero-zone toggle + logo color
+const nav=document.getElementById('nav');
+const lp1=document.getElementById('lp1'),lp2=document.getElementById('lp2');
+function updateNav(){
+  const heroH=document.getElementById('hero').offsetHeight;
+  const past=scrollY>heroH-80;
+  nav.classList.toggle('hero-zone',!past);
+  if(lp1)lp1.style.fill=past?'#102e4a':'white';
+  if(lp2)lp2.style.fill=past?'#102e4a':'white';
+}
+window.addEventListener('scroll',updateNav,{passive:true});
+updateNav();
+
+// ── Burger
+const burger=document.getElementById('burger'),nl=document.getElementById('nav-links');
+burger.addEventListener('click',()=>{
+  const o=nl.classList.toggle('open');
+  burger.classList.toggle('open',o);
+  burger.setAttribute('aria-expanded',o);
+  document.body.style.overflow=o?'hidden':'';
+});
+nl.querySelectorAll('.nav-link').forEach(a=>a.addEventListener('click',()=>{
+  nl.classList.remove('open');burger.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');document.body.style.overflow='';
+}));
+document.addEventListener('click',e=>{
+  if(nl.classList.contains('open')&&!nav.contains(e.target)){
+    nl.classList.remove('open');burger.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');document.body.style.overflow='';
+  }
+});
+
+// ── Scroll reveal
+document.querySelectorAll('.r').forEach(el=>el.classList.add('pre'));
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');e.target.classList.add('in');ro.unobserve(e.target);}});
+},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.r').forEach(el=>ro.observe(el));
+
+// ── Form validation
+const form=document.querySelector('form');
+if(form)form.addEventListener('submit',e=>{
+  let ok=true;
+  form.querySelectorAll('[required]').forEach(f=>{
+    f.style.borderColor='';
+    if(!f.value.trim()){f.style.borderColor='rgba(220,38,38,.6)';ok=false;}
+  });
+  if(!ok){e.preventDefault();form.querySelector('[style*="38,38"]')?.focus();}
+});
+</script>
+</body>
+</html>

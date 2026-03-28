@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://paveragilces.github.io/Lytiksweb/sitemap.xml
