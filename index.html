@@ -186,6 +186,46 @@ nav.hero-zone .nav-cta:hover{background:var(--off);}
   max-width:1160px;margin:0 auto;width:100%;
 }
 
+.hero-brand{
+  display:inline-flex;
+  width:fit-content;
+  margin-bottom:1.5rem;
+}
+.hero-brand-plate{
+  position:relative;
+  display:flex;flex-direction:column;gap:.9rem;
+  padding:1.1rem 1.2rem 1rem;
+  border-radius:1.4rem 1.4rem 1.4rem .4rem;
+  background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(247,246,243,.94));
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 24px 70px rgba(4,11,20,.28);
+  overflow:hidden;
+}
+.hero-brand-plate::before{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at top right,rgba(88,136,178,.22),transparent 38%),
+    linear-gradient(180deg,rgba(16,46,74,.03),transparent 55%);
+  pointer-events:none;
+}
+.hero-brand-mark{
+  position:relative;z-index:1;
+  width:clamp(190px,19vw,260px);
+  height:auto;
+}
+.hero-brand-meta{
+  position:relative;z-index:1;
+  display:inline-flex;align-items:center;gap:.65rem;
+  font-size:.64rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(16,46,74,.58);
+}
+.hero-brand-meta::before{
+  content:'';width:24px;height:1px;
+  background:rgba(16,46,74,.22);flex-shrink:0;
+}
+
 /* Overline — McKinsey uses a tight category label above headlines */
 .hero-overline{
   display:inline-flex;align-items:center;gap:.75rem;
@@ -742,6 +782,10 @@ footer{
   .wrap{padding:0 1.25rem;}
   section{padding:5rem 0;}
   .hero-inner{padding:8rem 1.25rem 3rem;}
+  .hero-brand{margin-bottom:1.2rem;}
+  .hero-brand-plate{padding:1rem 1rem .9rem;border-radius:1.1rem 1.1rem 1.1rem .35rem;}
+  .hero-brand-mark{width:min(70vw,220px);}
+  .hero-brand-meta{font-size:.56rem;letter-spacing:.13em;}
   .hero-trust{padding:1.5rem 1.25rem;}
   .stats-bar-inner{grid-template-columns:1fr 1fr;}
   .clients-grid{grid-template-columns:repeat(2,1fr);}
@@ -801,14 +845,19 @@ footer{
   <div class="hero-wash" aria-hidden="true"></div>
 
   <div class="hero-inner">
-    <div class="hero-overline">Inteligencia de negocios · Ecuador</div>
-    <h1 class="hero-h1">
+    <div class="hero-brand r">
+      <div class="hero-brand-plate">
+        <img src="./LOGO%20COLOR.svg" alt="Lytiks" class="hero-brand-mark" loading="eager" decoding="async">
+        <div class="hero-brand-meta">Inteligencia de negocios · Ecuador</div>
+      </div>
+    </div>
+    <h1 class="hero-h1 r d1">
       Inteligencia que<br><em>transforma</em><br>tu empresa.
     </h1>
-    <p class="hero-sub">
+    <p class="hero-sub r d2">
       Convertimos datos complejos en decisiones estratégicas. Analítica avanzada, modelos predictivos y sistemas de IA diseñados para empresas que quieren anticiparse, no reaccionar.
     </p>
-    <div class="hero-actions">
+    <div class="hero-actions r d3">
       <a href="#services" class="btn-hero-primary">Ver soluciones</a>
       <a href="#cta" class="btn-hero-ghost">Hablar con un experto →</a>
     </div>
