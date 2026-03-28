@@ -760,12 +760,13 @@ section.bg-navy{background:var(--navy);}
   box-shadow:0 22px 60px rgba(16,46,74,.08);
 }
 .team-role{
-  display:inline-flex;align-items:center;gap:.55rem;
-  font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--blue);
-}
-.team-role::before{
-  content:'';width:22px;height:1px;background:var(--blue);
+  display:inline-flex;align-items:center;
+  padding:.72rem 1.05rem;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--navy),#234f77);
+  box-shadow:0 14px 30px rgba(16,46,74,.18);
+  font-size:.82rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;
 }
 .team-name{
   margin-top:1rem;
@@ -1482,7 +1483,6 @@ footer{
         </div>
       </div>
       <article class="team-card r d2">
-        <div class="s-label">Nuestro equipo</div>
         <div class="team-role">Founder &amp; CEO</div>
         <h2 class="team-name">Paúl Vera Gilces</h2>
         <div class="team-copy">
