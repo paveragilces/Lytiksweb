@@ -712,6 +712,79 @@ section.bg-navy{background:var(--navy);}
 }
 
 /* ══════════════════════════════
+   TEAM — founder spotlight
+   ══════════════════════════════ */
+#team{background:var(--white);}
+.team-layout{
+  display:grid;grid-template-columns:380px 1fr;
+  gap:4rem;align-items:center;
+}
+.team-media{
+  position:relative;
+  display:flex;justify-content:center;
+}
+.team-media::before{
+  content:'';
+  position:absolute;
+  width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(88,136,178,.22),transparent 68%);
+  transform:translate(12%,8%);
+  filter:blur(2px);
+}
+.team-frame{
+  position:relative;
+  width:min(100%,340px);aspect-ratio:1/1;
+  border-radius:50%;
+  padding:12px;
+  background:linear-gradient(145deg,rgba(16,46,74,.14),rgba(88,136,178,.2));
+  box-shadow:0 28px 70px rgba(16,46,74,.14);
+}
+.team-photo{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 18%;
+  border-radius:50%;
+  display:block;
+  border:8px solid rgba(255,255,255,.95);
+}
+.team-card{
+  padding:2.5rem 2.6rem;
+  border-radius:1.8rem;
+  background:
+    linear-gradient(180deg,rgba(247,246,243,.98),rgba(255,255,255,.96)),
+    radial-gradient(circle at top right,rgba(88,136,178,.16),transparent 30%);
+  border:1px solid var(--rule);
+  box-shadow:0 22px 60px rgba(16,46,74,.08);
+}
+.team-role{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);
+}
+.team-role::before{
+  content:'';width:22px;height:1px;background:var(--blue);
+}
+.team-name{
+  margin-top:1rem;
+  font-family:var(--serif);font-size:clamp(2.1rem,4vw,3rem);
+  font-weight:800;line-height:1.05;letter-spacing:-.03em;color:var(--ink);
+}
+.team-copy{
+  margin-top:1.2rem;
+  font-size:.95rem;line-height:1.8;font-weight:300;color:var(--body);
+}
+.team-copy p+p{margin-top:.95rem;}
+.team-highlights{
+  display:flex;flex-wrap:wrap;gap:.55rem;
+  margin-top:1.6rem;
+}
+.team-pill{
+  display:inline-flex;align-items:center;
+  padding:.48rem .9rem;border-radius:999px;
+  background:var(--navy-10);color:var(--navy);
+  font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+}
+
+/* ══════════════════════════════
    CONTACT — split layout
    ══════════════════════════════ */
 #cta{background:var(--white);}
@@ -784,6 +857,7 @@ textarea{resize:vertical;min-height:95px;}
 .btn-send:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 12px rgba(16,46,74,.3);}
 .btn-send svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 .form-note{font-size:.7rem;color:var(--subtle);text-align:center;margin-top:.8rem;}
+.form-note strong{color:var(--navy);}
 
 /* ══════════════════════════════
    FOOTER — editorial, minimal
@@ -841,7 +915,7 @@ footer{
    RESPONSIVE
    ══════════════════════════════ */
 @media(max-width:1024px){
-  .vision-layout,.ai-layout,.svc-top,.impact-top,.cta-inner{grid-template-columns:1fr;gap:3rem;}
+  .vision-layout,.ai-layout,.svc-top,.impact-top,.team-layout,.cta-inner{grid-template-columns:1fr;gap:3rem;}
   .svc-grid{grid-template-columns:1fr;}
   .f-grid{grid-template-columns:1fr 1fr;gap:2.5rem;}
   .f-grid>div:first-child{grid-column:1/-1;}
@@ -866,6 +940,8 @@ footer{
   .hero-brand-plate{padding:1rem 1rem .9rem;border-radius:1.1rem 1.1rem 1.1rem .35rem;}
   .hero-brand-mark{width:min(70vw,220px);}
   .hero-brand-meta{font-size:.56rem;letter-spacing:.13em;}
+  .team-frame{width:min(100%,280px);}
+  .team-card{padding:2rem 1.4rem;border-radius:1.3rem;}
   .stats-bar-inner{grid-template-columns:1fr 1fr;}
   .clients-band{align-items:flex-start;flex-direction:column;}
   .clients-viewport{grid-auto-columns:84%;}
@@ -1278,6 +1354,35 @@ footer{
   </div>
 </section>
 
+<!-- ── TEAM ── -->
+<section id="team">
+  <div class="wrap">
+    <div class="team-layout">
+      <div class="team-media r d1">
+        <div class="team-frame">
+          <img src="./WhatsApp%20Image%202026-03-18%20at%2018.19.10.jpeg" alt="Paúl Vera Gilces" class="team-photo" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <article class="team-card r d2">
+        <div class="s-label">Nuestro equipo</div>
+        <div class="team-role">Founder &amp; CEO</div>
+        <h2 class="team-name">Paúl Vera Gilces</h2>
+        <div class="team-copy">
+          <p>Economista graduado de ESPOL, con estudios de postgrado en investigación económica y administración de empresas. Ha publicado más de 10 artículos científicos sobre economía, negocios y agricultura.</p>
+          <p>Dirige observatorios estratégicos para AEBE, el sector lácteo, el Comité Empresarial Ecuatoriano y el sector platanero, además de liderar Lytiks como plataforma de inteligencia para sectores productivos y exportadores en Ecuador.</p>
+          <p>Ha colaborado con la Cooperación Alemana GIZ en digitalización de datos e implementación de estaciones meteorológicas, y actualmente lidera proyectos de bioseguridad y analítica aplicada para riesgos como Fusarium R4T y Moko, con experiencia junto a empresas como Symrise y Reybanpac.</p>
+        </div>
+        <div class="team-highlights" aria-label="Destacados de Paúl Vera Gilces">
+          <span class="team-pill">ESPOL</span>
+          <span class="team-pill">10+ publicaciones</span>
+          <span class="team-pill">Observatorios sectoriales</span>
+          <span class="team-pill">GIZ · Bioseguridad</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ── CTA + FORM ── -->
 <section id="cta">
   <div class="wrap">
@@ -1304,12 +1409,7 @@ footer{
 
       <div class="cta-form r d2">
         <h3 class="form-title">Cuéntanos tu proyecto</h3>
-        <form action="https://formsubmit.co/info@lytiks.solutions" method="POST">
-          <input type="hidden" name="_subject" value="Nuevo contacto - Lytiksweb">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://lytiks.solutions/gracias.html">
-          <input type="hidden" name="_template" value="table">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <form id="contact-form">
           <div class="form-grid">
             <div class="fg"><label for="f-nm">Nombre *</label><input type="text" id="f-nm" name="nombre" placeholder="Tu nombre" required autocomplete="given-name"></div>
             <div class="fg"><label for="f-co">Empresa *</label><input type="text" id="f-co" name="empresa" placeholder="Tu empresa" required autocomplete="organization"></div>
@@ -1329,10 +1429,10 @@ footer{
             <div class="fg span2"><label for="f-ms">¿Cómo podemos ayudarte? *</label><textarea id="f-ms" name="mensaje" placeholder="Cuéntanos sobre tu proyecto..." required></textarea></div>
           </div>
           <button type="submit" class="btn-send">
-            Enviar mensaje
+            Abrir correo
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-          <p class="form-note">🔒 Tu información es confidencial. Respuesta en menos de 24h.</p>
+          <p class="form-note">🔒 Sin plataformas externas. Abrirá tu correo con el mensaje listo para enviar a <strong>info@lytiks.solutions</strong>.</p>
         </form>
       </div>
     </div>
@@ -1494,15 +1594,43 @@ if(clientsCarousel){
   startClientsAuto();
 }
 
-// ── Form validation
-const form=document.querySelector('form');
+// ── Contact form -> mailto
+const form=document.getElementById('contact-form');
 if(form)form.addEventListener('submit',e=>{
+  e.preventDefault();
   let ok=true;
+  let firstInvalid=null;
   form.querySelectorAll('[required]').forEach(f=>{
     f.style.borderColor='';
-    if(!f.value.trim()){f.style.borderColor='rgba(220,38,38,.6)';ok=false;}
+    if(!f.value.trim()){
+      f.style.borderColor='rgba(220,38,38,.6)';
+      ok=false;
+      if(!firstInvalid)firstInvalid=f;
+    }
   });
-  if(!ok){e.preventDefault();form.querySelector('[style*="38,38"]')?.focus();}
+  if(!ok){
+    firstInvalid?.focus();
+    return;
+  }
+
+  const nombre=form.querySelector('[name="nombre"]').value.trim();
+  const empresa=form.querySelector('[name="empresa"]').value.trim();
+  const email=form.querySelector('[name="email"]').value.trim();
+  const sector=form.querySelector('[name="sector"]').value.trim()||'No especificado';
+  const mensaje=form.querySelector('[name="mensaje"]').value.trim();
+
+  const subject=`Consulta web Lytiks - ${empresa}`;
+  const body=[
+    `Nombre: ${nombre}`,
+    `Empresa: ${empresa}`,
+    `Email: ${email}`,
+    `Sector: ${sector}`,
+    '',
+    'Mensaje:',
+    mensaje
+  ].join('\n');
+
+  window.location.href=`mailto:info@lytiks.solutions?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 </script>
 </body>
