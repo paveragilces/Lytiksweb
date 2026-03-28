@@ -480,6 +480,123 @@ section.bg-navy{background:var(--navy);}
 }
 
 /* ══════════════════════════════
+   ALGORITHMS — predictive ML capability
+   ══════════════════════════════ */
+#algorithms{background:var(--white);}
+.algo-top{
+  display:grid;grid-template-columns:1.05fr .95fr;
+  gap:4rem;align-items:end;margin-bottom:3.5rem;
+}
+.algo-layout{
+  display:grid;grid-template-columns:1.02fr .98fr;
+  gap:1rem;align-items:stretch;
+}
+.algo-hero{
+  position:relative;overflow:hidden;
+  padding:2.7rem 2.7rem 2.5rem;
+  border-radius:1.8rem;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(143,190,226,.24), transparent 22%),
+    linear-gradient(145deg, #0b1828 0%, #102e4a 58%, #244e73 100%);
+  box-shadow:0 28px 70px rgba(16,46,74,.18);
+}
+.algo-hero::after{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(180deg, rgba(0,0,0,.75), transparent 78%);
+  pointer-events:none;
+}
+.algo-eyebrow{
+  position:relative;z-index:1;
+  font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--blue-lt);
+}
+.algo-title{
+  position:relative;z-index:1;
+  margin-top:1rem;
+  font-family:var(--serif);
+  font-size:clamp(2.15rem,4vw,3.3rem);
+  font-weight:800;line-height:1.04;letter-spacing:-.04em;
+  color:#fff;
+}
+.algo-copy{
+  position:relative;z-index:1;
+  margin-top:1rem;
+  font-size:.96rem;line-height:1.82;font-weight:300;
+  color:rgba(255,255,255,.76);max-width:50ch;
+}
+.algo-list{
+  position:relative;z-index:1;
+  display:flex;flex-wrap:wrap;gap:.5rem;
+  margin-top:1.6rem;
+}
+.algo-list span{
+  display:inline-flex;align-items:center;
+  padding:.42rem .78rem;border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.88);
+  font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+.algo-link{
+  position:relative;z-index:1;
+  display:inline-flex;align-items:center;gap:.55rem;
+  margin-top:1.65rem;
+  color:#fff;
+  font-size:.84rem;font-weight:700;
+  border-bottom:1px solid rgba(255,255,255,.32);
+  padding-bottom:2px;
+  transition:gap .2s;
+}
+.algo-link svg{
+  width:14px;height:14px;stroke:currentColor;stroke-width:2;
+  fill:none;stroke-linecap:round;stroke-linejoin:round;
+}
+.algo-link:hover{gap:.95rem;}
+.algo-cards{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1rem;
+}
+.algo-card{
+  min-height:220px;
+  padding:1.45rem;
+  border-radius:1.4rem;
+  border:1px solid rgba(16,46,74,.08);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
+    radial-gradient(circle at top right,rgba(88,136,178,.12),transparent 30%);
+  box-shadow:0 16px 36px rgba(16,46,74,.08);
+}
+.algo-card-num{
+  font-size:.64rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);
+}
+.algo-card-title{
+  margin-top:.8rem;
+  font-family:var(--serif);font-size:1.2rem;font-weight:800;
+  line-height:1.12;letter-spacing:-.03em;color:var(--ink);
+}
+.algo-card-copy{
+  margin-top:.7rem;
+  font-size:.83rem;line-height:1.68;font-weight:300;color:var(--body);
+}
+.algo-card-meta{
+  display:inline-flex;align-items:center;gap:.45rem;
+  margin-top:1rem;
+  font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--navy);
+}
+.algo-card-meta::before{
+  content:'';
+  width:6px;height:6px;border-radius:50%;
+  background:var(--blue);
+}
+
+/* ══════════════════════════════
    AI ASSISTANT — navy bg, editorial
    ══════════════════════════════ */
 #asistente{background:var(--navy);}
@@ -778,9 +895,56 @@ section.bg-navy{background:var(--navy);}
   font-size:.95rem;line-height:1.8;font-weight:300;color:var(--body);
 }
 .team-copy p+p{margin-top:.95rem;}
+.team-evidence{
+  margin-top:1.6rem;
+  padding:1.4rem 1.45rem;
+  border-radius:1.25rem;
+  border:1px solid var(--rule);
+  background:rgba(255,255,255,.86);
+}
+.team-evidence-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:1rem;flex-wrap:wrap;
+}
+.team-evidence-kicker{
+  font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);
+}
+.team-evidence-source{
+  font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--subtle);
+}
+.team-rank-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:.85rem;margin-top:1rem;
+}
+.team-rank{
+  padding:1rem 1.05rem;
+  border-radius:1rem;
+  border:1px solid rgba(16,46,74,.08);
+  background:var(--off);
+}
+.team-rank strong{
+  display:block;
+  font-family:var(--serif);
+  font-size:2.25rem;font-weight:900;line-height:1;
+  letter-spacing:-.05em;color:var(--navy);
+}
+.team-rank span{
+  display:block;
+  margin-top:.45rem;
+  font-size:.76rem;line-height:1.55;color:var(--body);
+}
+.team-rank-note{
+  margin-top:.95rem;
+  font-size:.71rem;line-height:1.6;color:var(--subtle);
+}
+.team-links{
+  display:flex;flex-wrap:wrap;gap:.75rem;
+  margin-top:1.5rem;
+}
 .team-link{
   display:inline-flex;align-items:center;gap:.7rem;
-  margin-top:1.5rem;
   max-width:100%;
   color:var(--navy);
   font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
@@ -1028,8 +1192,9 @@ footer{
    RESPONSIVE
    ══════════════════════════════ */
 @media(max-width:1024px){
-  .vision-layout,.ai-layout,.svc-top,.impact-top,.team-layout,.location-layout,.cta-inner{grid-template-columns:1fr;gap:3rem;}
+  .vision-layout,.svc-top,.algo-top,.algo-layout,.ai-layout,.impact-top,.team-layout,.location-layout,.cta-inner{grid-template-columns:1fr;gap:3rem;}
   .svc-grid{grid-template-columns:1fr;}
+  .algo-cards{grid-template-columns:repeat(2,1fr);}
   .f-grid{grid-template-columns:1fr 1fr;gap:2.5rem;}
   .f-grid>div:first-child{grid-column:1/-1;}
   .stats-bar-inner{grid-template-columns:repeat(2,1fr);}
@@ -1055,6 +1220,9 @@ footer{
   .hero-brand-meta{font-size:.56rem;letter-spacing:.13em;}
   .team-frame{width:min(100%,280px);}
   .team-card{padding:2rem 1.4rem;border-radius:1.3rem;}
+  .algo-hero{padding:2rem 1.4rem;}
+  .algo-cards{grid-template-columns:1fr;}
+  .team-rank-grid{grid-template-columns:1fr;}
   .location-card{padding:2rem 1.4rem;border-radius:1.3rem;}
   .location-map-card{padding:.85rem;border-radius:1.3rem;}
   .location-map{min-height:320px;}
@@ -1093,7 +1261,7 @@ footer{
   <ul class="nav-links" id="nav-links" role="list">
     <li><a href="#vision" class="nav-link">Visión</a></li>
     <li><a href="#services" class="nav-link">Soluciones</a></li>
-    <li><a href="#asistente" class="nav-link">Asistente IA</a></li>
+    <li><a href="#algorithms" class="nav-link">Algoritmos &amp; AI</a></li>
     <li><a href="#impact" class="nav-link">Impacto</a></li>
     <li><a href="#clients" class="nav-link">Clientes</a></li>
     <li><a href="#team" class="nav-link">Equipo</a></li>
@@ -1247,6 +1415,64 @@ footer{
         <p class="sc-desc">Aplicaciones web a medida para que tu equipo vea, entienda y actúe sobre los datos en tiempo real. Desde dashboards ejecutivos hasta sistemas de alerta temprana.</p>
         <div class="sc-tags"><span class="tag">Dashboards</span><span class="tag">Data Hubs</span><span class="tag">Alertas</span><span class="tag">Tiempo real</span></div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── ALGORITHMS ── -->
+<section id="algorithms">
+  <div class="wrap">
+    <div class="algo-top">
+      <div>
+        <div class="s-label r">Algoritmos &amp; AI</div>
+        <h2 class="s-h2 r d1">Machine learning con rigor, validación y <em>máxima precisión.</em></h2>
+      </div>
+      <p class="s-lead r d2" style="margin-top:0;">Entrenamos modelos de predicción para casi cualquier problema de negocio: demanda, precios, productividad, riesgo, comportamiento de mercado o alertas tempranas. Construimos meta-learners, diseñamos esquemas de validación sólidos y aplicamos las mejores prácticas de ML para empujar el desempeño hasta donde realmente importa.</p>
+    </div>
+    <div class="algo-layout">
+      <article class="algo-hero r d1">
+        <div class="algo-eyebrow">Machine Learning aplicado</div>
+        <h3 class="algo-title">No probamos modelos al azar. Diseñamos sistemas predictivos capaces de generalizar.</h3>
+        <p class="algo-copy">Trabajamos con series de tiempo, clasificación, scoring, detección de anomalías, optimización comercial y modelos de respuesta. Elegimos la arquitectura según la naturaleza del dato, el costo del error y la decisión que debe habilitar.</p>
+        <div class="algo-list" aria-label="Capacidades de modelado">
+          <span>Forecasting</span>
+          <span>Scoring</span>
+          <span>Meta-Learners</span>
+          <span>Backtesting</span>
+          <span>Ensembles</span>
+          <span>Análisis de error</span>
+        </div>
+        <a href="#cta" class="algo-link">
+          Explorar un caso con tu data
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+      <div class="algo-cards">
+        <article class="algo-card r d2">
+          <div class="algo-card-num">01 · Predicción</div>
+          <h3 class="algo-card-title">Modelos entrenados para casi cualquier variable crítica.</h3>
+          <p class="algo-card-copy">Volúmenes, precios, demanda, rendimiento, riesgo, participación de mercado o señales operativas: construimos el modelo alrededor del problema y no alrededor de una plantilla.</p>
+          <div class="algo-card-meta">Series de tiempo · Clasificación</div>
+        </article>
+        <article class="algo-card r d3">
+          <div class="algo-card-num">02 · Ensembles</div>
+          <h3 class="algo-card-title">Meta-learners que combinan señales y mejoran generalización.</h3>
+          <p class="algo-card-copy">Usamos stacking, blending y ensamblados cuando un solo modelo no basta. El objetivo es capturar distintos patrones y reducir sesgo, varianza y fragilidad fuera de muestra.</p>
+          <div class="algo-card-meta">Stacking · Blending</div>
+        </article>
+        <article class="algo-card r d3">
+          <div class="algo-card-num">03 · Validación</div>
+          <h3 class="algo-card-title">Esquemas de validación, backtesting y control de leakage.</h3>
+          <p class="algo-card-copy">No evaluamos con métricas bonitas pero irreales. Diseñamos ventanas temporales, particiones y pruebas consistentes con la forma en que el modelo será usado en producción.</p>
+          <div class="algo-card-meta">Validación cruzada · Backtesting</div>
+        </article>
+        <article class="algo-card r d4">
+          <div class="algo-card-num">04 · Buenas prácticas</div>
+          <h3 class="algo-card-title">Buenas prácticas de ML para maximizar precisión confiable.</h3>
+          <p class="algo-card-copy">Feature engineering, calibración, selección de variables, análisis de error, reproducibilidad y monitoreo: precisión alta, sí, pero también estable, explicable y accionable.</p>
+          <div class="algo-card-meta">Calibración · Monitoreo</div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -1489,10 +1715,33 @@ footer{
           <p>Economista graduado de ESPOL, con estudios de postgrado en investigación económica y administración de empresas. Ha publicado más de 10 artículos científicos y lidera Lytiks como firma de inteligencia y analítica aplicada para sectores productivos y exportadores en Ecuador.</p>
           <p>Ha dirigido observatorios estratégicos para AEBE, el sector lácteo, el Comité Empresarial Ecuatoriano y el sector platanero, y ha gestionado fondos de cooperación por más de USD 1.5 millones en proyectos de digitalización, bioseguridad y monitoreo junto a aliados como GIZ y Gobiernos Autónomos Descentralizados.</p>
         </div>
-        <a href="https://scholar.google.com/citations?user=BO-SOJIAAAAJ&amp;hl=es&amp;oi=ao" target="_blank" rel="noopener" class="team-link">
-          <span>Ver perfil académico y publicaciones científicas</span>
-          <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
+        <div class="team-evidence">
+          <div class="team-evidence-head">
+            <span class="team-evidence-kicker">Posición en IDEAS/RePEc</span>
+            <span class="team-evidence-source">Ecuador · febrero 2026</span>
+          </div>
+          <div class="team-rank-grid" aria-label="Posiciones de Paúl Vera Gilces en IDEAS RePEc Ecuador">
+            <div class="team-rank">
+              <strong>#18</strong>
+              <span>Autores en Ecuador por publicaciones de los últimos 10 años.</span>
+            </div>
+            <div class="team-rank">
+              <strong>#28</strong>
+              <span>Autores en Ecuador considerando todos los años de publicación.</span>
+            </div>
+          </div>
+          <p class="team-rank-note">Fuente: ranking de autores IDEAS/RePEc para Ecuador. Esta referencia corresponde a la edición publicada en febrero de 2026.</p>
+        </div>
+        <div class="team-links">
+          <a href="https://scholar.google.com/citations?user=BO-SOJIAAAAJ&amp;hl=es&amp;oi=ao" target="_blank" rel="noopener" class="team-link">
+            <span>Ver perfil académico y publicaciones científicas</span>
+            <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a href="https://ideas.repec.org/top/top.ecuador.html" target="_blank" rel="noopener" class="team-link">
+            <span>Ver ranking IDEAS/RePEc Ecuador</span>
+            <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
       </article>
     </div>
   </div>
@@ -1625,7 +1874,7 @@ footer{
         <h5>Empresa</h5>
         <a href="#vision">Visión</a>
         <a href="#services">Soluciones</a>
-        <a href="#asistente">Asistente IA</a>
+        <a href="#algorithms">Algoritmos &amp; AI</a>
         <a href="#impact">Impacto</a>
         <a href="#clients">Clientes</a>
         <a href="#team">Equipo</a>
