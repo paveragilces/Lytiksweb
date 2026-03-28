@@ -891,6 +891,26 @@ section.bg-navy{background:var(--navy);}
   border-top:1px solid rgba(255,255,255,.1);
   color:rgba(255,255,255,.48);
 }
+.media-brand-row{
+  display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;
+  margin-bottom:1.1rem;
+}
+.media-brand-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:42px;padding:.65rem .95rem;
+  border-radius:999px;
+  background:rgba(11,24,39,.72);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+.media-brand-badge img{
+  display:block;
+  max-height:18px;width:auto;
+}
+.media-brand-note{
+  font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+}
 .media-feature-side{
   display:grid;gap:1rem;
 }
@@ -927,15 +947,34 @@ section.bg-navy{background:var(--navy);}
   color:var(--blue);
 }
 .media-source-list{
-  display:flex;flex-wrap:wrap;gap:.55rem;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;
   margin-top:1rem;
 }
-.media-source-list span{
-  display:inline-flex;align-items:center;
-  min-height:34px;padding:.45rem .75rem;border-radius:999px;
+.media-source-item{
+  min-height:82px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  gap:.7rem;
+  padding:.9rem .95rem;border-radius:1.05rem;
   border:1px solid rgba(16,46,74,.08);
-  background:var(--off);color:var(--navy);
-  font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
+    radial-gradient(circle at top right,rgba(88,136,178,.1),transparent 32%);
+}
+.media-source-item strong{
+  font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(16,46,74,.42);
+}
+.media-source-item span{
+  font-size:.78rem;line-height:1.45;color:var(--ink);
+}
+.media-source-item .media-brand-badge{
+  width:fit-content;
+  background:linear-gradient(145deg,#0f2135,#102e4a);
+  border-color:rgba(16,46,74,.1);
+  box-shadow:0 14px 28px rgba(16,46,74,.12);
+}
+.media-source-item .media-brand-badge img{
+  max-height:17px;
 }
 .media-grid{
   display:grid;grid-template-columns:repeat(2,1fr);
@@ -959,6 +998,13 @@ section.bg-navy{background:var(--navy);}
   box-shadow:0 22px 44px rgba(16,46,74,.1);
   border-color:rgba(88,136,178,.24);
 }
+.media-card .media-brand-row{margin-bottom:.85rem;}
+.media-card .media-brand-badge{
+  background:linear-gradient(145deg,#0f2135,#102e4a);
+  border-color:rgba(16,46,74,.08);
+  box-shadow:0 14px 28px rgba(16,46,74,.1);
+}
+.media-card .media-brand-note{color:rgba(16,46,74,.42);}
 .media-meta{
   display:flex;justify-content:space-between;align-items:flex-start;
   gap:.8rem;flex-wrap:wrap;
@@ -999,6 +1045,167 @@ section.bg-navy{background:var(--navy);}
   padding-top:1rem;
   border-top:1px solid rgba(16,46,74,.08);
   font-size:.72rem;line-height:1.65;color:var(--subtle);
+}
+
+/* ══════════════════════════════
+   EVENTS — upcoming launch
+   ══════════════════════════════ */
+#events{background:var(--off);}
+.events-layout{
+  display:grid;grid-template-columns:.92fr 1.08fr;
+  gap:1.25rem;align-items:stretch;
+}
+.events-card,
+.events-viewer-card{
+  border:1px solid var(--rule);
+  border-radius:1.8rem;
+  box-shadow:0 22px 60px rgba(16,46,74,.08);
+}
+.events-card{
+  padding:2.5rem 2.6rem;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
+    radial-gradient(circle at top right,rgba(88,136,178,.16),transparent 30%);
+}
+.event-lead{
+  margin-top:0;
+  max-width:58ch;
+}
+.event-date-line{
+  display:flex;align-items:stretch;gap:1rem;flex-wrap:wrap;
+  margin-top:1.75rem;
+}
+.event-date-badge{
+  min-width:126px;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:1rem 1.1rem;
+  border-radius:1.25rem;
+  background:linear-gradient(145deg,#0f2135,#102e4a 68%,#244e73 100%);
+  color:#fff;
+  box-shadow:0 18px 34px rgba(16,46,74,.18);
+}
+.event-date-badge strong{
+  font-family:var(--serif);
+  font-size:2.8rem;font-weight:900;line-height:.88;
+  letter-spacing:-.06em;
+}
+.event-date-badge span{
+  margin-top:.35rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);
+}
+.event-meta-stack{
+  display:grid;gap:.85rem;
+  flex:1;min-width:min(100%,320px);
+}
+.event-meta-card{
+  padding:1rem 1.05rem;
+  border-radius:1.15rem;
+  border:1px solid rgba(16,46,74,.08);
+  background:rgba(255,255,255,.88);
+}
+.event-meta-card strong{
+  display:block;
+  font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);
+}
+.event-meta-card span{
+  display:block;
+  margin-top:.35rem;
+  font-size:.92rem;line-height:1.55;color:var(--ink);
+}
+.event-copy{
+  margin-top:1.55rem;
+  font-size:.95rem;line-height:1.8;font-weight:300;color:var(--body);
+}
+.event-highlights{
+  display:grid;gap:.95rem;
+  margin-top:1.7rem;padding-top:1.55rem;
+  border-top:1px solid var(--rule);
+}
+.event-point{
+  display:grid;grid-template-columns:1.1rem 1fr;
+  gap:.8rem;align-items:flex-start;
+}
+.event-point svg{
+  width:1rem;height:1rem;margin-top:.18rem;
+  stroke:var(--blue);stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round;
+}
+.event-point strong{
+  display:block;
+  font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(16,46,74,.42);
+}
+.event-point span{
+  display:block;
+  margin-top:.2rem;
+  font-size:.9rem;line-height:1.7;color:var(--body);
+}
+.event-actions{
+  display:flex;flex-wrap:wrap;gap:.75rem;
+  margin-top:1.8rem;
+}
+.event-btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  min-height:48px;padding:.82rem 1.15rem;border-radius:999px;
+  font-size:.8rem;font-weight:700;letter-spacing:.04em;
+  transition:transform .2s,box-shadow .2s,background .2s,color .2s;
+}
+.event-btn svg{
+  width:15px;height:15px;
+  stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;
+}
+.event-btn-primary{
+  background:var(--navy);color:#fff;
+  box-shadow:0 1px 3px rgba(16,46,74,.3);
+}
+.event-btn-primary:hover{
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(16,46,74,.32);
+}
+.event-btn-ghost{
+  background:transparent;color:var(--navy);
+  border:1px solid rgba(16,46,74,.14);
+}
+.event-btn-ghost:hover{
+  transform:translateY(-1px);
+  background:rgba(16,46,74,.04);
+}
+.events-viewer-card{
+  padding:1rem;
+  display:flex;flex-direction:column;gap:1rem;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
+    radial-gradient(circle at top right,rgba(88,136,178,.12),transparent 30%);
+}
+.events-viewer-head,
+.events-viewer-note{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+  padding:.1rem .25rem;
+}
+.events-viewer-head span,
+.events-viewer-note span{
+  font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--blue);
+}
+.events-viewer-head a{
+  font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--navy);
+}
+.events-viewer-head a:hover{color:var(--blue);}
+.events-pdf-shell{
+  overflow:hidden;
+  border-radius:1.25rem;
+  border:1px solid rgba(16,46,74,.08);
+  background:#fff;
+  box-shadow:0 18px 36px rgba(16,46,74,.1);
+}
+.events-viewer{
+  display:block;
+  width:100%;min-height:760px;border:0;background:#fff;
+}
+.events-viewer-note p{
+  font-size:.84rem;line-height:1.65;color:var(--muted);max-width:38ch;
 }
 
 #team{background:var(--white);}
@@ -1358,7 +1565,7 @@ footer{
    RESPONSIVE
    ══════════════════════════════ */
 @media(max-width:1024px){
-  .vision-layout,.svc-top,.algo-top,.algo-layout,.ai-layout,.impact-top,.media-top,.media-feature,.team-layout,.location-layout,.cta-inner{grid-template-columns:1fr;gap:3rem;}
+  .vision-layout,.svc-top,.algo-top,.algo-layout,.ai-layout,.impact-top,.media-top,.media-feature,.events-layout,.team-layout,.location-layout,.cta-inner{grid-template-columns:1fr;gap:3rem;}
   .svc-grid{grid-template-columns:1fr;}
   .algo-cards{grid-template-columns:repeat(2,1fr);}
   .media-grid{grid-template-columns:repeat(2,1fr);}
@@ -1366,6 +1573,7 @@ footer{
   .f-grid>div:first-child{grid-column:1/-1;}
   .stats-bar-inner{grid-template-columns:repeat(2,1fr);}
   .clients-viewport{grid-auto-columns:calc((100% - 1rem) / 2);}
+  .events-viewer{min-height:640px;}
 }
 @media(max-width:768px){
   nav{padding:0 1.2rem;}
@@ -1389,8 +1597,14 @@ footer{
   .team-card{padding:2rem 1.4rem;border-radius:1.3rem;}
   .media-feature{padding:.85rem;border-radius:1.3rem;}
   .media-feature-main,.media-panel,.media-source-cloud,.media-card{padding:1.65rem 1.25rem;border-radius:1.15rem;}
+  .media-source-list{grid-template-columns:1fr;}
   .media-grid{grid-template-columns:1fr;}
   .media-panel-stat{font-size:3.1rem;}
+  .events-card{padding:2rem 1.4rem;border-radius:1.3rem;}
+  .events-viewer-card{padding:.85rem;border-radius:1.3rem;}
+  .event-date-badge{min-width:112px;}
+  .event-date-badge strong{font-size:2.3rem;}
+  .events-viewer{min-height:440px;}
   .algo-hero{padding:2rem 1.4rem;}
   .algo-cards{grid-template-columns:1fr;}
   .team-rank-grid{grid-template-columns:1fr;}
@@ -1436,6 +1650,7 @@ footer{
     <li><a href="#impact" class="nav-link">Impacto</a></li>
     <li><a href="#clients" class="nav-link">Clientes</a></li>
     <li><a href="#media" class="nav-link">Medios</a></li>
+    <li><a href="#events" class="nav-link">Eventos</a></li>
     <li><a href="#team" class="nav-link">Equipo</a></li>
     <li><a href="#location" class="nav-link">Ubicación</a></li>
   </ul>
@@ -1883,6 +2098,12 @@ footer{
     </div>
     <article class="media-feature r d1">
       <div class="media-feature-main">
+        <div class="media-brand-row">
+          <div class="media-brand-badge">
+            <img src="./ekos-logo.png" alt="Logo de Ekos" loading="lazy" decoding="async">
+          </div>
+          <span class="media-brand-note">Cobertura editorial</span>
+        </div>
         <div class="media-meta">
           <span class="media-source">Ekos Negocios · Enero 2025</span>
           <span class="media-kind">Destacado</span>
@@ -1910,16 +2131,40 @@ footer{
         <div class="media-source-cloud">
           <h3>Fuentes</h3>
           <div class="media-source-list" aria-label="Fuentes de medios">
-            <span>Ekos Negocios</span>
-            <span>Revista Ekos</span>
-            <span>AméricaEconomía</span>
-            <span>Prensa sectorial</span>
+            <div class="media-source-item">
+              <div class="media-brand-badge">
+                <img src="./ekos-logo.png" alt="Logo de Ekos" loading="lazy" decoding="async">
+              </div>
+              <strong>Ekos Negocios</strong>
+            </div>
+            <div class="media-source-item">
+              <div class="media-brand-badge">
+                <img src="./ekos-logo.png" alt="Logo de Revista Ekos" loading="lazy" decoding="async">
+              </div>
+              <strong>Revista Ekos</strong>
+            </div>
+            <div class="media-source-item">
+              <div class="media-brand-badge">
+                <img src="./americaeconomia-logo.svg" alt="Logo de AméricaEconomía" loading="lazy" decoding="async">
+              </div>
+              <strong>AméricaEconomía</strong>
+            </div>
+            <div class="media-source-item">
+              <strong>Redes y prensa</strong>
+              <span>Menciones en social media y cobertura sectorial adicional.</span>
+            </div>
           </div>
         </div>
       </aside>
     </article>
     <div class="media-grid">
       <article class="media-card r d2">
+        <div class="media-brand-row">
+          <div class="media-brand-badge">
+            <img src="./ekos-logo.png" alt="Logo de Ekos" loading="lazy" decoding="async">
+          </div>
+          <span class="media-brand-note">Publicación impresa</span>
+        </div>
         <div class="media-meta">
           <span class="media-source">Revista Ekos 380 · Enero 2026</span>
           <span class="media-kind">Página 84</span>
@@ -1932,6 +2177,12 @@ footer{
         </a>
       </article>
       <article class="media-card r d3">
+        <div class="media-brand-row">
+          <div class="media-brand-badge">
+            <img src="./ekos-logo.png" alt="Logo de Ekos" loading="lazy" decoding="async">
+          </div>
+          <span class="media-brand-note">Análisis macroeconómico</span>
+        </div>
         <div class="media-meta">
           <span class="media-source">Revista Ekos 381 · Febrero 2026</span>
           <span class="media-kind">Página 66</span>
@@ -1944,6 +2195,12 @@ footer{
         </a>
       </article>
       <article class="media-card r d4">
+        <div class="media-brand-row">
+          <div class="media-brand-badge">
+            <img src="./ekos-logo.png" alt="Logo de Ekos" loading="lazy" decoding="async">
+          </div>
+          <span class="media-brand-note">Cobertura sectorial</span>
+        </div>
         <div class="media-meta">
           <span class="media-source">Ekos Negocios</span>
           <span class="media-kind">Artículo</span>
@@ -1956,6 +2213,12 @@ footer{
         </a>
       </article>
       <article class="media-card r d4">
+        <div class="media-brand-row">
+          <div class="media-brand-badge">
+            <img src="./americaeconomia-logo.svg" alt="Logo de AméricaEconomía" loading="lazy" decoding="async">
+          </div>
+          <span class="media-brand-note">Mención en social media</span>
+        </div>
         <div class="media-meta">
           <span class="media-source">AméricaEconomía Ecuador</span>
           <span class="media-kind">Instagram</span>
@@ -1967,6 +2230,84 @@ footer{
           <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── EVENTS ── -->
+<section id="events">
+  <div class="wrap">
+    <div class="events-layout">
+      <article class="events-card r d1">
+        <div class="s-label">Eventos</div>
+        <h2 class="s-h2 r d1">Próximo encuentro: <em>AI-Powered Export Forecasting.</em></h2>
+        <p class="s-lead event-lead r d2">Presentaremos el lanzamiento de un modelo de inteligencia artificial diseñado para anticipar el volumen de exportaciones de banano y camarón con hasta 8 semanas de anticipación.</p>
+        <div class="event-date-line">
+          <div class="event-date-badge">
+            <strong>08</strong>
+            <span>Abril 2026</span>
+          </div>
+          <div class="event-meta-stack">
+            <div class="event-meta-card">
+              <strong>Sede</strong>
+              <span>Edificio Emporium, Puerto Santa Ana, Guayaquil.</span>
+            </div>
+            <div class="event-meta-card">
+              <strong>Acceso</strong>
+              <span>Cupos limitados. Confirmación previa requerida.</span>
+            </div>
+          </div>
+        </div>
+        <div class="event-copy">
+          <p>La sesión mostrará cómo convertir series históricas, validación rigurosa y modelado predictivo en una ventaja práctica para anticipar flujos exportadores y reaccionar antes que el mercado.</p>
+        </div>
+        <div class="event-highlights" aria-label="Aspectos clave del evento">
+          <div class="event-point">
+            <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M3 12h18"/></svg>
+            <div>
+              <strong>Lanzamiento</strong>
+              <span>Presentación de la nueva capacidad de forecasting exportador desarrollada por Lytiks.</span>
+            </div>
+          </div>
+          <div class="event-point">
+            <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/></svg>
+            <div>
+              <strong>Casos de uso</strong>
+              <span>Aplicación sobre banano y camarón, con horizonte de anticipación de hasta ocho semanas.</span>
+            </div>
+          </div>
+          <div class="event-point">
+            <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="17" rx="2"/></svg>
+            <div>
+              <strong>Formato</strong>
+              <span>Encuentro ejecutivo orientado a empresas, aliados y tomadores de decisión interesados en inteligencia aplicada.</span>
+            </div>
+          </div>
+        </div>
+        <div class="event-actions">
+          <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener" class="event-btn event-btn-primary">
+            <svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+            Abrir invitación
+          </a>
+          <a href="https://wa.me/593968993317?text=Hola%20Lytiks%2C%20quiero%20confirmar%20mi%20inter%C3%A9s%20en%20el%20evento%20AI-Powered%20Export%20Forecasting." target="_blank" rel="noopener" class="event-btn event-btn-ghost">
+            <svg viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/></svg>
+            Solicitar confirmación
+          </a>
+        </div>
+      </article>
+      <div class="events-viewer-card r d2">
+        <div class="events-viewer-head">
+          <span>Invitación oficial</span>
+          <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener">Descargar PDF</a>
+        </div>
+        <div class="events-pdf-shell">
+          <iframe class="events-viewer" src="./INVITACION-LYTIKS.pdf#view=FitH&toolbar=0&navpanes=0" title="Invitación al evento AI-Powered Export Forecasting"></iframe>
+        </div>
+        <div class="events-viewer-note">
+          <span>Puerto Santa Ana · Emporium</span>
+          <p>El PDF queda visible dentro del sitio y también puede abrirse en una pestaña nueva si tu navegador limita la vista embebida.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2150,6 +2491,7 @@ footer{
         <a href="#impact">Impacto</a>
         <a href="#clients">Clientes</a>
         <a href="#media">Medios</a>
+        <a href="#events">Eventos</a>
         <a href="#team">Equipo</a>
         <a href="#location">Ubicación</a>
       </div>
