@@ -608,28 +608,124 @@ section.bg-navy{background:var(--navy);}
 }
 
 /* ══════════════════════════════
-   CLIENTS — editorial grid
+   CLIENTS — editorial carousel
    ══════════════════════════════ */
 #clients{background:var(--off);}
 .clients-top{text-align:center;margin-bottom:3.5rem;}
-.clients-grid{
-  display:grid;grid-template-columns:repeat(5,1fr);
-  border:1px solid var(--rule);border-radius:4px;overflow:hidden;
-  background:var(--rule);gap:1px;
+.clients-shell{
+  position:relative;
+  padding:1.2rem;
+  border:1px solid var(--rule);
+  border-radius:1.75rem;
+  background:
+    radial-gradient(circle at top right,rgba(88,136,178,.16),transparent 30%),
+    linear-gradient(180deg,rgba(255,255,255,.96),rgba(247,246,243,.98));
+  box-shadow:0 22px 60px rgba(16,46,74,.08);
+  overflow:hidden;
 }
-.cc{
-  background:var(--white);padding:1.8rem 1.4rem;
-  transition:background .2s;cursor:default;
+.clients-shell::before{
+  content:'';
+  position:absolute;inset:auto 0 0 0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(16,46,74,.08),transparent);
 }
-.cc:hover{background:var(--off);}
-.cc-abbr{
-  font-family:var(--serif);font-size:1.3rem;font-weight:800;
-  color:var(--navy);letter-spacing:-.02em;font-style:italic;
+.clients-band{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:0 .15rem 1rem;
 }
-.cc-name{font-size:.63rem;color:var(--muted);margin-top:.25rem;line-height:1.4;font-weight:300;}
-.cc-type{
-  font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--blue);margin-top:.5rem;font-weight:600;
+.clients-kicker{
+  font-size:.67rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);text-wrap:balance;
+}
+.clients-controls{display:flex;align-items:center;gap:.55rem;}
+.clients-btn{
+  width:44px;height:44px;border-radius:999px;
+  border:1px solid rgba(16,46,74,.12);
+  background:rgba(255,255,255,.92);color:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 22px rgba(16,46,74,.08);
+  transition:transform .2s,background .2s,border-color .2s;
+}
+.clients-btn:hover{
+  transform:translateY(-1px);
+  background:#fff;border-color:rgba(16,46,74,.24);
+}
+.clients-btn svg{
+  width:16px;height:16px;stroke:currentColor;stroke-width:2.1;
+  fill:none;stroke-linecap:round;stroke-linejoin:round;
+}
+.clients-viewport{
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:calc((100% - 2rem) / 3);
+  gap:1rem;
+  overflow-x:auto;
+  padding:.15rem;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
+}
+.clients-viewport::-webkit-scrollbar{display:none;}
+.ally-card{
+  min-height:260px;
+  padding:1.35rem;
+  border-radius:1.35rem;
+  border:1px solid rgba(16,46,74,.08);
+  background:rgba(255,255,255,.9);
+  display:flex;flex-direction:column;
+  scroll-snap-align:start;
+  box-shadow:0 14px 32px rgba(16,46,74,.06);
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .22s var(--ease);
+}
+.ally-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 24px 48px rgba(16,46,74,.1);
+  border-color:rgba(88,136,178,.3);
+}
+.ally-top{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  margin-bottom:1rem;
+}
+.ally-icon{
+  width:52px;height:52px;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  background:linear-gradient(145deg,rgba(88,136,178,.16),rgba(16,46,74,.08));
+  color:var(--navy);
+  border:1px solid rgba(88,136,178,.18);
+}
+.ally-icon svg{
+  width:24px;height:24px;stroke:currentColor;stroke-width:1.8;
+  fill:none;stroke-linecap:round;stroke-linejoin:round;
+}
+.ally-type{
+  font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);
+}
+.ally-code{
+  font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(16,46,74,.42);
+}
+.ally-name{
+  font-family:var(--serif);font-size:1.35rem;font-weight:800;
+  line-height:1.08;letter-spacing:-.03em;color:var(--ink);
+  margin-top:.45rem;
+}
+.ally-copy{
+  font-size:.82rem;line-height:1.65;font-weight:300;
+  color:var(--muted);margin-top:.8rem;
+}
+.ally-meta{
+  margin-top:auto;
+  display:inline-flex;align-items:center;gap:.45rem;
+  width:fit-content;
+  padding:.42rem .78rem;
+  border-radius:999px;
+  background:var(--navy-10);color:var(--navy);
+  font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+}
+.ally-meta::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--blue);flex-shrink:0;
 }
 
 /* ══════════════════════════════
@@ -767,6 +863,7 @@ footer{
   .f-grid{grid-template-columns:1fr 1fr;gap:2.5rem;}
   .f-grid>div:first-child{grid-column:1/-1;}
   .stats-bar-inner{grid-template-columns:repeat(2,1fr);}
+  .clients-viewport{grid-auto-columns:calc((100% - 1rem) / 2);}
 }
 @media(max-width:768px){
   nav{padding:0 1.2rem;}
@@ -788,7 +885,8 @@ footer{
   .hero-brand-meta{font-size:.56rem;letter-spacing:.13em;}
   .hero-trust{padding:1.5rem 1.25rem;}
   .stats-bar-inner{grid-template-columns:1fr 1fr;}
-  .clients-grid{grid-template-columns:repeat(2,1fr);}
+  .clients-band{align-items:flex-start;flex-direction:column;}
+  .clients-viewport{grid-auto-columns:84%;}
   .caserow{grid-template-columns:3.5rem 1fr;}.ctag{display:none;}
   .form-grid{grid-template-columns:1fr;}
   .f-grid{grid-template-columns:1fr;}
@@ -805,7 +903,7 @@ footer{
 <a class="skip" href="#main">Saltar al contenido</a>
 
 <!-- WA Float -->
-<a class="wa-float" href="https://wa.me/593XXXXXXXXX?text=Hola%20Lytiks%2C%20quisiera%20conocer%20m%C3%A1s." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+<a class="wa-float" href="https://wa.me/593968993317?text=Hola%20Lytiks%2C%20quisiera%20conocer%20m%C3%A1s." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   <span class="wa-tooltip">¿Hablamos?</span>
 </a>
@@ -869,8 +967,9 @@ footer{
       <span class="trust-name">AEBE</span>
       <span class="trust-name">CNA</span>
       <span class="trust-name">FEDEXPOR</span>
-      <span class="trust-name">Arca Continental</span>
-      <span class="trust-name">Coca‑Cola</span>
+      <span class="trust-name">Agrotecban</span>
+      <span class="trust-name">Reybanpac</span>
+      <span class="trust-name">Symrise</span>
       <span class="trust-name">CIL</span>
       <span class="trust-name">CEE</span>
     </div>
@@ -1088,19 +1187,127 @@ footer{
       <h2 class="s-h2 r d1">Organizaciones que confían<br>en <em>Lytiks</em> para decidir mejor.</h2>
       <p class="s-lead r d2" style="margin:1rem auto 0;text-align:center;">Empresas, gremios e instituciones de distintas industrias que utilizan nuestra inteligencia como ventaja competitiva.</p>
     </div>
-    <div class="clients-grid r d1">
-      <div class="cc"><div class="cc-abbr">AEBE</div><div class="cc-name">Asoc. de Exportadores de Banano del Ecuador</div><div class="cc-type">Gremio</div></div>
-      <div class="cc"><div class="cc-abbr">CNA</div><div class="cc-name">Cámara Nacional de Acuacultura</div><div class="cc-type">Gremio</div></div>
-      <div class="cc"><div class="cc-abbr">CIL</div><div class="cc-name">Centro de la Industria Láctea</div><div class="cc-type">Gremio</div></div>
-      <div class="cc"><div class="cc-abbr">CEE</div><div class="cc-name">Comité Empresarial Ecuatoriano</div><div class="cc-type">Gremio</div></div>
-      <div class="cc"><div class="cc-abbr">FEDEXPOR</div><div class="cc-name">Fed. Ecuatoriana de Exportadores</div><div class="cc-type">Gremio</div></div>
-      <div class="cc"><div class="cc-abbr">ASOEXPLA</div><div class="cc-name">Asoc. Exportadores de Plátano</div><div class="cc-type">Gremio</div></div>
-      <div class="cc"><div class="cc-abbr">Arca</div><div class="cc-name">Arca Continental</div><div class="cc-type">Empresa</div></div>
-      <div class="cc"><div class="cc-abbr">Toni</div><div class="cc-name">Industria Láctea Toni</div><div class="cc-type">Empresa</div></div>
-      <div class="cc"><div class="cc-abbr">Coca‑Cola</div><div class="cc-name">The Coca-Cola Company</div><div class="cc-type">Empresa</div></div>
-      <div class="cc" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.3rem;">
-        <div style="font-family:var(--serif);font-size:1.5rem;font-weight:900;color:var(--rule-heavy);font-style:italic;">+</div>
-        <div style="font-size:.62rem;color:var(--subtle);letter-spacing:.08em;text-transform:uppercase;">Más alianzas<br>próximamente</div>
+    <div class="clients-shell r d1">
+      <div class="clients-band">
+        <p class="clients-kicker">Carrusel activo · gremios · empresas · comercio internacional</p>
+        <div class="clients-controls" aria-label="Controles del carrusel de alianzas">
+          <button type="button" class="clients-btn" data-clients-prev aria-label="Ver alianzas anteriores">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="clients-btn" data-clients-next aria-label="Ver más alianzas">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clients-viewport" data-clients-carousel tabindex="0" aria-label="Carrusel de alianzas estratégicas">
+        <article class="ally-card">
+          <div class="ally-top">
+            <div class="ally-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 17c3-6 8-9 16-10"/><path d="M6 12c2 1 3 3 3 6"/><path d="M13 8c1 1 2 3 2 5"/></svg>
+            </div>
+            <span class="ally-type">Gremio</span>
+          </div>
+          <div class="ally-code">AEBE</div>
+          <h3 class="ally-name">Asociación de Exportadores de Banano del Ecuador</h3>
+          <p class="ally-copy">Inteligencia sectorial y lectura de mercado para la cadena exportadora del banano.</p>
+          <div class="ally-meta">Banano · Exportación</div>
+        </article>
+        <article class="ally-card">
+          <div class="ally-top">
+            <div class="ally-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 14c4-1 7-4 9-9 2 5 5 8 9 9"/><path d="M6 18c2-1 4-2 6-2s4 1 6 2"/></svg>
+            </div>
+            <span class="ally-type">Gremio</span>
+          </div>
+          <div class="ally-code">CNA</div>
+          <h3 class="ally-name">Cámara Nacional de Acuacultura</h3>
+          <p class="ally-copy">Análisis para sectores productivos con alta sensibilidad a clima, logística y demanda global.</p>
+          <div class="ally-meta">Acuacultura · Exportación</div>
+        </article>
+        <article class="ally-card">
+          <div class="ally-top">
+            <div class="ally-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 20V9l7-4 7 4v11"/><path d="M9 20v-5h6v5"/><path d="M9 11h.01M15 11h.01"/></svg>
+            </div>
+            <span class="ally-type">Gremio</span>
+          </div>
+          <div class="ally-code">CIL</div>
+          <h3 class="ally-name">Centro de la Industria Láctea</h3>
+          <p class="ally-copy">Visibilidad sectorial para producción, abastecimiento y toma de decisiones en industria alimentaria.</p>
+          <div class="ally-meta">Lácteos · Industria</div>
+        </article>
+        <article class="ally-card">
+          <div class="ally-top">
+            <div class="ally-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6 19V9"/><path d="M12 19V5"/><path d="M18 19v-7"/></svg>
+            </div>
+            <span class="ally-type">Gremio</span>
+          </div>
+          <div class="ally-code">CEE</div>
+          <h3 class="ally-name">Comité Empresarial Ecuatoriano</h3>
+          <p class="ally-copy">Lectura agregada de actividad económica y señales estratégicas para el entorno empresarial nacional.</p>
+          <div class="ally-meta">Economía · Gremio</div>
+        </article>
+        <article class="ally-card">
+          <div class="ally-top">
+            <div class="ally-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/><path d="M8 4c-1 2-1.5 4.6-1.5 8S7 18 8 20"/><path d="M16 4c1 2 1.5 4.6 1.5 8S17 18 16 20"/></svg>
+            </div>
+            <span class="ally-type">Gremio</span>
+          </div>
+          <div class="ally-code">FEDEXPOR</div>
+          <h3 class="ally-name">Federación Ecuatoriana de Exportadores</h3>
+          <p class="ally-copy">Herramientas de inteligencia competitiva para comercio exterior, destinos y dinámica internacional.</p>
+          <div class="ally-meta">Comercio exterior</div>
+        </article>
+        <article class="ally-card">
+          <div class="ally-top">
+            <div class="ally-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 19c4-1 8-5 10-12"/><path d="M10 17c0-3 2-5 5-5"/><path d="M4 8c2 0 4 1 5 3"/></svg>
+            </div>
+            <span class="ally-type">Empresa</span>
+          </div>
+          <div class="ally-code">Agrotecban</div>
+          <h3 class="ally-name">Agrotecban</h3>
+          <p class="ally-copy">Datos y alertas para productividad agrícola, comportamiento de mercado y operación exportadora.</p>
+          <div class="ally-meta">Agrotech · Banano</div>
+        </article>
+        <article class="ally-card">
+          <div class="ally-top">
+            <div class="ally-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M3 12h18"/><path d="M5 5l14 14"/><path d="M19 5L5 19"/></svg>
+            </div>
+            <span class="ally-type">Cámara</span>
+          </div>
+          <div class="ally-code">EC · CN</div>
+          <h3 class="ally-name">Cámara de Comercio Ecuatoriano China</h3>
+          <p class="ally-copy">Seguimiento de vínculos comerciales, oportunidades de mercado y señales para negocios binacionales.</p>
+          <div class="ally-meta">Ecuador · China</div>
+        </article>
+        <article class="ally-card">
+          <div class="ally-top">
+            <div class="ally-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 18c5-1 9-5 12-12"/><path d="M8 20c2-2 4-3 7-3"/><path d="M7 10c1 0 3 .5 4 2"/></svg>
+            </div>
+            <span class="ally-type">Empresa</span>
+          </div>
+          <div class="ally-code">Reybanpac</div>
+          <h3 class="ally-name">Reybanpac</h3>
+          <p class="ally-copy">Planeación con enfoque exportador para cadenas agroindustriales con operación intensiva en datos.</p>
+          <div class="ally-meta">Banano · Agroindustria</div>
+        </article>
+        <article class="ally-card">
+          <div class="ally-top">
+            <div class="ally-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.7L19 9.5l-4 3.1 1.3 5.2L12 15l-4.3 2.8 1.3-5.2-4-3.1 5.2-1.8L12 3z"/></svg>
+            </div>
+            <span class="ally-type">Empresa</span>
+          </div>
+          <div class="ally-code">Symrise</div>
+          <h3 class="ally-name">Symrise</h3>
+          <p class="ally-copy">Lectura de mercado, innovación y señales de consumo para decisiones de alto valor estratégico.</p>
+          <div class="ally-meta">Ingredientes · Innovación</div>
+        </article>
       </div>
     </div>
   </div>
@@ -1123,7 +1330,7 @@ footer{
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             info@lytiks.ai
           </a>
-          <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Lytiks%2C%20quisiera%20iniciar%20un%20proyecto." target="_blank" rel="noopener" class="ch ch-wa">
+          <a href="https://wa.me/593968993317?text=Hola%20Lytiks%2C%20quisiera%20iniciar%20un%20proyecto." target="_blank" rel="noopener" class="ch ch-wa">
             <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp
           </a>
@@ -1202,7 +1409,7 @@ footer{
       <div class="f-col">
         <h5>Contacto</h5>
         <a href="mailto:info@lytiks.ai">info@lytiks.ai</a>
-        <a href="https://wa.me/593XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://wa.me/593968993317" target="_blank" rel="noopener">WhatsApp</a>
         <a href="https://linkedin.com/company/lytiks" target="_blank" rel="noopener">LinkedIn</a>
         <a href="./sitemap.xml">Sitemap</a>
       </div>
@@ -1234,7 +1441,7 @@ if(window.matchMedia('(hover:hover)').matches){
     ringEl.style.left=rx+'px';ringEl.style.top=ry+'px';
     requestAnimationFrame(loop);
   })();
-  document.querySelectorAll('a,button,.sc,.caserow,.pillar,.cc,.ai-feat').forEach(el=>{
+  document.querySelectorAll('a,button,.sc,.caserow,.pillar,.ally-card,.clients-btn,.ai-feat').forEach(el=>{
     el.addEventListener('mouseenter',()=>{curEl.style.width='16px';curEl.style.height='16px';ringEl.style.width='46px';ringEl.style.height='46px';},{passive:true});
     el.addEventListener('mouseleave',()=>{curEl.style.width='8px';curEl.style.height='8px';ringEl.style.width='30px';ringEl.style.height='30px';},{passive:true});
   });
@@ -1278,6 +1485,56 @@ const ro=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');e.target.classList.add('in');ro.unobserve(e.target);}});
 },{threshold:.08,rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('.r').forEach(el=>ro.observe(el));
+
+// ── Clients carousel
+const clientsCarousel=document.querySelector('[data-clients-carousel]');
+const clientsPrev=document.querySelector('[data-clients-prev]');
+const clientsNext=document.querySelector('[data-clients-next]');
+if(clientsCarousel){
+  const cardStep=()=>{
+    const card=clientsCarousel.querySelector('.ally-card');
+    if(!card)return 0;
+    const styles=getComputedStyle(clientsCarousel);
+    const gap=parseFloat(styles.columnGap||styles.gap||0);
+    return card.getBoundingClientRect().width+gap;
+  };
+  const slideClients=(dir=1)=>{
+    const step=cardStep();
+    if(!step)return;
+    const maxScroll=clientsCarousel.scrollWidth-clientsCarousel.clientWidth;
+    if(dir>0&&clientsCarousel.scrollLeft>=maxScroll-8){
+      clientsCarousel.scrollTo({left:0,behavior:'smooth'});
+      return;
+    }
+    if(dir<0&&clientsCarousel.scrollLeft<=8){
+      clientsCarousel.scrollTo({left:maxScroll,behavior:'smooth'});
+      return;
+    }
+    clientsCarousel.scrollBy({left:step*dir,behavior:'smooth'});
+  };
+  clientsPrev?.addEventListener('click',()=>slideClients(-1));
+  clientsNext?.addEventListener('click',()=>slideClients(1));
+
+  let clientsTimer;
+  const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stopClientsAuto=()=>{if(clientsTimer)clearInterval(clientsTimer);};
+  const startClientsAuto=()=>{
+    if(prefersReduced)return;
+    stopClientsAuto();
+    clientsTimer=setInterval(()=>slideClients(1),4200);
+  };
+  ['mouseenter','focusin','touchstart'].forEach(evt=>{
+    clientsCarousel.addEventListener(evt,stopClientsAuto,{passive:true});
+  });
+  ['mouseleave','focusout','touchend'].forEach(evt=>{
+    clientsCarousel.addEventListener(evt,startClientsAuto,{passive:true});
+  });
+  [clientsPrev,clientsNext].forEach(btn=>{
+    btn?.addEventListener('mouseenter',stopClientsAuto,{passive:true});
+    btn?.addEventListener('mouseleave',startClientsAuto,{passive:true});
+  });
+  startClientsAuto();
+}
 
 // ── Form validation
 const form=document.querySelector('form');
