@@ -840,30 +840,124 @@ section.bg-navy{background:var(--navy);}
   display:grid;grid-template-columns:1fr 1fr;
   gap:4rem;align-items:end;margin-bottom:3.5rem;
 }
-.media-layout{
-  display:grid;grid-template-columns:1.12fr .88fr;
-  gap:1rem;align-items:stretch;
-}
 .media-feature{
-  min-height:100%;
-  padding:2.4rem 2.45rem;
+  display:grid;grid-template-columns:1.15fr .85fr;
+  gap:1rem;align-items:stretch;
+  padding:1rem;
   border-radius:1.8rem;
   border:1px solid var(--rule);
   background:
-    radial-gradient(circle at top right,rgba(88,136,178,.18),transparent 28%),
+    radial-gradient(circle at top right,rgba(88,136,178,.16),transparent 28%),
     linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96));
-  box-shadow:0 22px 60px rgba(16,46,74,.08);
+  box-shadow:0 24px 60px rgba(16,46,74,.08);
 }
-.media-stack{
+.media-feature-main{
+  min-height:100%;
+  padding:2.2rem 2.2rem 1.9rem;
+  border-radius:1.35rem;
+  background:
+    radial-gradient(circle at 82% 14%, rgba(143,190,226,.18), transparent 22%),
+    linear-gradient(145deg, #0f2135 0%, #102e4a 68%, #244e73 100%);
+  color:#fff;
+  position:relative;overflow:hidden;
+}
+.media-feature-main::after{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:36px 36px;
+  mask-image:linear-gradient(180deg, rgba(0,0,0,.8), transparent 85%);
+  pointer-events:none;
+}
+.media-feature-main .media-meta,
+.media-feature-main .media-title,
+.media-feature-main .media-copy,
+.media-feature-main .media-link,
+.media-feature-main .media-note{position:relative;z-index:1;}
+.media-feature-main .media-source{color:var(--blue-lt);}
+.media-feature-main .media-kind{color:rgba(255,255,255,.56);}
+.media-feature-main .media-title{color:#fff;}
+.media-feature-main .media-copy{color:rgba(255,255,255,.78);}
+.media-feature-main .media-link{
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.24);
+  padding-bottom:2px;
+}
+.media-feature-main .media-link:hover{color:#fff;}
+.media-feature-main .media-note{
+  margin-top:1.35rem;
+  border-top:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.48);
+}
+.media-feature-side{
   display:grid;gap:1rem;
 }
-.media-card{
-  min-height:188px;
-  padding:1.35rem 1.4rem;
+.media-panel,
+.media-source-cloud{
   border-radius:1.35rem;
   border:1px solid rgba(16,46,74,.08);
   background:rgba(255,255,255,.94);
   box-shadow:0 14px 32px rgba(16,46,74,.06);
+}
+.media-panel{
+  padding:1.5rem 1.45rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.media-panel-kicker{
+  font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);
+}
+.media-panel-stat{
+  margin-top:.8rem;
+  font-family:var(--serif);
+  font-size:4rem;font-weight:900;line-height:.95;
+  letter-spacing:-.06em;color:var(--navy);
+}
+.media-panel-copy{
+  margin-top:.8rem;
+  font-size:.84rem;line-height:1.68;color:var(--body);
+}
+.media-source-cloud{
+  padding:1.4rem 1.35rem;
+}
+.media-source-cloud h3{
+  font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);
+}
+.media-source-list{
+  display:flex;flex-wrap:wrap;gap:.55rem;
+  margin-top:1rem;
+}
+.media-source-list span{
+  display:inline-flex;align-items:center;
+  min-height:34px;padding:.45rem .75rem;border-radius:999px;
+  border:1px solid rgba(16,46,74,.08);
+  background:var(--off);color:var(--navy);
+  font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+}
+.media-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1rem;
+  margin-top:1rem;
+}
+.media-card{
+  min-height:230px;
+  padding:1.45rem 1.45rem 1.35rem;
+  border-radius:1.35rem;
+  border:1px solid rgba(16,46,74,.08);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
+    radial-gradient(circle at top right,rgba(88,136,178,.12),transparent 28%);
+  box-shadow:0 14px 32px rgba(16,46,74,.06);
+  display:flex;flex-direction:column;
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease);
+}
+.media-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 22px 44px rgba(16,46,74,.1);
+  border-color:rgba(88,136,178,.24);
 }
 .media-meta{
   display:flex;justify-content:space-between;align-items:flex-start;
@@ -882,7 +976,7 @@ section.bg-navy{background:var(--navy);}
   font-family:var(--serif);font-size:clamp(1.35rem,2vw,2rem);
   line-height:1.08;letter-spacing:-.03em;color:var(--ink);
 }
-.media-card .media-title{font-size:1.22rem;}
+.media-card .media-title{font-size:1.28rem;}
 .media-copy{
   margin-top:.8rem;
   font-size:.84rem;line-height:1.68;font-weight:300;color:var(--body);
@@ -903,7 +997,7 @@ section.bg-navy{background:var(--navy);}
 .media-note{
   margin-top:1.4rem;
   padding-top:1rem;
-  border-top:1px solid var(--rule);
+  border-top:1px solid rgba(16,46,74,.08);
   font-size:.72rem;line-height:1.65;color:var(--subtle);
 }
 
@@ -1264,9 +1358,10 @@ footer{
    RESPONSIVE
    ══════════════════════════════ */
 @media(max-width:1024px){
-  .vision-layout,.svc-top,.algo-top,.algo-layout,.ai-layout,.impact-top,.media-top,.media-layout,.team-layout,.location-layout,.cta-inner{grid-template-columns:1fr;gap:3rem;}
+  .vision-layout,.svc-top,.algo-top,.algo-layout,.ai-layout,.impact-top,.media-top,.media-feature,.team-layout,.location-layout,.cta-inner{grid-template-columns:1fr;gap:3rem;}
   .svc-grid{grid-template-columns:1fr;}
   .algo-cards{grid-template-columns:repeat(2,1fr);}
+  .media-grid{grid-template-columns:repeat(2,1fr);}
   .f-grid{grid-template-columns:1fr 1fr;gap:2.5rem;}
   .f-grid>div:first-child{grid-column:1/-1;}
   .stats-bar-inner{grid-template-columns:repeat(2,1fr);}
@@ -1292,7 +1387,10 @@ footer{
   .hero-brand-meta{font-size:.56rem;letter-spacing:.13em;}
   .team-frame{width:min(100%,280px);}
   .team-card{padding:2rem 1.4rem;border-radius:1.3rem;}
-  .media-feature,.media-card{padding:2rem 1.4rem;border-radius:1.3rem;}
+  .media-feature{padding:.85rem;border-radius:1.3rem;}
+  .media-feature-main,.media-panel,.media-source-cloud,.media-card{padding:1.65rem 1.25rem;border-radius:1.15rem;}
+  .media-grid{grid-template-columns:1fr;}
+  .media-panel-stat{font-size:3.1rem;}
   .algo-hero{padding:2rem 1.4rem;}
   .algo-cards{grid-template-columns:1fr;}
   .team-rank-grid{grid-template-columns:1fr;}
@@ -1783,11 +1881,11 @@ footer{
       </div>
       <p class="s-lead r d2" style="margin-top:0;">Una selección inicial de apariciones en medios y publicaciones de negocio donde compartimos análisis sobre exportaciones, economía, tecnología y transformación basada en datos.</p>
     </div>
-    <div class="media-layout">
-      <article class="media-feature r d1">
+    <article class="media-feature r d1">
+      <div class="media-feature-main">
         <div class="media-meta">
           <span class="media-source">Ekos Negocios · Enero 2025</span>
-          <span class="media-kind">Artículo</span>
+          <span class="media-kind">Destacado</span>
         </div>
         <h3 class="media-title">El auge global del banano: cómo la inflación y las complicaciones logísticas redefinen el mercado.</h3>
         <p class="media-copy">Cobertura sobre el nuevo entorno del comercio bananero, con foco en inflación internacional, costos logísticos y señales que reconfiguran la toma de decisiones en la cadena exportadora.</p>
@@ -1796,57 +1894,79 @@ footer{
           <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
         <p class="media-note">Título verificado en Ekos 368, enero de 2025. La descripción es una síntesis editorial a partir del encabezado y contexto de la publicación.</p>
-      </article>
-      <div class="media-stack">
-        <article class="media-card r d2">
-          <div class="media-meta">
-            <span class="media-source">Revista Ekos 380 · Enero 2026</span>
-            <span class="media-kind">Página 84</span>
-          </div>
-          <h3 class="media-title">Tendencias tecnológicas que impulsaron la eficiencia, productividad y competitividad en el sector bananero.</h3>
-          <p class="media-copy">Una aparición alineada con el eje tecnológico de Lytiks: analítica, eficiencia operativa y herramientas que convierten datos sectoriales en ventaja competitiva.</p>
-          <a href="https://revista.ekosnegocios.com/publication/470b5dbe/mobile/?p=84" target="_blank" rel="noopener" class="media-link">
-            Abrir publicación
-            <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
-          </a>
-        </article>
-        <article class="media-card r d3">
-          <div class="media-meta">
-            <span class="media-source">Revista Ekos 381 · Febrero 2026</span>
-            <span class="media-kind">Página 66</span>
-          </div>
-          <h3 class="media-title">Sectores ganadores y perdedores en una economía en normalización.</h3>
-          <p class="media-copy">Lectura de contexto económico para identificar qué sectores capturan mejor el ajuste del ciclo y dónde la inteligencia sectorial se vuelve crítica para decidir.</p>
-          <a href="http://revista.ekosnegocios.com/publication/9f9812f1/?p=66" target="_blank" rel="noopener" class="media-link">
-            Ver referencia
-            <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
-          </a>
-        </article>
-        <article class="media-card r d4">
-          <div class="media-meta">
-            <span class="media-source">Ekos Negocios</span>
-            <span class="media-kind">Artículo</span>
-          </div>
-          <h3 class="media-title">Lácteos con valor agregado ganarán espacio en 2026.</h3>
-          <p class="media-copy">Otra lectura sectorial alineada con el trabajo analítico de Lytiks: valor agregado, perspectivas de mercado y decisiones estratégicas en una industria donde anticipar la demanda cambia la rentabilidad.</p>
-          <a href="https://ekosnegocios.com/articulo/lacteos-con-valor-agregado-ganaran-espacio-en-2026" target="_blank" rel="noopener" class="media-link">
-            Leer artículo
-            <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
-          </a>
-        </article>
-        <article class="media-card r d4">
-          <div class="media-meta">
-            <span class="media-source">AméricaEconomía Ecuador</span>
-            <span class="media-kind">Instagram</span>
-          </div>
-          <h3 class="media-title">Mención en redes de negocio y economía.</h3>
-          <p class="media-copy">Presencia en formato social desde la cuenta de AméricaEconomía Ecuador, ampliando el alcance de la conversación sobre datos, análisis y entorno empresarial.</p>
-          <a href="https://www.instagram.com/americaeconomia.ec/p/DUbNXHwkcHU/?hl=ms" target="_blank" rel="noopener" class="media-link">
-            Ver publicación
-            <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
-          </a>
-        </article>
       </div>
+      <aside class="media-feature-side">
+        <div class="media-panel">
+          <div>
+            <div class="media-panel-kicker">Cobertura reciente</div>
+            <div class="media-panel-stat">05</div>
+            <p class="media-panel-copy">Apariciones entre artículos, revistas y redes de negocio donde Lytiks aporta contexto económico, sectorial y tecnológico.</p>
+          </div>
+          <a href="#cta" class="media-link">
+            Convertir visibilidad en oportunidad
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="media-source-cloud">
+          <h3>Fuentes</h3>
+          <div class="media-source-list" aria-label="Fuentes de medios">
+            <span>Ekos Negocios</span>
+            <span>Revista Ekos</span>
+            <span>AméricaEconomía</span>
+            <span>Prensa sectorial</span>
+          </div>
+        </div>
+      </aside>
+    </article>
+    <div class="media-grid">
+      <article class="media-card r d2">
+        <div class="media-meta">
+          <span class="media-source">Revista Ekos 380 · Enero 2026</span>
+          <span class="media-kind">Página 84</span>
+        </div>
+        <h3 class="media-title">Tendencias tecnológicas que impulsaron la eficiencia, productividad y competitividad en el sector bananero.</h3>
+        <p class="media-copy">Una aparición alineada con el eje tecnológico de Lytiks: analítica, eficiencia operativa y herramientas que convierten datos sectoriales en ventaja competitiva.</p>
+        <a href="https://revista.ekosnegocios.com/publication/470b5dbe/mobile/?p=84" target="_blank" rel="noopener" class="media-link">
+          Abrir publicación
+          <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+      <article class="media-card r d3">
+        <div class="media-meta">
+          <span class="media-source">Revista Ekos 381 · Febrero 2026</span>
+          <span class="media-kind">Página 66</span>
+        </div>
+        <h3 class="media-title">Sectores ganadores y perdedores en una economía en normalización.</h3>
+        <p class="media-copy">Lectura de contexto económico para identificar qué sectores capturan mejor el ajuste del ciclo y dónde la inteligencia sectorial se vuelve crítica para decidir.</p>
+        <a href="http://revista.ekosnegocios.com/publication/9f9812f1/?p=66" target="_blank" rel="noopener" class="media-link">
+          Ver referencia
+          <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+      <article class="media-card r d4">
+        <div class="media-meta">
+          <span class="media-source">Ekos Negocios</span>
+          <span class="media-kind">Artículo</span>
+        </div>
+        <h3 class="media-title">Lácteos con valor agregado ganarán espacio en 2026.</h3>
+        <p class="media-copy">Otra lectura sectorial alineada con el trabajo analítico de Lytiks: valor agregado, perspectivas de mercado y decisiones estratégicas en una industria donde anticipar la demanda cambia la rentabilidad.</p>
+        <a href="https://ekosnegocios.com/articulo/lacteos-con-valor-agregado-ganaran-espacio-en-2026" target="_blank" rel="noopener" class="media-link">
+          Leer artículo
+          <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+      <article class="media-card r d4">
+        <div class="media-meta">
+          <span class="media-source">AméricaEconomía Ecuador</span>
+          <span class="media-kind">Instagram</span>
+        </div>
+        <h3 class="media-title">Mención en redes de negocio y economía.</h3>
+        <p class="media-copy">Presencia en formato social desde la cuenta de AméricaEconomía Ecuador, ampliando el alcance de la conversación sobre datos, análisis y entorno empresarial.</p>
+        <a href="https://www.instagram.com/americaeconomia.ec/p/DUbNXHwkcHU/?hl=ms" target="_blank" rel="noopener" class="media-link">
+          Ver publicación
+          <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
     </div>
   </div>
 </section>
