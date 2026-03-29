@@ -1,0 +1,11 @@
+{
+  "name": "lytiks-contact-api",
+  "main": "worker/contact.js",
+  "compatibility_date": "2026-03-28",
+  "workers_dev": true,
+  "vars": {
+    "RESEND_FROM_EMAIL": "Lytiks Web <info@lytiks.solutions>",
+    "RESEND_TO_EMAIL": "info@lytiks.solutions",
+    "ALLOWED_ORIGINS": "https://lytiks.solutions,https://www.lytiks.solutions,https://paveragilces.github.io"
+  }
+}

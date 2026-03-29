@@ -21,6 +21,7 @@
 <meta name="twitter:title" content="Lytiks – IA Avanzada en Ecuador">
 <meta name="twitter:description" content="Analítica avanzada, modelos predictivos y Asistente IA Gerencial 24/7 para empresas, gremios e industrias del Ecuador.">
 <meta name="twitter:image" content="https://lytiks.solutions/og-image.png">
+<meta name="lytiks-contact-endpoint" content="">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Lytiks","url":"https://lytiks.solutions/","description":"Startup ecuatoriana de analítica avanzada e IA para sectores productivos.","address":{"@type":"PostalAddress","addressLocality":"Guayaquil","addressCountry":"EC"},"contactPoint":{"@type":"ContactPoint","email":"info@lytiks.solutions","contactType":"sales"},"sameAs":["https://www.facebook.com/profile.php?id=61587054366826","https://www.instagram.com/lytikssolutions.ec/","https://www.tiktok.com/@lytiks.solutions","https://www.linkedin.com/company/lytiks-solutions/","https://x.com/LytiksSolutions"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1675,6 +1676,17 @@ textarea{resize:vertical;min-height:95px;}
 .btn-send svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 .form-note{font-size:.7rem;color:var(--subtle);text-align:center;margin-top:.8rem;}
 .form-note strong{color:var(--navy);}
+.form-status{
+  min-height:1.4rem;
+  margin-top:.75rem;
+  text-align:center;
+  font-size:.76rem;
+  font-weight:500;
+  color:var(--muted);
+}
+.form-status.is-success{color:#166534;}
+.form-status.is-error{color:#b91c1c;}
+.form-hp{position:absolute;left:-9999px;opacity:0;pointer-events:none;}
 
 /* ══════════════════════════════
    FOOTER — editorial, minimal
@@ -2674,6 +2686,7 @@ footer{
       <div class="cta-form r d2">
         <h3 class="form-title">Cuéntanos tu proyecto</h3>
         <form id="contact-form">
+          <input type="text" name="website" class="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-grid">
             <div class="fg"><label for="f-nm">Nombre *</label><input type="text" id="f-nm" name="nombre" placeholder="Tu nombre" required autocomplete="given-name"></div>
             <div class="fg"><label for="f-co">Empresa *</label><input type="text" id="f-co" name="empresa" placeholder="Tu empresa" required autocomplete="organization"></div>
@@ -2693,10 +2706,11 @@ footer{
             <div class="fg span2"><label for="f-ms">¿Cómo podemos ayudarte? *</label><textarea id="f-ms" name="mensaje" placeholder="Cuéntanos sobre tu proyecto..." required></textarea></div>
           </div>
           <button type="submit" class="btn-send">
-            Abrir correo
+            Enviar mensaje
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-          <p class="form-note">🔒 Sin plataformas externas. Abrirá tu correo con el mensaje listo para enviar a <strong>info@lytiks.solutions</strong>.</p>
+          <p class="form-note">🔒 Entrega a <strong>info@lytiks.solutions</strong>. Si el canal directo no está activo todavía, abriremos tu correo como respaldo.</p>
+          <p class="form-status" id="form-status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -3004,44 +3018,107 @@ if(clientsCarousel){
   startClientsAuto();
 }
 
-// ── Contact form -> mailto
+// ── Contact form -> API with mailto fallback
 const form=document.getElementById('contact-form');
-if(form)form.addEventListener('submit',e=>{
-  e.preventDefault();
-  let ok=true;
-  let firstInvalid=null;
-  form.querySelectorAll('[required]').forEach(f=>{
-    f.style.borderColor='';
-    if(!f.value.trim()){
-      f.style.borderColor='rgba(220,38,38,.6)';
-      ok=false;
-      if(!firstInvalid)firstInvalid=f;
+const contactEndpointMeta=document.querySelector('meta[name="lytiks-contact-endpoint"]');
+const CONTACT_API_ENDPOINT=(window.LYTIKS_CONTACT_ENDPOINT||contactEndpointMeta?.content||'').trim();
+if(form){
+  const submitBtn=form.querySelector('.btn-send');
+  const formStatus=document.getElementById('form-status');
+  const defaultBtnHtml=submitBtn?.innerHTML||'Enviar mensaje';
+
+  const setFormStatus=(message='',tone='')=>{
+    if(!formStatus)return;
+    formStatus.textContent=message;
+    formStatus.className='form-status';
+    if(tone)formStatus.classList.add(`is-${tone}`);
+  };
+
+  const setSubmitting=isSubmitting=>{
+    if(!submitBtn)return;
+    submitBtn.disabled=isSubmitting;
+    submitBtn.style.opacity=isSubmitting?'.75':'';
+    submitBtn.style.cursor=isSubmitting?'wait':'';
+    submitBtn.innerHTML=isSubmitting?'Enviando mensaje...':defaultBtnHtml;
+  };
+
+  const collectContactPayload=()=>({
+    nombre:form.querySelector('[name="nombre"]').value.trim(),
+    empresa:form.querySelector('[name="empresa"]').value.trim(),
+    email:form.querySelector('[name="email"]').value.trim(),
+    sector:form.querySelector('[name="sector"]').value.trim()||'No especificado',
+    mensaje:form.querySelector('[name="mensaje"]').value.trim(),
+    website:form.querySelector('[name="website"]')?.value.trim()||''
+  });
+
+  const openMailClient=payload=>{
+    const subject=`Consulta web Lytiks - ${payload.empresa}`;
+    const body=[
+      `Nombre: ${payload.nombre}`,
+      `Empresa: ${payload.empresa}`,
+      `Email: ${payload.email}`,
+      `Sector: ${payload.sector}`,
+      '',
+      'Mensaje:',
+      payload.mensaje
+    ].join('\n');
+    window.location.href=`mailto:info@lytiks.solutions?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    setFormStatus('');
+
+    let ok=true;
+    let firstInvalid=null;
+    form.querySelectorAll('[required]').forEach(field=>{
+      field.style.borderColor='';
+      if(!field.value.trim()){
+        field.style.borderColor='rgba(220,38,38,.6)';
+        ok=false;
+        if(!firstInvalid)firstInvalid=field;
+      }
+    });
+    if(!ok){
+      setFormStatus('Completa los campos obligatorios para continuar.','error');
+      firstInvalid?.focus();
+      return;
+    }
+
+    const payload=collectContactPayload();
+    if(payload.website){
+      setFormStatus('Gracias. Hemos recibido tu solicitud.','success');
+      form.reset();
+      return;
+    }
+
+    if(!CONTACT_API_ENDPOINT){
+      setFormStatus('El canal directo aún no está configurado. Abriremos tu correo como respaldo.');
+      openMailClient(payload);
+      return;
+    }
+
+    try{
+      setSubmitting(true);
+      const response=await fetch(CONTACT_API_ENDPOINT,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload)
+      });
+      const result=await response.json().catch(()=>({}));
+      if(!response.ok){
+        throw new Error(result.error||'No fue posible enviar el formulario.');
+      }
+      setFormStatus('Mensaje enviado. Redirigiendo...','success');
+      form.reset();
+      window.setTimeout(()=>{window.location.href='./gracias.html';},240);
+    }catch(error){
+      setFormStatus(error.message||'Hubo un problema al enviar. Puedes escribirnos a info@lytiks.solutions.','error');
+    }finally{
+      setSubmitting(false);
     }
   });
-  if(!ok){
-    firstInvalid?.focus();
-    return;
-  }
-
-  const nombre=form.querySelector('[name="nombre"]').value.trim();
-  const empresa=form.querySelector('[name="empresa"]').value.trim();
-  const email=form.querySelector('[name="email"]').value.trim();
-  const sector=form.querySelector('[name="sector"]').value.trim()||'No especificado';
-  const mensaje=form.querySelector('[name="mensaje"]').value.trim();
-
-  const subject=`Consulta web Lytiks - ${empresa}`;
-  const body=[
-    `Nombre: ${nombre}`,
-    `Empresa: ${empresa}`,
-    `Email: ${email}`,
-    `Sector: ${sector}`,
-    '',
-    'Mensaje:',
-    mensaje
-  ].join('\n');
-
-  window.location.href=`mailto:info@lytiks.solutions?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-});
+}
 </script>
 </body>
 </html>
