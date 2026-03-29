@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="Lytiks – IA Avanzada en Ecuador">
 <meta name="twitter:description" content="Analítica avanzada, modelos predictivos y Asistente IA Gerencial 24/7 para empresas, gremios e industrias del Ecuador.">
 <meta name="twitter:image" content="https://lytiks.solutions/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Lytiks","url":"https://lytiks.solutions/","description":"Startup ecuatoriana de analítica avanzada e IA para sectores productivos.","address":{"@type":"PostalAddress","addressLocality":"Guayaquil","addressCountry":"EC"},"contactPoint":{"@type":"ContactPoint","email":"info@lytiks.solutions","contactType":"sales"},"sameAs":["https://linkedin.com/company/lytiks"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Lytiks","url":"https://lytiks.solutions/","description":"Startup ecuatoriana de analítica avanzada e IA para sectores productivos.","address":{"@type":"PostalAddress","addressLocality":"Guayaquil","addressCountry":"EC"},"contactPoint":{"@type":"ContactPoint","email":"info@lytiks.solutions","contactType":"sales"},"sameAs":["https://www.facebook.com/profile.php?id=61587054366826","https://www.instagram.com/lytikssolutions.ec/","https://www.tiktok.com/@lytiks.solutions","https://www.linkedin.com/company/lytiks-solutions/","https://x.com/LytiksSolutions"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
@@ -1613,6 +1613,39 @@ footer{
 .f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3.5rem;}
 .f-brand img{height:24px;display:block;margin-bottom:1.1rem;width:auto;}
 .f-tagline{font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.65;max-width:24ch;font-weight:300;}
+.f-social-head{
+  margin-top:1.35rem;
+  font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.38);
+}
+.f-socials{
+  display:flex;flex-wrap:wrap;gap:.65rem;
+  margin-top:.95rem;
+  max-width:30rem;
+}
+.f-social{
+  display:inline-flex;align-items:center;gap:.58rem;
+  min-height:40px;padding:.7rem .9rem;border-radius:999px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);
+  color:rgba(255,255,255,.78);
+  font-size:.76rem;font-weight:600;
+  transition:transform .2s,background .2s,border-color .2s,color .2s,box-shadow .2s;
+}
+.f-social svg{
+  width:15px;height:15px;flex-shrink:0;
+  stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;
+}
+.f-social:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+}
+.f-social-facebook:hover{border-color:rgba(24,119,242,.55);box-shadow:0 8px 24px rgba(24,119,242,.18);}
+.f-social-instagram:hover{border-color:rgba(225,48,108,.5);box-shadow:0 8px 24px rgba(225,48,108,.16);}
+.f-social-tiktok:hover{border-color:rgba(37,244,238,.38);box-shadow:0 8px 24px rgba(37,244,238,.14);}
+.f-social-linkedin:hover{border-color:rgba(10,102,194,.5);box-shadow:0 8px 24px rgba(10,102,194,.16);}
+.f-social-x:hover{border-color:rgba(255,255,255,.22);box-shadow:0 8px 24px rgba(255,255,255,.08);}
 .f-col h5{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600;color:rgba(255,255,255,.35);margin-bottom:1.1rem;}
 .f-col a{display:block;font-size:.84rem;color:rgba(255,255,255,.38);margin-bottom:.6rem;transition:color .15s;}
 .f-col a:hover{color:rgba(255,255,255,.75);}
@@ -1715,6 +1748,7 @@ footer{
   .caserow{grid-template-columns:3.5rem 1fr;}.ctag{display:none;}
   .form-grid{grid-template-columns:1fr;}
   .f-grid{grid-template-columns:1fr;}
+  .f-social{width:100%;justify-content:center;}
   .f-bottom{flex-direction:column;text-align:center;}
   .f-blinks{flex-wrap:wrap;justify-content:center;gap:1rem;}
 }
@@ -2596,6 +2630,29 @@ footer{
           <img src="./LOGO%20WHITE.svg" alt="Lytiks" loading="lazy" decoding="async">
         </div>
         <p class="f-tagline">Inteligencia artificial y analítica avanzada para empresas que quieren decidir mejor. Guayaquil, Ecuador.</p>
+        <div class="f-social-head">Síguenos</div>
+        <div class="f-socials" aria-label="Redes sociales de Lytiks">
+          <a href="https://www.facebook.com/profile.php?id=61587054366826" target="_blank" rel="noopener" class="f-social f-social-facebook" aria-label="Facebook de Lytiks">
+            <svg viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V8c0-1.1.9-2 2-2h2V2h-3c-3.31 0-6 2.69-6 6v2H5v4h3v8h5"/></svg>
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.instagram.com/lytikssolutions.ec/" target="_blank" rel="noopener" class="f-social f-social-instagram" aria-label="Instagram de Lytiks">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.tiktok.com/@lytiks.solutions" target="_blank" rel="noopener" class="f-social f-social-tiktok" aria-label="TikTok de Lytiks">
+            <svg viewBox="0 0 24 24"><path d="M14 4v9.25a4.25 4.25 0 1 1-3.6-4.2"/><path d="M14 4c.7 1.8 2 3 4 3.6"/><path d="M14 8.2c1.1 0 2.2.35 3.2 1"/></svg>
+            <span>TikTok</span>
+          </a>
+          <a href="https://www.linkedin.com/company/lytiks-solutions/" target="_blank" rel="noopener" class="f-social f-social-linkedin" aria-label="LinkedIn de Lytiks">
+            <svg viewBox="0 0 24 24"><path d="M7 9v8"/><path d="M11 17v-4.2c0-1.7 1-2.8 2.5-2.8S16 11.1 16 12.8V17"/><circle cx="7" cy="6.5" r="1"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://x.com/LytiksSolutions" target="_blank" rel="noopener" class="f-social f-social-x" aria-label="X de Lytiks">
+            <svg viewBox="0 0 24 24"><path d="M4 4l16 16"/><path d="M20 4 4 20"/></svg>
+            <span>X</span>
+          </a>
+        </div>
       </div>
       <div class="f-col">
         <h5>Empresa</h5>
@@ -2621,7 +2678,7 @@ footer{
         <h5>Contacto</h5>
         <a href="mailto:info@lytiks.solutions">info@lytiks.solutions</a>
         <a href="https://wa.me/593968993317" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="https://linkedin.com/company/lytiks" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/company/lytiks-solutions/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="./sitemap.xml">Sitemap</a>
       </div>
     </div>
