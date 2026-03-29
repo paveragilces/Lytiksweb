@@ -1,3 +1,5 @@
+import contactEmailTemplate from "./contact-email.html";
+
 const JSON_HEADERS = {
   "Content-Type": "application/json; charset=UTF-8",
   "Cache-Control": "no-store"
@@ -54,36 +56,35 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
-function buildHtmlEmail(payload) {
-  const rows = [
-    ["Nombre", payload.nombre],
-    ["Empresa", payload.empresa],
-    ["Email", payload.email],
-    ["Sector", payload.sector]
-  ]
-    .map(
-      ([label, value]) => `
-        <tr>
-          <td style="padding:8px 0;color:#6b7280;font-size:13px;vertical-align:top;">${escapeHtml(label)}</td>
-          <td style="padding:8px 0;color:#102e4a;font-size:14px;font-weight:600;">${escapeHtml(value)}</td>
-        </tr>
-      `
-    )
-    .join("");
+function nl2br(value) {
+  return value.replace(/\n/g, "<br>");
+}
 
-  return `
-    <div style="font-family:Arial,sans-serif;background:#f7f6f3;padding:32px;">
-      <div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:32px;">
-        <p style="margin:0 0 10px;color:#5888b2;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">Nuevo lead web</p>
-        <h1 style="margin:0 0 24px;color:#102e4a;font-size:28px;line-height:1.1;">Consulta desde lytiks.solutions</h1>
-        <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">${rows}</table>
-        <div style="padding:20px;border-radius:14px;background:#f7f6f3;border:1px solid #e5e7eb;">
-          <p style="margin:0 0 10px;color:#6b7280;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">Mensaje</p>
-          <p style="margin:0;color:#102e4a;font-size:15px;line-height:1.7;white-space:pre-wrap;">${escapeHtml(payload.mensaje)}</p>
-        </div>
-      </div>
-    </div>
-  `;
+function renderEmailTemplate(payload) {
+  const submittedAt = new Intl.DateTimeFormat("es-EC", {
+    dateStyle: "long",
+    timeStyle: "short",
+    timeZone: "America/Guayaquil"
+  }).format(new Date());
+
+  const replacements = {
+    "{{nombre}}": escapeHtml(payload.nombre),
+    "{{empresa}}": escapeHtml(payload.empresa),
+    "{{email}}": escapeHtml(payload.email),
+    "{{email_href}}": encodeURIComponent(payload.email),
+    "{{sector}}": escapeHtml(payload.sector),
+    "{{mensaje_html}}": nl2br(escapeHtml(payload.mensaje)),
+    "{{submitted_at}}": escapeHtml(submittedAt)
+  };
+
+  return Object.entries(replacements).reduce(
+    (html, [token, value]) => html.replaceAll(token, value),
+    contactEmailTemplate
+  );
+}
+
+function buildHtmlEmail(payload) {
+  return renderEmailTemplate(payload);
 }
 
 function buildTextEmail(payload) {

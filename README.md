@@ -5,8 +5,9 @@ Landing page estática desplegada en GitHub Pages y formulario de contacto listo
 ## Archivos agregados
 
 - `worker/contact.js`: endpoint serverless para recibir el formulario y reenviarlo por correo.
+- `worker/contact-email.html`: plantilla HTML base del correo de notificación.
 - `wrangler.jsonc`: configuración del Worker.
-- `.dev.vars.example`: variables necesarias para desarrollo local.
+- `.dev.vars.example`: ejemplo de variables para desarrollo local.
 - `index.html`: formulario conectado a API con fallback a `mailto:` si el endpoint aún no está definido.
 
 ## Stack recomendado
@@ -38,7 +39,12 @@ npm install -D wrangler
 npx wrangler login
 ```
 
-3. Crea un archivo `.dev.vars` copiando `.dev.vars.example` y pega tu `RESEND_API_KEY`.
+3. Para pruebas locales, usa uno de estos dos formatos:
+
+- `.env`
+- `.dev.vars`
+
+No uses ambos al mismo tiempo. Si prefieres `.dev.vars`, puedes copiar `.dev.vars.example` y pegar tu `RESEND_API_KEY`.
 
 4. Para pruebas locales:
 
@@ -65,3 +71,4 @@ npx wrangler deploy
 - Si el endpoint no está configurado todavía, el formulario abre `mailto:` como respaldo.
 - El Worker acepta `POST` y `OPTIONS`, valida origen, campos obligatorios y usa honeypot básico anti-spam.
 - Para producción, conviene mantener `RESEND_API_KEY` como secreto en Cloudflare.
+- Wrangler admite `.env` para desarrollo local, pero eso no despliega los secretos a producción por sí solo.
