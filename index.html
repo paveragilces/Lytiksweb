@@ -107,16 +107,23 @@ nav{
   height:64px;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 2.5rem;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(12px) saturate(180%);
-  -webkit-backdrop-filter:blur(12px) saturate(180%);
-  border-bottom:1px solid var(--rule);
-  transition:border-color .3s;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(16px) saturate(180%);
+  -webkit-backdrop-filter:blur(16px) saturate(180%);
+  border-bottom:1px solid rgba(16,46,74,.08);
+  transition:all .3s ease;
 }
 nav.hero-zone{
   background:transparent;
   border-color:transparent;
   backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+nav.solid{
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(16px) saturate(180%);
+  -webkit-backdrop-filter:blur(16px) saturate(180%);
+  border-bottom:1px solid rgba(16,46,74,.08);
 }
 nav.hero-zone .nav-link{color:rgba(255,255,255,.75);}
 nav.hero-zone .nav-link:hover{color:#fff;}
@@ -176,10 +183,15 @@ nav:not(.hero-zone) .nav-logo-light{display:none;}
   padding:0;
   display:flex;flex-direction:column;
 }
+.hero-data-canvas{
+  position:absolute;inset:0;
+  z-index:0;pointer-events:none;
+}
 
 /* Subtle texture: tight grid */
 .hero-texture{
   position:absolute;inset:0;pointer-events:none;
+  z-index:0;
   background-image:
     linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
@@ -193,10 +205,11 @@ nav:not(.hero-zone) .nav-logo-light{display:none;}
   border-radius:50%;
   background:radial-gradient(circle,rgba(88,136,178,.14) 0%,transparent 65%);
   pointer-events:none;
+  z-index:0;
 }
 
 .hero-inner{
-  position:relative;z-index:10;
+  position:relative;z-index:1;
   flex:1;display:flex;flex-direction:column;justify-content:flex-start;
   padding:6.9rem 2.5rem 4rem;
   max-width:1160px;margin:0 auto;width:100%;
@@ -253,9 +266,24 @@ nav:not(.hero-zone) .nav-logo-light{display:none;}
   color:#fff;
   max-width:14ch;
 }
+.hero-grad{
+  display:inline-block;
+  background:linear-gradient(135deg,#ffffff 0%,#7aadd4 50%,#ffffff 100%);
+  background-size:200% 200%;
+  background-position:0% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:heroGradShift 4s ease infinite;
+}
 .hero-h1 em{
   font-style:italic;
   color:var(--blue-lt);
+}
+@keyframes heroGradShift{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
 /* Sub — clean, spare */
@@ -290,6 +318,38 @@ nav:not(.hero-zone) .nav-logo-light{display:none;}
 }
 .btn-hero-ghost:hover{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);}
 
+.hero-scroll-indicator{
+  position:absolute;left:50%;bottom:2rem;z-index:1;
+  transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  color:rgba(255,255,255,.5);
+  transition:opacity .28s ease,transform .28s ease;
+}
+.hero-scroll-indicator.is-hidden{
+  opacity:0;
+  transform:translateX(-50%) translateY(10px);
+  pointer-events:none;
+}
+.hero-scroll-track{
+  width:1px;height:34px;
+  background:rgba(255,255,255,.16);
+  position:relative;overflow:hidden;
+}
+.hero-scroll-dot{
+  position:absolute;top:0;left:50%;
+  width:7px;height:7px;border-radius:50%;
+  background:currentColor;
+  transform:translateX(-50%);
+  animation:scrollBounce 1.6s ease-in-out infinite;
+}
+.hero-scroll-copy{
+  font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+}
+@keyframes scrollBounce{
+  0%,100%{transform:translate(-50%,0);}
+  50%{transform:translate(-50%,8px);}
+}
+
 /* ══════════════════════════════
    STATS BAR — horizontal rule with numbers
    McKinsey style: numbers speak, no decoration
@@ -314,6 +374,7 @@ nav:not(.hero-zone) .nav-logo-light{display:none;}
   font-size:2.4rem;font-weight:900;
   color:var(--navy);line-height:1;letter-spacing:-.03em;
 }
+.sbi-main{display:inline-block;min-width:1ch;}
 .sbi-n sup{font-size:1.1rem;color:var(--blue);}
 .sbi-l{font-size:.74rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:500;}
 
@@ -450,12 +511,37 @@ section.bg-navy{background:var(--navy);}
 .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);}
 .sc{
   background:var(--white);
-  padding:2.3rem;position:relative;
-  transition:background .3s;
+  padding:2.3rem;position:relative;overflow:hidden;isolation:isolate;
+  transition:background .35s ease,transform .35s var(--ease),box-shadow .35s var(--ease),filter .35s var(--ease);
   border-top:3px solid transparent;
 }
-.sc:hover{background:var(--off);}
-.sc:hover{border-top-color:var(--navy);}
+.sc::before,
+.algo-card::before{
+  content:'';
+  position:absolute;inset:0;
+  padding:1px;
+  border-radius:inherit;
+  background:linear-gradient(var(--card-angle,135deg),rgba(88,136,178,.55),rgba(16,46,74,.12),rgba(88,136,178,.35));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:0;
+  transform:rotate(0deg);
+  transition:opacity .35s ease,transform .5s ease;
+  pointer-events:none;
+}
+.sc:hover,
+.algo-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 40px rgba(16,46,74,.15);
+  filter:drop-shadow(0 0 12px rgba(88,136,178,.2));
+}
+.sc:hover{background:var(--off);border-top-color:transparent;}
+.sc:hover::before,
+.algo-card:hover::before{
+  opacity:1;
+  transform:rotate(180deg);
+}
 .sc-num{
   font-family:var(--serif);font-size:3.1rem;font-weight:900;font-style:italic;
   color:rgba(16,46,74,.05);line-height:1;margin-bottom:1.4rem;letter-spacing:-.04em;
@@ -560,6 +646,7 @@ section.bg-navy{background:var(--navy);}
   gap:1rem;
 }
 .algo-card{
+  position:relative;overflow:hidden;isolation:isolate;
   min-height:200px;
   padding:1.3rem;
   border-radius:1.4rem;
@@ -568,6 +655,7 @@ section.bg-navy{background:var(--navy);}
     linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
     radial-gradient(circle at top right,rgba(88,136,178,.12),transparent 30%);
   box-shadow:0 16px 36px rgba(16,46,74,.08);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),filter .35s var(--ease);
 }
 .algo-card-num{
   font-size:.64rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
@@ -626,9 +714,21 @@ section.bg-navy{background:var(--navy);}
 .cap:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);}
 
 /* Chat window — refined dark terminal */
+.chat-stage{
+  position:relative;
+}
+.chat-stage::before{
+  content:'';
+  position:absolute;inset:-12% -8% -8% 28%;
+  background:radial-gradient(ellipse 600px 400px at 70% 50%, rgba(88,136,178,0.12), transparent 72%);
+  pointer-events:none;
+}
 .chat-win{
+  position:relative;z-index:1;
   background:rgba(5,12,22,.6);
   border:1px solid rgba(255,255,255,.1);
+  border-top:2px solid transparent;
+  border-image:linear-gradient(90deg,transparent,#5888b2,transparent) 1;
   border-radius:8px;overflow:hidden;
   box-shadow:0 32px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);
 }
@@ -1656,10 +1756,26 @@ footer{
 /* ══════════════════════════════
    REVEAL
    ══════════════════════════════ */
-.r{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease);}
-.r.pre{opacity:0;transform:translateY(18px);}
-.r.in{opacity:1;transform:none;}
+.r,.r-up,.r-scale,.r-left,.r-right,.r-fade{
+  opacity:1;transform:none;
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
+}
+.r.pre,.r-up.pre{opacity:0;transform:translateY(24px);}
+.r-fade.pre{opacity:0;transform:none;}
+.r-scale.pre{opacity:0;transform:scale(.96);}
+.r-left.pre{opacity:0;transform:translateX(-20px);}
+.r-right.pre{opacity:0;transform:translateX(20px);}
+.r.in,.r-up.in,.r-scale.in,.r-left.in,.r-right.in,.r-fade.in{opacity:1;transform:none;}
 .d1{transition-delay:.07s;}.d2{transition-delay:.14s;}.d3{transition-delay:.21s;}.d4{transition-delay:.28s;}
+
+.section-divider{
+  line-height:0;
+  background:var(--white);
+  margin-top:-1px;
+}
+.section-divider svg{
+  display:block;width:100%;height:72px;
+}
 
 /* ══════════════════════════════
    RESPONSIVE
@@ -1681,7 +1797,7 @@ footer{
   .nav-links.open{
     display:flex;flex-direction:column;
     position:fixed;top:64px;left:0;right:0;
-    background:rgba(255,255,255,.98);backdrop-filter:blur(12px);
+    background:rgba(255,255,255,.92);backdrop-filter:blur(16px);
     padding:1.5rem;gap:.35rem;border-bottom:1px solid var(--rule);z-index:399;
   }
   .nav-links.open .nav-link{font-size:1rem;color:var(--ink);padding:.7rem .85rem;}
@@ -1692,6 +1808,8 @@ footer{
   .hero-brand-plate{gap:.65rem;}
   .hero-brand-mark{width:min(62vw,200px);}
   .hero-brand-meta{font-size:.56rem;letter-spacing:.13em;}
+  .hero-scroll-indicator{bottom:1.5rem;}
+  .hero-scroll-track{height:28px;}
   .team-frame{width:min(100%,220px);}
   .team-card{padding:1.45rem 1.15rem;border-radius:1.3rem;}
   .media-feature{padding:.85rem;border-radius:1.3rem;}
@@ -1726,6 +1844,7 @@ footer{
   .f-social{width:100%;justify-content:center;}
   .f-bottom{flex-direction:column;text-align:center;}
   .f-blinks{flex-wrap:wrap;justify-content:center;gap:1rem;}
+  .section-divider svg{height:48px;}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;}
@@ -1774,6 +1893,7 @@ footer{
 
 <!-- ── HERO ── -->
 <section id="hero">
+  <canvas class="hero-data-canvas" aria-hidden="true"></canvas>
   <div class="hero-texture" aria-hidden="true"></div>
   <div class="hero-wash" aria-hidden="true"></div>
 
@@ -1784,26 +1904,30 @@ footer{
         <div class="hero-brand-meta">Inteligencia de negocios · Ecuador</div>
       </div>
     </div>
-    <h1 class="hero-h1 r d1">
-      Inteligencia que<br><em>transforma</em><br>tu empresa.
+    <h1 class="hero-h1 r-up d1">
+      <span class="hero-grad">Inteligencia</span> que<br><em>transforma</em><br>tu empresa.
     </h1>
-    <p class="hero-sub r d2">
+    <p class="hero-sub r-fade d2">
       Convertimos datos complejos en decisiones estratégicas. Analítica avanzada, modelos predictivos y sistemas de IA diseñados para empresas que quieren anticiparse, no reaccionar.
     </p>
-    <div class="hero-actions r d3">
+    <div class="hero-actions r-up d3">
       <a href="#services" class="btn-hero-primary">Ver soluciones</a>
       <a href="#cta" class="btn-hero-ghost">Hablar con un experto →</a>
     </div>
   </div>
+  <a href="#vision" class="hero-scroll-indicator" id="hero-scroll-indicator" aria-label="Ir a la siguiente sección">
+    <span class="hero-scroll-track" aria-hidden="true"><span class="hero-scroll-dot"></span></span>
+    <span class="hero-scroll-copy">Scroll</span>
+  </a>
 </section>
 
 <!-- ── STATS BAR ── -->
 <div class="stats-bar" role="region" aria-label="Métricas clave">
   <div class="stats-bar-inner">
-    <div class="sbi"><div class="sbi-n">+10<sup>×</sup></div><div class="sbi-l">Industrias y sectores analizados</div></div>
-    <div class="sbi"><div class="sbi-n">100<sup>k+</sup></div><div class="sbi-l">Registros procesados diariamente</div></div>
-    <div class="sbi"><div class="sbi-n">6<sup>+</sup></div><div class="sbi-l">Gremios e instituciones aliadas</div></div>
-    <div class="sbi"><div class="sbi-n">24<sup>/7</sup></div><div class="sbi-l">Asistente IA disponible</div></div>
+    <div class="sbi"><div class="sbi-n" data-count="10">+<span class="sbi-main">10</span><sup>×</sup></div><div class="sbi-l">Industrias y sectores analizados</div></div>
+    <div class="sbi"><div class="sbi-n" data-count="100"><span class="sbi-main">100</span><sup>k+</sup></div><div class="sbi-l">Registros procesados diariamente</div></div>
+    <div class="sbi"><div class="sbi-n" data-count="6"><span class="sbi-main">6</span><sup>+</sup></div><div class="sbi-l">Gremios e instituciones aliadas</div></div>
+    <div class="sbi"><div class="sbi-n" data-count="24"><span class="sbi-main">24</span><sup>/7</sup></div><div class="sbi-l">Asistente IA disponible</div></div>
   </div>
 </div>
 
@@ -1838,9 +1962,9 @@ footer{
   <div class="wrap">
     <div class="vision-layout">
       <div>
-        <div class="s-label r">Propósito</div>
-        <h2 class="s-h2 r d1">No analizamos el pasado.<br><em>Predecimos el futuro.</em></h2>
-        <div class="vision-body r d2">
+        <div class="s-label r-fade">Propósito</div>
+        <h2 class="s-h2 r-up d1">No analizamos el pasado.<br><em>Predecimos el futuro.</em></h2>
+        <div class="vision-body r-fade d2">
           <p>El verdadero valor de los datos no está en describirlos — está en anticiparse a lo que viene. Construimos sistemas de inteligencia que detectan patrones, proyectan escenarios y recomiendan decisiones antes de que el mercado los haga evidentes.</p>
           <p>No somos una consultora. Somos infraestructura de decisión: la capa de inteligencia que cualquier empresa ambiciosa necesita para competir con ventaja real.</p>
         </div>
@@ -1851,7 +1975,7 @@ footer{
         </div>
       </div>
 
-      <div class="vision-right r d2">
+      <div class="vision-right r-up d2">
         <div class="pull-stat">
           <div class="pull-stat-n">+8.3<sub>%</sub></div>
           <p class="pull-stat-l">Incremento en volumen de exportación detectado y proyectado por nuestros modelos antes de que se publicaran los datos oficiales del sector — semanas de ventaja para la toma de decisiones.</p>
@@ -1874,34 +1998,34 @@ footer{
   <div class="wrap">
     <div class="svc-top">
       <div>
-        <div class="s-label r">Soluciones</div>
-        <h2 class="s-h2 r d1">Lo que construimos <em>para ti.</em></h2>
+        <div class="s-label r-fade">Soluciones</div>
+        <h2 class="s-h2 r-up d1">Lo que construimos <em>para ti.</em></h2>
       </div>
-      <p class="s-lead r d1" style="margin-top:0;">Cuatro capacidades que se combinan para crear sistemas de inteligencia completos. Aplicables a cualquier industria donde los datos son fuente de ventaja competitiva.</p>
+      <p class="s-lead r-fade d1" style="margin-top:0;">Cuatro capacidades que se combinan para crear sistemas de inteligencia completos. Aplicables a cualquier industria donde los datos son fuente de ventaja competitiva.</p>
     </div>
     <div class="svc-grid">
-      <article class="sc r d1">
+      <article class="sc r-scale d1">
         <div class="sc-num">01</div>
         <div class="sc-label">Entorno · Variables externas</div>
         <h3 class="sc-title">Inteligencia de Contexto y Entorno</h3>
         <p class="sc-desc">Integramos variables externas — clima, mercados internacionales, indicadores económicos — para anticipar su impacto en tu operación antes de que ocurra.</p>
         <div class="sc-tags"><span class="tag">Geoespacial</span><span class="tag">Datos satelitales</span><span class="tag">Variables macro</span><span class="tag">Tiempo real</span></div>
       </article>
-      <article class="sc r d2">
+      <article class="sc r-scale d2">
         <div class="sc-num">02</div>
         <div class="sc-label">Demanda · Planificación</div>
         <h3 class="sc-title">Pronóstico de Demanda y Mercado</h3>
         <p class="sc-desc">Modelos predictivos para proyectar ventas, volúmenes y comportamiento de mercado. Reduce la incertidumbre en planificación, inventarios y decisiones comerciales.</p>
         <div class="sc-tags"><span class="tag">Modelos predictivos</span><span class="tag">Forecasting</span><span class="tag">Planificación</span><span class="tag">Cadena de valor</span></div>
       </article>
-      <article class="sc r d3">
+      <article class="sc r-scale d3">
         <div class="sc-num">03</div>
         <div class="sc-label">Competencia · Posicionamiento</div>
         <h3 class="sc-title">Inteligencia Competitiva y de Mercado</h3>
         <p class="sc-desc">Monitoreo de participación de mercado, análisis de competencia y benchmarking. Sabe exactamente dónde estás parado antes de decidir a dónde ir.</p>
         <div class="sc-tags"><span class="tag">Market Share</span><span class="tag">Benchmarking</span><span class="tag">Segmentación</span><span class="tag">Posicionamiento</span></div>
       </article>
-      <article class="sc r d4">
+      <article class="sc r-scale d4">
         <div class="sc-num">04</div>
         <div class="sc-label">Plataformas · Visualización</div>
         <h3 class="sc-title">Plataformas de Datos y Observatorios</h3>
@@ -1917,13 +2041,13 @@ footer{
   <div class="wrap">
     <div class="algo-top">
       <div>
-        <div class="s-label r">Algoritmos &amp; AI</div>
-        <h2 class="s-h2 r d1">Machine learning con rigor, validación y <em>máxima precisión.</em></h2>
+        <div class="s-label r-fade">Algoritmos &amp; AI</div>
+        <h2 class="s-h2 r-up d1">Machine learning con rigor, validación y <em>máxima precisión.</em></h2>
       </div>
-      <p class="s-lead r d2" style="margin-top:0;">Entrenamos modelos de predicción para casi cualquier problema de negocio: demanda, precios, productividad, riesgo, comportamiento de mercado o alertas tempranas. Construimos meta-learners, diseñamos esquemas de validación sólidos y aplicamos las mejores prácticas de ML para empujar el desempeño hasta donde realmente importa.</p>
+      <p class="s-lead r-fade d2" style="margin-top:0;">Entrenamos modelos de predicción para casi cualquier problema de negocio: demanda, precios, productividad, riesgo, comportamiento de mercado o alertas tempranas. Construimos meta-learners, diseñamos esquemas de validación sólidos y aplicamos las mejores prácticas de ML para empujar el desempeño hasta donde realmente importa.</p>
     </div>
     <div class="algo-layout">
-      <article class="algo-hero r d1">
+      <article class="algo-hero r-left d1">
         <div class="algo-eyebrow">Machine Learning aplicado</div>
         <h3 class="algo-title">No probamos modelos al azar. Diseñamos sistemas predictivos capaces de generalizar.</h3>
         <p class="algo-copy">Trabajamos con series de tiempo, clasificación, scoring, detección de anomalías, optimización comercial y modelos de respuesta. Elegimos la arquitectura según la naturaleza del dato, el costo del error y la decisión que debe habilitar.</p>
@@ -1941,25 +2065,25 @@ footer{
         </a>
       </article>
       <div class="algo-cards">
-        <article class="algo-card r d2">
+        <article class="algo-card r-right d2">
           <div class="algo-card-num">01 · Predicción</div>
           <h3 class="algo-card-title">Modelos entrenados para casi cualquier variable crítica.</h3>
           <p class="algo-card-copy">Volúmenes, precios, demanda, rendimiento, riesgo, participación de mercado o señales operativas: construimos el modelo alrededor del problema y no alrededor de una plantilla.</p>
           <div class="algo-card-meta">Series de tiempo · Clasificación</div>
         </article>
-        <article class="algo-card r d3">
+        <article class="algo-card r-right d3">
           <div class="algo-card-num">02 · Ensembles</div>
           <h3 class="algo-card-title">Meta-learners que combinan señales y mejoran generalización.</h3>
           <p class="algo-card-copy">Usamos stacking, blending y ensamblados cuando un solo modelo no basta. El objetivo es capturar distintos patrones y reducir sesgo, varianza y fragilidad fuera de muestra.</p>
           <div class="algo-card-meta">Stacking · Blending</div>
         </article>
-        <article class="algo-card r d3">
+        <article class="algo-card r-right d3">
           <div class="algo-card-num">03 · Validación</div>
           <h3 class="algo-card-title">Esquemas de validación, backtesting y control de leakage.</h3>
           <p class="algo-card-copy">No evaluamos con métricas bonitas pero irreales. Diseñamos ventanas temporales, particiones y pruebas consistentes con la forma en que el modelo será usado en producción.</p>
           <div class="algo-card-meta">Validación cruzada · Backtesting</div>
         </article>
-        <article class="algo-card r d4">
+        <article class="algo-card r-right d4">
           <div class="algo-card-num">04 · Buenas prácticas</div>
           <h3 class="algo-card-title">Buenas prácticas de ML para maximizar precisión confiable.</h3>
           <p class="algo-card-copy">Feature engineering, calibración, selección de variables, análisis de error, reproducibilidad y monitoreo: precisión alta, sí, pero también estable, explicable y accionable.</p>
@@ -1975,10 +2099,10 @@ footer{
   <div class="wrap">
     <div class="ai-layout">
       <div>
-        <div class="s-label on-dark r">Asistente IA Gerencial</div>
-        <h2 class="s-h2 on-dark r d1">Tu analista de IA,<br><em>siempre disponible.</em></h2>
-        <p class="s-lead on-dark r d2">Contextualizamos modelos de lenguaje con el conocimiento específico de tu empresa, tu sector y tus datos históricos. El resultado: un analista que entiende tu negocio, responde en lenguaje natural y genera reportes al instante.</p>
-        <div class="ai-feats r d3">
+        <div class="s-label on-dark r-fade">Asistente IA Gerencial</div>
+        <h2 class="s-h2 on-dark r-up d1">Tu analista de IA,<br><em>siempre disponible.</em></h2>
+        <p class="s-lead on-dark r-fade d2">Contextualizamos modelos de lenguaje con el conocimiento específico de tu empresa, tu sector y tus datos históricos. El resultado: un analista que entiende tu negocio, responde en lenguaje natural y genera reportes al instante.</p>
+        <div class="ai-feats r-up d3">
           <div class="ai-feat">
             <div class="ai-feat-ico"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h8"/></svg></div>
             <div><div class="ai-feat-t">Conectado a tus fuentes de datos</div><div class="ai-feat-d">ERP, CRM, bases de datos propias o cualquier sistema donde vive la información de tu negocio.</div></div>
@@ -1992,7 +2116,7 @@ footer{
             <div><div class="ai-feat-t">Diseñado para quien decide</div><div class="ai-feat-d">Directivos, gerentes y equipos comerciales obtienen respuestas precisas en el lenguaje de su negocio.</div></div>
           </div>
         </div>
-        <div class="ai-caps r d4">
+        <div class="ai-caps r-fade d4">
           <span class="cap">Análisis predictivo</span>
           <span class="cap">24/7 disponible</span>
           <span class="cap">Contexto sectorial</span>
@@ -2000,7 +2124,8 @@ footer{
         </div>
       </div>
 
-      <div class="chat-win r d2">
+      <div class="chat-stage r-scale d2">
+      <div class="chat-win">
         <div class="cw-bar">
           <div class="cw-dots"><span></span><span></span><span></span></div>
           <div class="cw-title">Lytiks AI · Analista Gerencial</div>
@@ -2019,6 +2144,7 @@ footer{
           <button class="cw-send" aria-label="Enviar"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
         </div>
       </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2028,28 +2154,28 @@ footer{
   <div class="wrap">
     <div class="impact-top">
       <div>
-        <div class="s-label r">Casos de impacto</div>
-        <h2 class="s-h2 r d1">Resultados concretos en<br><em>problemas reales.</em></h2>
+        <div class="s-label r-fade">Casos de impacto</div>
+        <h2 class="s-h2 r-up d1">Resultados concretos en<br><em>problemas reales.</em></h2>
       </div>
-      <p class="s-lead r d1" style="margin-top:0;">Resultados concretos en organizaciones reales. Los detalles cambian según la industria — el método es siempre el mismo: datos, modelos y decisiones mejores.</p>
+      <p class="s-lead r-fade d1" style="margin-top:0;">Resultados concretos en organizaciones reales. Los detalles cambian según la industria — el método es siempre el mismo: datos, modelos y decisiones mejores.</p>
     </div>
     <div class="cases">
-      <article class="caserow r d1">
+      <article class="caserow r-left d1">
         <div class="cn">01</div>
         <div><div class="ct">Anticipación de riesgos operativos por variables climáticas</div><div class="cd">Sistema que integra datos climáticos y geoespaciales para proyectar el impacto en la producción semanas antes de que ocurra, permitiendo ajustes proactivos en la cadena de valor.</div></div>
         <span class="ctag">Agroindustria</span>
       </article>
-      <article class="caserow r d2">
+      <article class="caserow r-right d2">
         <div class="cn">02</div>
         <div><div class="ct">Observatorio de posicionamiento competitivo internacional</div><div class="cd">Plataforma que monitorea en tiempo real la participación de mercado y el desempeño frente a competidores en múltiples destinos, para una toma de decisiones gremial y comercial más precisa.</div></div>
         <span class="ctag">Exportaciones</span>
       </article>
-      <article class="caserow r d3">
+      <article class="caserow r-left d3">
         <div class="cn">03</div>
         <div><div class="ct">Sistema de alerta temprana para asignación de recursos</div><div class="cd">Modelo que detecta zonas de atención prioritaria y automatiza la asignación de recursos y presupuesto con criterios objetivos basados en datos en tiempo real.</div></div>
         <span class="ctag">Sector público</span>
       </article>
-      <article class="caserow r d4">
+      <article class="caserow r-right d4">
         <div class="cn">04</div>
         <div><div class="ct">Optimización de planificación comercial por canal y región</div><div class="cd">Modelos que anticipan la demanda por categoría, canal y zona geográfica, reduciendo el error de planificación y mejorando la eficiencia operativa y logística.</div></div>
         <span class="ctag">Consumo masivo</span>
@@ -2416,12 +2542,12 @@ footer{
 <section id="team">
   <div class="wrap">
     <div class="team-layout">
-      <div class="team-media r d1">
+      <div class="team-media r-scale d1">
         <div class="team-frame">
           <img src="./WhatsApp%20Image%202026-03-18%20at%2018.19.10.jpeg" alt="Paúl Vera Gilces" class="team-photo" loading="lazy" decoding="async">
         </div>
       </div>
-      <article class="team-card r d2">
+      <article class="team-card r-right d2">
         <div class="team-role">Founder &amp; CEO</div>
         <h2 class="team-name">Paúl Vera Gilces</h2>
         <div class="team-copy">
@@ -2514,6 +2640,12 @@ footer{
     </div>
   </div>
 </section>
+
+<div class="section-divider" aria-hidden="true">
+  <svg viewBox="0 0 1200 72" preserveAspectRatio="none">
+    <path d="M0,0 C360,60 780,0 1200,40 L1200,0 L0,0 Z" fill="#f7f6f3"></path>
+  </svg>
+</div>
 
 <!-- ── CTA + FORM ── -->
 <section id="cta">
@@ -2646,6 +2778,8 @@ footer{
 </footer>
 
 <script>
+const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // ── Cursor (desktop only)
 if(window.matchMedia('(hover:hover)').matches){
   const body=document.body;
@@ -2661,18 +2795,85 @@ if(window.matchMedia('(hover:hover)').matches){
     ringEl.style.left=rx+'px';ringEl.style.top=ry+'px';
     requestAnimationFrame(loop);
   })();
-  document.querySelectorAll('a,button,.sc,.caserow,.pillar,.ally-card,.clients-btn,.ai-feat').forEach(el=>{
+  document.querySelectorAll('a,button,.sc,.algo-card,.caserow,.pillar,.ally-card,.clients-btn,.ai-feat').forEach(el=>{
     el.addEventListener('mouseenter',()=>{curEl.style.width='16px';curEl.style.height='16px';ringEl.style.width='46px';ringEl.style.height='46px';},{passive:true});
     el.addEventListener('mouseleave',()=>{curEl.style.width='8px';curEl.style.height='8px';ringEl.style.width='30px';ringEl.style.height='30px';},{passive:true});
   });
 }
 
+// ── Hero data field
+const heroCanvas=document.querySelector('.hero-data-canvas');
+if(heroCanvas && !prefersReduced){
+  const ctx=heroCanvas.getContext('2d');
+  let width=0,height=0,dpr=Math.min(window.devicePixelRatio||1,2),points=[],rafId=0;
+  const maxDistance=120;
+  const makePoint=()=>({
+    x:Math.random()*width,
+    y:Math.random()*height,
+    vx:(Math.random()>.5?1:-1)*(0.2+Math.random()*.3),
+    vy:(Math.random()>.5?1:-1)*(0.2+Math.random()*.3),
+    r:1.2+Math.random()*1.6
+  });
+  const setup=()=>{
+    const rect=heroCanvas.getBoundingClientRect();
+    width=rect.width;
+    height=rect.height;
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    heroCanvas.width=Math.floor(width*dpr);
+    heroCanvas.height=Math.floor(height*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const count=Math.min(42,Math.max(18,Math.round((width*height)/42000)));
+    points=Array.from({length:count},makePoint);
+  };
+  const draw=()=>{
+    ctx.clearRect(0,0,width,height);
+    for(const p of points){
+      p.x+=p.vx;
+      p.y+=p.vy;
+      if(p.x<0||p.x>width)p.vx*=-1;
+      if(p.y<0||p.y>height)p.vy*=-1;
+    }
+    for(let i=0;i<points.length;i++){
+      for(let j=i+1;j<points.length;j++){
+        const a=points[i],b=points[j];
+        const dx=a.x-b.x,dy=a.y-b.y;
+        const dist=Math.hypot(dx,dy);
+        if(dist>maxDistance)continue;
+        const alpha=(1-dist/maxDistance)*0.18;
+        ctx.strokeStyle=`rgba(88,136,178,${alpha})`;
+        ctx.lineWidth=.6;
+        ctx.beginPath();
+        ctx.moveTo(a.x,a.y);
+        ctx.lineTo(b.x,b.y);
+        ctx.stroke();
+      }
+    }
+    for(const p of points){
+      ctx.fillStyle='rgba(88,136,178,.25)';
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+    }
+    rafId=requestAnimationFrame(draw);
+  };
+  setup();
+  draw();
+  window.addEventListener('resize',()=>{
+    cancelAnimationFrame(rafId);
+    setup();
+    draw();
+  },{passive:true});
+}
+
 // ── Nav: hero-zone toggle + logo color
 const nav=document.getElementById('nav');
+const heroScrollIndicator=document.getElementById('hero-scroll-indicator');
 function updateNav(){
   const heroH=document.getElementById('hero').offsetHeight;
   const past=scrollY>heroH-80;
   nav.classList.toggle('hero-zone',!past);
+  nav.classList.toggle('solid',past);
+  heroScrollIndicator?.classList.toggle('is-hidden',scrollY>100);
 }
 window.addEventListener('scroll',updateNav,{passive:true});
 updateNav();
@@ -2697,11 +2898,62 @@ document.addEventListener('click',e=>{
 });
 
 // ── Scroll reveal
-document.querySelectorAll('.r').forEach(el=>el.classList.add('pre'));
-const ro=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');e.target.classList.add('in');ro.unobserve(e.target);}});
-},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.r').forEach(el=>ro.observe(el));
+const revealEls=document.querySelectorAll('.r,.r-fade,.r-up,.r-scale,.r-left,.r-right');
+revealEls.forEach(el=>el.classList.add('pre'));
+if(prefersReduced){
+  revealEls.forEach(el=>{
+    el.classList.remove('pre');
+    el.classList.add('in');
+  });
+}else{
+  const ro=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');e.target.classList.add('in');ro.unobserve(e.target);}});
+  },{threshold:.08,rootMargin:'0px 0px -20px 0px'});
+  revealEls.forEach(el=>ro.observe(el));
+}
+
+// ── Stats counters
+const statsBar=document.querySelector('.stats-bar');
+const statsNums=[...document.querySelectorAll('.sbi-n[data-count]')];
+if(statsBar && statsNums.length){
+  const easeOutCubic=t=>1-Math.pow(1-t,3);
+  const setFinalStats=()=>statsNums.forEach(el=>{
+    const main=el.querySelector('.sbi-main');
+    const end=Number(el.dataset.count||0);
+    if(main)main.textContent=String(end);
+  });
+  const animateStat=(el,delay=0)=>{
+    const main=el.querySelector('.sbi-main');
+    const end=Number(el.dataset.count||0);
+    if(!main)return;
+    setTimeout(()=>{
+      const start=performance.now();
+      const step=now=>{
+        const t=Math.min((now-start)/1800,1);
+        main.textContent=String(Math.round(end*easeOutCubic(t)));
+        if(t<1){
+          requestAnimationFrame(step);
+        }else{
+          main.textContent=String(end);
+        }
+      };
+      requestAnimationFrame(step);
+    },delay);
+  };
+  if(prefersReduced){
+    setFinalStats();
+  }else{
+    const statsObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          statsNums.forEach((el,index)=>animateStat(el,index*100));
+          statsObserver.disconnect();
+        }
+      });
+    },{threshold:.3});
+    statsObserver.observe(statsBar);
+  }
+}
 
 // ── Clients carousel
 const clientsCarousel=document.querySelector('[data-clients-carousel]');
@@ -2733,7 +2985,6 @@ if(clientsCarousel){
   clientsNext?.addEventListener('click',()=>slideClients(1));
 
   let clientsTimer;
-  const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const stopClientsAuto=()=>{if(clientsTimer)clearInterval(clientsTimer);};
   const startClientsAuto=()=>{
     if(prefersReduced)return;
