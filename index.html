@@ -1050,33 +1050,42 @@ section.bg-navy{background:var(--navy);}
    ══════════════════════════════ */
 #events{background:var(--off);}
 .events-layout{
-  display:grid;grid-template-columns:.92fr 1.08fr;
-  gap:1.05rem;align-items:start;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1rem;align-items:stretch;
 }
 .events-card,
 .events-viewer-card{
+  display:flex;flex-direction:column;
+  height:100%;
   border:1px solid var(--rule);
   border-radius:1.8rem;
   box-shadow:0 22px 60px rgba(16,46,74,.08);
 }
 .events-card{
-  padding:1.85rem 1.85rem;
+  padding:1.7rem 1.7rem;
   background:
     linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
     radial-gradient(circle at top right,rgba(88,136,178,.16),transparent 30%);
 }
+.events-card .s-h2{
+  font-size:clamp(2.55rem,4.2vw,4.9rem);
+  line-height:.94;
+  letter-spacing:-.04em;
+  max-width:10.5ch;
+}
 .event-lead{
   margin-top:0;
-  max-width:50ch;
-  font-size:1rem;
-  line-height:1.65;
+  max-width:46ch;
+  font-size:.95rem;
+  line-height:1.55;
 }
 .event-date-line{
-  display:flex;align-items:stretch;gap:1rem;flex-wrap:wrap;
-  margin-top:1.2rem;
+  display:grid;grid-template-columns:118px 1fr;
+  align-items:stretch;gap:.85rem;
+  margin-top:1rem;
 }
 .event-date-badge{
-  min-width:118px;
+  min-width:0;
   display:flex;flex-direction:column;justify-content:center;
   padding:.85rem .95rem;
   border-radius:1.25rem;
@@ -1095,11 +1104,12 @@ section.bg-navy{background:var(--navy);}
   color:rgba(255,255,255,.7);
 }
 .event-meta-stack{
-  display:grid;gap:.85rem;
-  flex:1;min-width:min(100%,320px);
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.75rem;
+  min-width:0;
 }
 .event-meta-card{
-  padding:.85rem .95rem;
+  padding:.78rem .88rem;
   border-radius:1.15rem;
   border:1px solid rgba(16,46,74,.08);
   background:rgba(255,255,255,.88);
@@ -1112,17 +1122,17 @@ section.bg-navy{background:var(--navy);}
 .event-meta-card span{
   display:block;
   margin-top:.35rem;
-  font-size:.9rem;line-height:1.5;color:var(--ink);
+  font-size:.86rem;line-height:1.42;color:var(--ink);
 }
 .event-agenda{
-  display:grid;
-  gap:.75rem;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.7rem;
   margin-top:1rem;
 }
 .event-agenda-item{
   display:grid;grid-template-columns:1rem 1fr;
   gap:.75rem;align-items:flex-start;
-  padding:.85rem .9rem;
+  padding:.78rem .82rem;
   border-radius:1.05rem;
   border:1px solid rgba(16,46,74,.08);
   background:rgba(255,255,255,.84);
@@ -1133,11 +1143,12 @@ section.bg-navy{background:var(--navy);}
   stroke:var(--blue);stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round;
 }
 .event-agenda-item span{
-  font-size:.88rem;line-height:1.5;color:var(--ink);
+  font-size:.84rem;line-height:1.42;color:var(--ink);
 }
 .event-actions{
   display:flex;flex-wrap:wrap;gap:.75rem;
-  margin-top:1rem;
+  margin-top:auto;
+  padding-top:.95rem;
 }
 .event-btn{
   display:inline-flex;align-items:center;gap:.6rem;
@@ -1188,10 +1199,11 @@ section.bg-navy{background:var(--navy);}
 .events-poster-link{
   position:relative;
   display:flex;align-items:center;justify-content:center;
+  flex:1;
   overflow:hidden;
   border-radius:1.3rem;
   border:1px solid rgba(16,46,74,.08);
-  aspect-ratio:1.08/1;
+  min-height:100%;
   padding:1.15rem 1rem 1.25rem;
   background:
     radial-gradient(circle at top right,rgba(122,173,212,.24),transparent 28%),
@@ -1211,7 +1223,7 @@ section.bg-navy{background:var(--navy);}
 .events-poster-image{
   position:relative;z-index:1;
   display:block;
-  width:min(72%,380px);
+  width:min(60%,290px);
   max-width:100%;
   height:auto;
   border-radius:1rem;
@@ -1691,8 +1703,10 @@ footer{
   .events-viewer-card{padding:.7rem;border-radius:1.3rem;}
   .event-date-badge{min-width:112px;}
   .event-date-badge strong{font-size:2.3rem;}
+  .event-date-line{grid-template-columns:1fr;}
+  .event-meta-stack,.event-agenda{grid-template-columns:1fr;}
   .event-agenda-item{grid-template-columns:.9rem 1fr;padding:.78rem .82rem;}
-  .events-poster-link{aspect-ratio:auto;padding:1rem .9rem 1.05rem;}
+  .events-poster-link{min-height:0;aspect-ratio:auto;padding:1rem .9rem 1.05rem;}
   .events-poster-image{width:min(78%,300px);transform:none;}
   .events-poster-badges{top:.8rem;left:.8rem;right:.8rem;}
   .events-poster-overlay{padding:.9rem;}
