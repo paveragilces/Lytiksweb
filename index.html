@@ -205,41 +205,32 @@ nav:not(.hero-zone) .nav-logo-light{display:none;}
 .hero-brand{
   display:inline-flex;
   width:fit-content;
-  margin-bottom:1.25rem;
+  margin-bottom:1rem;
 }
 .hero-brand-plate{
   position:relative;
-  display:flex;flex-direction:column;gap:.9rem;
-  padding:1.1rem 1.2rem 1rem;
-  border-radius:1.4rem 1.4rem 1.4rem .4rem;
-  background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(247,246,243,.94));
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 24px 70px rgba(4,11,20,.28);
-  overflow:hidden;
+  display:flex;flex-direction:column;gap:.75rem;
+  padding:0;
 }
 .hero-brand-plate::before{
-  content:'';
-  position:absolute;inset:0;
-  background:
-    radial-gradient(circle at top right,rgba(88,136,178,.22),transparent 38%),
-    linear-gradient(180deg,rgba(16,46,74,.03),transparent 55%);
-  pointer-events:none;
+  content:none;
 }
 .hero-brand-mark{
   position:relative;z-index:1;
-  width:clamp(190px,19vw,260px);
+  width:clamp(180px,18vw,238px);
   height:auto;
+  filter:drop-shadow(0 18px 38px rgba(4,11,20,.24));
 }
 .hero-brand-meta{
   position:relative;z-index:1;
   display:inline-flex;align-items:center;gap:.65rem;
   font-size:.64rem;font-weight:700;
   letter-spacing:.15em;text-transform:uppercase;
-  color:rgba(16,46,74,.58);
+  color:rgba(255,255,255,.68);
 }
 .hero-brand-meta::before{
   content:'';width:24px;height:1px;
-  background:rgba(16,46,74,.22);flex-shrink:0;
+  background:rgba(255,255,255,.24);flex-shrink:0;
 }
 
 /* Overline — McKinsey uses a tight category label above headlines */
@@ -1060,7 +1051,7 @@ section.bg-navy{background:var(--navy);}
 #events{background:var(--off);}
 .events-layout{
   display:grid;grid-template-columns:1.05fr .95fr;
-  gap:1.15rem;align-items:stretch;
+  gap:1rem;align-items:start;
 }
 .events-card,
 .events-viewer-card{
@@ -1069,23 +1060,25 @@ section.bg-navy{background:var(--navy);}
   box-shadow:0 22px 60px rgba(16,46,74,.08);
 }
 .events-card{
-  padding:2.15rem 2.15rem;
+  padding:1.85rem 1.85rem;
   background:
     linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
     radial-gradient(circle at top right,rgba(88,136,178,.16),transparent 30%);
 }
 .event-lead{
   margin-top:0;
-  max-width:54ch;
+  max-width:50ch;
+  font-size:1rem;
+  line-height:1.65;
 }
 .event-date-line{
   display:flex;align-items:stretch;gap:1rem;flex-wrap:wrap;
-  margin-top:1.5rem;
+  margin-top:1.2rem;
 }
 .event-date-badge{
-  min-width:126px;
+  min-width:118px;
   display:flex;flex-direction:column;justify-content:center;
-  padding:1rem 1.05rem;
+  padding:.85rem .95rem;
   border-radius:1.25rem;
   background:linear-gradient(145deg,#0f2135,#102e4a 68%,#244e73 100%);
   color:#fff;
@@ -1093,7 +1086,7 @@ section.bg-navy{background:var(--navy);}
 }
 .event-date-badge strong{
   font-family:var(--serif);
-  font-size:2.8rem;font-weight:900;line-height:.88;
+  font-size:2.4rem;font-weight:900;line-height:.9;
   letter-spacing:-.06em;
 }
 .event-date-badge span{
@@ -1106,7 +1099,7 @@ section.bg-navy{background:var(--navy);}
   flex:1;min-width:min(100%,320px);
 }
 .event-meta-card{
-  padding:1rem 1.05rem;
+  padding:.85rem .95rem;
   border-radius:1.15rem;
   border:1px solid rgba(16,46,74,.08);
   background:rgba(255,255,255,.88);
@@ -1119,16 +1112,16 @@ section.bg-navy{background:var(--navy);}
 .event-meta-card span{
   display:block;
   margin-top:.35rem;
-  font-size:.92rem;line-height:1.55;color:var(--ink);
+  font-size:.9rem;line-height:1.5;color:var(--ink);
 }
 .event-snapshot{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
   gap:.8rem;
-  margin-top:1.3rem;
+  margin-top:1rem;
 }
 .event-snapshot-card{
-  min-height:96px;
-  padding:.9rem .9rem .85rem;
+  min-height:84px;
+  padding:.8rem .82rem .78rem;
   border-radius:1.15rem;
   border:1px solid rgba(16,46,74,.08);
   background:
@@ -1142,12 +1135,12 @@ section.bg-navy{background:var(--navy);}
 }
 .event-snapshot-card span{
   display:block;
-  margin-top:.55rem;
-  font-size:.88rem;line-height:1.55;color:var(--ink);
+  margin-top:.45rem;
+  font-size:.84rem;line-height:1.45;color:var(--ink);
 }
 .event-actions{
   display:flex;flex-wrap:wrap;gap:.75rem;
-  margin-top:1.2rem;
+  margin-top:1rem;
 }
 .event-btn{
   display:inline-flex;align-items:center;gap:.6rem;
@@ -1176,14 +1169,13 @@ section.bg-navy{background:var(--navy);}
   background:rgba(16,46,74,.04);
 }
 .events-viewer-card{
-  padding:1rem;
+  padding:.9rem;
   display:flex;flex-direction:column;gap:1rem;
   background:
     linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
     radial-gradient(circle at top right,rgba(88,136,178,.12),transparent 30%);
 }
-.events-viewer-head,
-.events-viewer-actions{
+.events-viewer-head{
   display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
   padding:.1rem .25rem;
 }
@@ -1196,11 +1188,6 @@ section.bg-navy{background:var(--navy);}
   color:var(--navy);
 }
 .events-viewer-head a:hover{color:var(--blue);}
-.events-viewer-actions a{
-  font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--navy);
-}
-.events-viewer-actions a:hover{color:var(--blue);}
 .events-invite-shell{
   position:relative;
   overflow:hidden;
@@ -1210,8 +1197,8 @@ section.bg-navy{background:var(--navy);}
     radial-gradient(circle at top right,rgba(122,173,212,.24),transparent 28%),
     linear-gradient(145deg,#0f2135 0%,#102e4a 62%,#193954 100%);
   box-shadow:0 18px 36px rgba(16,46,74,.12);
-  min-height:420px;
-  padding:1.35rem;
+  min-height:0;
+  padding:1.15rem;
   display:flex;flex-direction:column;
 }
 .events-invite-shell::after{
@@ -1228,7 +1215,7 @@ section.bg-navy{background:var(--navy);}
 .events-invite-date{
   position:relative;z-index:1;
   display:inline-flex;align-items:center;
-  min-height:36px;padding:.5rem .85rem;border-radius:999px;
+  min-height:34px;padding:.42rem .75rem;border-radius:999px;
   border:1px solid rgba(255,255,255,.14);
   background:rgba(255,255,255,.08);
   color:#fff;
@@ -1240,25 +1227,25 @@ section.bg-navy{background:var(--navy);}
 }
 .events-invite-title{
   position:relative;z-index:1;
-  margin-top:1rem;
-  font-family:var(--serif);font-size:clamp(2rem,3vw,2.8rem);
-  line-height:1.02;letter-spacing:-.035em;color:#fff;
-  max-width:10ch;
+  margin-top:.85rem;
+  font-family:var(--serif);font-size:clamp(1.55rem,2.5vw,2.2rem);
+  line-height:1.03;letter-spacing:-.03em;color:#fff;
+  max-width:12ch;
 }
 .events-invite-sub{
   position:relative;z-index:1;
-  margin-top:.7rem;
-  max-width:36ch;
-  font-size:.95rem;line-height:1.7;color:rgba(255,255,255,.7);
+  margin-top:.6rem;
+  max-width:34ch;
+  font-size:.88rem;line-height:1.55;color:rgba(255,255,255,.72);
 }
 .events-invite-grid{
   position:relative;z-index:1;
   display:grid;grid-template-columns:1fr 1fr;
-  gap:.7rem;margin-top:1.15rem;
+  gap:.65rem;margin-top:.95rem;
 }
 .events-invite-block{
-  min-height:96px;
-  padding:.9rem .9rem .85rem;
+  min-height:0;
+  padding:.78rem .8rem .72rem;
   border-radius:1.1rem;
   border:1px solid rgba(255,255,255,.1);
   background:rgba(255,255,255,.06);
@@ -1271,32 +1258,24 @@ section.bg-navy{background:var(--navy);}
 }
 .events-invite-block span{
   display:block;
-  margin-top:.5rem;
-  font-size:1rem;line-height:1.55;color:#fff;
-}
-.events-invite-list{
-  position:relative;z-index:1;
-  display:grid;gap:.85rem;
-  margin-top:1.05rem;
-}
-.events-invite-item{
-  display:grid;grid-template-columns:1rem 1fr;
-  gap:.75rem;align-items:flex-start;
-}
-.events-invite-item svg{
-  width:1rem;height:1rem;
-  margin-top:.18rem;
-  stroke:var(--blue-lt);stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round;
-}
-.events-invite-item span{
-  font-size:.9rem;line-height:1.65;color:rgba(255,255,255,.78);
+  margin-top:.42rem;
+  font-size:.9rem;line-height:1.45;color:#fff;
 }
 .events-invite-foot{
   position:relative;z-index:1;
-  margin-top:auto;
-  padding-top:.9rem;
+  margin-top:.9rem;
+  padding-top:.8rem;
   border-top:1px solid rgba(255,255,255,.1);
   display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+}
+.events-invite-note{
+  position:relative;z-index:1;
+  margin-top:.9rem;
+  padding:.9rem .95rem;
+  border-radius:1.05rem;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.05);
+  font-size:.84rem;line-height:1.5;color:rgba(255,255,255,.8);
 }
 .events-invite-foot span{
   font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
@@ -1304,8 +1283,8 @@ section.bg-navy{background:var(--navy);}
 }
 #team{background:var(--white);}
 .team-layout{
-  display:grid;grid-template-columns:380px 1fr;
-  gap:3.1rem;align-items:center;
+  display:grid;grid-template-columns:320px 1fr;
+  gap:2.35rem;align-items:start;
 }
 .team-media{
   position:relative;
@@ -1314,16 +1293,16 @@ section.bg-navy{background:var(--navy);}
 .team-media::before{
   content:'';
   position:absolute;
-  width:300px;height:300px;border-radius:50%;
+  width:250px;height:250px;border-radius:50%;
   background:radial-gradient(circle,rgba(88,136,178,.22),transparent 68%);
   transform:translate(12%,8%);
   filter:blur(2px);
 }
 .team-frame{
   position:relative;
-  width:min(100%,300px);aspect-ratio:1/1;
+  width:min(100%,250px);aspect-ratio:1/1;
   border-radius:50%;
-  padding:12px;
+  padding:10px;
   background:linear-gradient(145deg,rgba(16,46,74,.14),rgba(88,136,178,.2));
   box-shadow:0 28px 70px rgba(16,46,74,.14);
 }
@@ -1332,10 +1311,10 @@ section.bg-navy{background:var(--navy);}
   object-fit:cover;object-position:center 18%;
   border-radius:50%;
   display:block;
-  border:8px solid rgba(255,255,255,.95);
+  border:7px solid rgba(255,255,255,.95);
 }
 .team-card{
-  padding:2.1rem 2.15rem;
+  padding:1.75rem 1.8rem;
   border-radius:1.8rem;
   background:
     linear-gradient(180deg,rgba(247,246,243,.98),rgba(255,255,255,.96)),
@@ -1345,26 +1324,26 @@ section.bg-navy{background:var(--navy);}
 }
 .team-role{
   display:inline-flex;align-items:center;
-  padding:.72rem 1.05rem;
+  padding:.62rem .95rem;
   border-radius:999px;
   background:linear-gradient(135deg,var(--navy),#234f77);
   box-shadow:0 14px 30px rgba(16,46,74,.18);
-  font-size:.82rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
   color:#fff;
 }
 .team-name{
-  margin-top:1rem;
+  margin-top:.8rem;
   font-family:var(--serif);font-size:clamp(2.1rem,4vw,3rem);
   font-weight:800;line-height:1.05;letter-spacing:-.03em;color:var(--ink);
 }
 .team-copy{
-  margin-top:1rem;
-  font-size:.95rem;line-height:1.8;font-weight:300;color:var(--body);
+  margin-top:.85rem;
+  font-size:.92rem;line-height:1.68;font-weight:300;color:var(--body);
 }
-.team-copy p+p{margin-top:.95rem;}
+.team-copy p+p{margin-top:.72rem;}
 .team-evidence{
-  margin-top:1.3rem;
-  padding:1.2rem 1.2rem;
+  margin-top:1rem;
+  padding:1rem 1rem;
   border-radius:1.25rem;
   border:1px solid var(--rule);
   background:rgba(255,255,255,.86);
@@ -1383,10 +1362,10 @@ section.bg-navy{background:var(--navy);}
 }
 .team-rank-grid{
   display:grid;grid-template-columns:repeat(2,1fr);
-  gap:.85rem;margin-top:1rem;
+  gap:.7rem;margin-top:.85rem;
 }
 .team-rank{
-  padding:1rem 1.05rem;
+  padding:.85rem .95rem;
   border-radius:1rem;
   border:1px solid rgba(16,46,74,.08);
   background:var(--off);
@@ -1394,21 +1373,21 @@ section.bg-navy{background:var(--navy);}
 .team-rank strong{
   display:block;
   font-family:var(--serif);
-  font-size:2.25rem;font-weight:900;line-height:1;
+  font-size:2rem;font-weight:900;line-height:1;
   letter-spacing:-.05em;color:var(--navy);
 }
 .team-rank span{
   display:block;
-  margin-top:.45rem;
-  font-size:.76rem;line-height:1.55;color:var(--body);
+  margin-top:.35rem;
+  font-size:.74rem;line-height:1.45;color:var(--body);
 }
 .team-rank-note{
-  margin-top:.95rem;
-  font-size:.71rem;line-height:1.6;color:var(--subtle);
+  margin-top:.75rem;
+  font-size:.69rem;line-height:1.5;color:var(--subtle);
 }
 .team-links{
   display:flex;flex-wrap:wrap;gap:.75rem;
-  margin-top:1.2rem;
+  margin-top:1rem;
 }
 .team-link{
   display:inline-flex;align-items:center;gap:.7rem;
@@ -1716,23 +1695,23 @@ footer{
   .wrap{padding:0 1.25rem;}
   section{padding:4.25rem 0;}
   .hero-inner{padding:6.1rem 1.25rem 2.6rem;}
-  .hero-brand{margin-bottom:1.2rem;}
-  .hero-brand-plate{padding:1rem 1rem .9rem;border-radius:1.1rem 1.1rem 1.1rem .35rem;}
-  .hero-brand-mark{width:min(70vw,220px);}
+  .hero-brand{margin-bottom:1rem;}
+  .hero-brand-plate{gap:.65rem;}
+  .hero-brand-mark{width:min(62vw,200px);}
   .hero-brand-meta{font-size:.56rem;letter-spacing:.13em;}
-  .team-frame{width:min(100%,280px);}
-  .team-card{padding:1.7rem 1.25rem;border-radius:1.3rem;}
+  .team-frame{width:min(100%,220px);}
+  .team-card{padding:1.45rem 1.15rem;border-radius:1.3rem;}
   .media-feature{padding:.85rem;border-radius:1.3rem;}
   .media-feature-main,.media-panel,.media-source-cloud,.media-card{padding:1.65rem 1.25rem;border-radius:1.15rem;}
   .media-source-list{grid-template-columns:1fr;}
   .media-grid{grid-template-columns:1fr;}
   .media-panel-stat{font-size:3.1rem;}
-  .events-card{padding:1.7rem 1.2rem;border-radius:1.3rem;}
-  .events-viewer-card{padding:.8rem;border-radius:1.3rem;}
+  .events-card{padding:1.45rem 1.1rem;border-radius:1.3rem;}
+  .events-viewer-card{padding:.7rem;border-radius:1.3rem;}
   .event-date-badge{min-width:112px;}
   .event-date-badge strong{font-size:2.3rem;}
   .event-snapshot{grid-template-columns:1fr;}
-  .events-invite-shell{min-height:auto;padding:1.25rem;}
+  .events-invite-shell{min-height:auto;padding:1rem;}
   .events-invite-grid{grid-template-columns:1fr;}
   .algo-hero{padding:1.75rem 1.2rem;}
   .algo-cards{grid-template-columns:1fr;}
@@ -1804,7 +1783,7 @@ footer{
   <div class="hero-inner">
     <div class="hero-brand r">
       <div class="hero-brand-plate">
-        <img src="./LOGO%20COLOR.svg" alt="Lytiks" class="hero-brand-mark" loading="eager" decoding="async">
+        <img src="./LOGO%20WHITE.svg" alt="Lytiks" class="hero-brand-mark" loading="eager" decoding="async">
         <div class="hero-brand-meta">Inteligencia de negocios · Ecuador</div>
       </div>
     </div>
@@ -2371,7 +2350,7 @@ footer{
       <article class="events-card r d1">
         <div class="s-label">Eventos</div>
         <h2 class="s-h2 r d1">Próximo encuentro: <em>AI-Powered Export Forecasting.</em></h2>
-        <p class="s-lead event-lead r d2">Presentaremos el lanzamiento de un modelo de inteligencia artificial diseñado para anticipar el volumen de exportaciones de banano y camarón con hasta 8 semanas de anticipación.</p>
+        <p class="s-lead event-lead r d2">Lanzaremos un modelo de inteligencia artificial diseñado para anticipar el volumen de exportaciones de banano y camarón con hasta 8 semanas de anticipación.</p>
         <div class="event-date-line">
           <div class="event-date-badge">
             <strong>08</strong>
@@ -2397,10 +2376,6 @@ footer{
             <strong>Horizonte</strong>
             <span>Hasta 8 semanas de anticipación para banano y camarón.</span>
           </div>
-          <div class="event-snapshot-card">
-            <strong>Audiencia</strong>
-            <span>Encuentro ejecutivo para clientes, aliados y tomadores de decisión.</span>
-          </div>
         </div>
         <div class="event-actions">
           <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener" class="event-btn event-btn-primary">
@@ -2424,7 +2399,7 @@ footer{
             <div class="events-invite-date">08 Abril 2026</div>
           </div>
           <h3 class="events-invite-title">AI-Powered Export Forecasting</h3>
-          <p class="events-invite-sub">De datos atrasados a decisiones anticipadas para sectores exportadores que necesitan reaccionar antes que el mercado.</p>
+          <p class="events-invite-sub">Una presentación ejecutiva enfocada en cómo pasar de datos atrasados a decisiones anticipadas.</p>
           <div class="events-invite-grid">
             <div class="events-invite-block">
               <strong>Lugar</strong>
@@ -2432,27 +2407,14 @@ footer{
             </div>
             <div class="events-invite-block">
               <strong>Formato</strong>
-              <span>Lanzamiento ejecutivo con foco en forecasting para banano y camarón.</span>
+              <span>Sesión ejecutiva con foco en forecasting para banano y camarón.</span>
             </div>
           </div>
-          <div class="events-invite-list">
-            <div class="events-invite-item">
-              <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/></svg>
-              <span>Modelo diseñado para anticipar el volumen de exportaciones con hasta 8 semanas de antelación.</span>
-            </div>
-            <div class="events-invite-item">
-              <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="17" rx="2"/></svg>
-              <span>Sesión pensada para aliados, clientes y líderes que buscan decisiones basadas en inteligencia aplicada.</span>
-            </div>
-          </div>
+          <div class="events-invite-note">Dirigido a clientes, aliados y tomadores de decisión que necesitan anticipar mercado con inteligencia aplicada.</div>
           <div class="events-invite-foot">
             <span>Cupos limitados</span>
             <span>Confirmación previa requerida</span>
           </div>
-        </div>
-        <div class="events-viewer-actions">
-          <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener">Abrir invitación</a>
-          <a href="https://wa.me/593968993317?text=Hola%20Lytiks%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20evento%20AI-Powered%20Export%20Forecasting." target="_blank" rel="noopener">Pedir detalles</a>
         </div>
       </div>
     </div>
@@ -2472,8 +2434,8 @@ footer{
         <div class="team-role">Founder &amp; CEO</div>
         <h2 class="team-name">Paúl Vera Gilces</h2>
         <div class="team-copy">
-          <p>Economista graduado de ESPOL, con estudios de postgrado en investigación económica y administración de empresas. Ha publicado más de 10 artículos científicos y lidera Lytiks como firma de inteligencia y analítica aplicada para sectores productivos y exportadores en Ecuador.</p>
-          <p>Ha dirigido observatorios estratégicos para AEBE, el sector lácteo, el Comité Empresarial Ecuatoriano y el sector platanero, y ha gestionado fondos de cooperación por más de USD 1.5 millones en proyectos de digitalización, bioseguridad y monitoreo junto a aliados como GIZ y Gobiernos Autónomos Descentralizados.</p>
+          <p>Economista de ESPOL con estudios de postgrado en investigación económica y administración de empresas. Ha publicado más de 10 artículos científicos y lidera Lytiks como firma de inteligencia y analítica aplicada para sectores productivos y exportadores en Ecuador.</p>
+          <p>Ha dirigido observatorios estratégicos para AEBE, el sector lácteo, el Comité Empresarial Ecuatoriano y el sector platanero, además de gestionar más de USD 1.5 millones en fondos de cooperación para proyectos de digitalización, bioseguridad y monitoreo junto a GIZ y Gobiernos Autónomos Descentralizados.</p>
         </div>
         <div class="team-evidence">
           <div class="team-evidence-head">
@@ -2490,15 +2452,15 @@ footer{
               <span>Autores en Ecuador considerando todos los años de publicación.</span>
             </div>
           </div>
-          <p class="team-rank-note">Fuente: ranking de autores IDEAS/RePEc para Ecuador. Esta referencia corresponde a la edición publicada en febrero de 2026.</p>
+          <p class="team-rank-note">Fuente: ranking IDEAS/RePEc para Ecuador, edición publicada en febrero de 2026.</p>
         </div>
         <div class="team-links">
           <a href="https://scholar.google.com/citations?user=BO-SOJIAAAAJ&amp;hl=es&amp;oi=ao" target="_blank" rel="noopener" class="team-link">
-            <span>Ver perfil académico y publicaciones científicas</span>
+            <span>Perfil académico y publicaciones</span>
             <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
           </a>
           <a href="https://ideas.repec.org/top/top.ecuador.html" target="_blank" rel="noopener" class="team-link">
-            <span>Ver ranking IDEAS/RePEc Ecuador</span>
+            <span>Ranking IDEAS/RePEc Ecuador</span>
             <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
           </a>
         </div>
