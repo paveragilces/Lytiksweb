@@ -1050,8 +1050,8 @@ section.bg-navy{background:var(--navy);}
    ══════════════════════════════ */
 #events{background:var(--off);}
 .events-layout{
-  display:grid;grid-template-columns:1.05fr .95fr;
-  gap:1rem;align-items:start;
+  display:grid;grid-template-columns:.92fr 1.08fr;
+  gap:1.05rem;align-items:start;
 }
 .events-card,
 .events-viewer-card{
@@ -1114,29 +1114,26 @@ section.bg-navy{background:var(--navy);}
   margin-top:.35rem;
   font-size:.9rem;line-height:1.5;color:var(--ink);
 }
-.event-snapshot{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:.8rem;
+.event-agenda{
+  display:grid;
+  gap:.75rem;
   margin-top:1rem;
 }
-.event-snapshot-card{
-  min-height:84px;
-  padding:.8rem .82rem .78rem;
-  border-radius:1.15rem;
+.event-agenda-item{
+  display:grid;grid-template-columns:1rem 1fr;
+  gap:.75rem;align-items:flex-start;
+  padding:.85rem .9rem;
+  border-radius:1.05rem;
   border:1px solid rgba(16,46,74,.08);
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
-    radial-gradient(circle at top right,rgba(88,136,178,.12),transparent 34%);
+  background:rgba(255,255,255,.84);
 }
-.event-snapshot-card strong{
-  display:block;
-  font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--blue);
+.event-agenda-item svg{
+  width:1rem;height:1rem;
+  margin-top:.15rem;
+  stroke:var(--blue);stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round;
 }
-.event-snapshot-card span{
-  display:block;
-  margin-top:.45rem;
-  font-size:.84rem;line-height:1.45;color:var(--ink);
+.event-agenda-item span{
+  font-size:.88rem;line-height:1.5;color:var(--ink);
 }
 .event-actions{
   display:flex;flex-wrap:wrap;gap:.75rem;
@@ -1169,7 +1166,7 @@ section.bg-navy{background:var(--navy);}
   background:rgba(16,46,74,.04);
 }
 .events-viewer-card{
-  padding:.9rem;
+  padding:.85rem;
   display:flex;flex-direction:column;gap:1rem;
   background:
     linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,246,243,.96)),
@@ -1188,98 +1185,83 @@ section.bg-navy{background:var(--navy);}
   color:var(--navy);
 }
 .events-viewer-head a:hover{color:var(--blue);}
-.events-invite-shell{
+.events-poster-link{
   position:relative;
+  display:flex;align-items:center;justify-content:center;
   overflow:hidden;
-  border-radius:1.25rem;
+  border-radius:1.3rem;
   border:1px solid rgba(16,46,74,.08);
+  aspect-ratio:1.08/1;
+  padding:1.15rem 1rem 1.25rem;
   background:
     radial-gradient(circle at top right,rgba(122,173,212,.24),transparent 28%),
     linear-gradient(145deg,#0f2135 0%,#102e4a 62%,#193954 100%);
   box-shadow:0 18px 36px rgba(16,46,74,.12);
-  min-height:0;
-  padding:1.15rem;
-  display:flex;flex-direction:column;
 }
-.events-invite-shell::after{
+.events-poster-link::before{
   content:'';
   position:absolute;inset:0;
   background-image:
     linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
   background-size:34px 34px;
-  mask-image:linear-gradient(180deg,rgba(0,0,0,.82),transparent 82%);
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 90%);
   pointer-events:none;
 }
-.events-invite-pill,
-.events-invite-date{
+.events-poster-image{
   position:relative;z-index:1;
+  display:block;
+  width:min(72%,380px);
+  max-width:100%;
+  height:auto;
+  border-radius:1rem;
+  box-shadow:0 28px 60px rgba(4,11,20,.36);
+  transform:rotate(-2.25deg);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),filter .35s var(--ease);
+}
+.events-poster-link:hover .events-poster-image{
+  transform:rotate(-1.2deg) scale(1.02);
+  filter:saturate(1.04);
+  box-shadow:0 34px 72px rgba(4,11,20,.42);
+}
+.events-poster-badges{
+  position:absolute;top:1rem;left:1rem;right:1rem;
+  display:flex;justify-content:space-between;gap:.75rem;flex-wrap:wrap;
+  pointer-events:none;
+}
+.events-poster-chip{
   display:inline-flex;align-items:center;
-  min-height:34px;padding:.42rem .75rem;border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.08);
-  color:#fff;
-  font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
-}
-.events-invite-top{
-  position:relative;z-index:1;
-  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;
-}
-.events-invite-title{
-  position:relative;z-index:1;
-  margin-top:.85rem;
-  font-family:var(--serif);font-size:clamp(1.55rem,2.5vw,2.2rem);
-  line-height:1.03;letter-spacing:-.03em;color:#fff;
-  max-width:12ch;
-}
-.events-invite-sub{
-  position:relative;z-index:1;
-  margin-top:.6rem;
-  max-width:34ch;
-  font-size:.88rem;line-height:1.55;color:rgba(255,255,255,.72);
-}
-.events-invite-grid{
-  position:relative;z-index:1;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:.65rem;margin-top:.95rem;
-}
-.events-invite-block{
-  min-height:0;
-  padding:.78rem .8rem .72rem;
-  border-radius:1.1rem;
-  border:1px solid rgba(255,255,255,.1);
-  background:rgba(255,255,255,.06);
+  min-height:32px;padding:.42rem .78rem;border-radius:999px;
+  background:rgba(9,25,41,.7);
+  border:1px solid rgba(255,255,255,.18);
   backdrop-filter:blur(10px);
+  font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;
 }
-.events-invite-block strong{
+.events-poster-overlay{
+  position:absolute;left:0;right:0;bottom:0;
+  display:flex;justify-content:space-between;align-items:end;gap:1rem;flex-wrap:wrap;
+  padding:1.1rem 1.1rem 1rem;
+  background:linear-gradient(180deg,rgba(6,18,30,0),rgba(6,18,30,.86));
+  color:#fff;
+}
+.events-poster-overlay strong{
   display:block;
-  font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--blue-lt);
+  font-size:.84rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
 }
-.events-invite-block span{
+.events-poster-overlay span{
   display:block;
-  margin-top:.42rem;
-  font-size:.9rem;line-height:1.45;color:#fff;
+  margin-top:.3rem;
+  font-size:.82rem;line-height:1.45;color:rgba(255,255,255,.74);
 }
-.events-invite-foot{
-  position:relative;z-index:1;
-  margin-top:.9rem;
-  padding-top:.8rem;
-  border-top:1px solid rgba(255,255,255,.1);
-  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+.events-poster-cta{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:#fff;
 }
-.events-invite-note{
-  position:relative;z-index:1;
-  margin-top:.9rem;
-  padding:.9rem .95rem;
-  border-radius:1.05rem;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.05);
-  font-size:.84rem;line-height:1.5;color:rgba(255,255,255,.8);
-}
-.events-invite-foot span{
-  font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.62);
+.events-poster-cta svg{
+  width:14px;height:14px;
+  stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;
 }
 #team{background:var(--white);}
 .team-layout{
@@ -1679,7 +1661,6 @@ footer{
   .f-grid>div:first-child{grid-column:1/-1;}
   .stats-bar-inner{grid-template-columns:repeat(2,1fr);}
   .clients-viewport{grid-auto-columns:calc((100% - 1rem) / 2);}
-  .event-snapshot{grid-template-columns:repeat(3,minmax(0,1fr));}
 }
 @media(max-width:768px){
   nav{padding:0 1.2rem;}
@@ -1710,9 +1691,11 @@ footer{
   .events-viewer-card{padding:.7rem;border-radius:1.3rem;}
   .event-date-badge{min-width:112px;}
   .event-date-badge strong{font-size:2.3rem;}
-  .event-snapshot{grid-template-columns:1fr;}
-  .events-invite-shell{min-height:auto;padding:1rem;}
-  .events-invite-grid{grid-template-columns:1fr;}
+  .event-agenda-item{grid-template-columns:.9rem 1fr;padding:.78rem .82rem;}
+  .events-poster-link{aspect-ratio:auto;padding:1rem .9rem 1.05rem;}
+  .events-poster-image{width:min(78%,300px);transform:none;}
+  .events-poster-badges{top:.8rem;left:.8rem;right:.8rem;}
+  .events-poster-overlay{padding:.9rem;}
   .algo-hero{padding:1.75rem 1.2rem;}
   .algo-cards{grid-template-columns:1fr;}
   .team-rank-grid{grid-template-columns:1fr;}
@@ -2367,14 +2350,14 @@ footer{
             </div>
           </div>
         </div>
-        <div class="event-snapshot" aria-label="Resumen rápido del evento">
-          <div class="event-snapshot-card">
-            <strong>Forecasting</strong>
-            <span>Modelo predictivo orientado a exportaciones y lectura temprana de mercado.</span>
+        <div class="event-agenda" aria-label="Aspectos clave del evento">
+          <div class="event-agenda-item">
+            <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/></svg>
+            <span>Presentación ejecutiva del modelo y su lógica predictiva aplicada a sectores exportadores.</span>
           </div>
-          <div class="event-snapshot-card">
-            <strong>Horizonte</strong>
-            <span>Hasta 8 semanas de anticipación para banano y camarón.</span>
+          <div class="event-agenda-item">
+            <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="17" rx="2"/></svg>
+            <span>Encuentro para clientes, aliados y líderes que necesitan anticipar mercado con inteligencia aplicada.</span>
           </div>
         </div>
         <div class="event-actions">
@@ -2393,29 +2376,23 @@ footer{
           <span>Invitación oficial</span>
           <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener">Ver PDF completo</a>
         </div>
-        <div class="events-invite-shell">
-          <div class="events-invite-top">
-            <div class="events-invite-pill">Evento próximo</div>
-            <div class="events-invite-date">08 Abril 2026</div>
+        <a href="./INVITACION-LYTIKS.pdf" target="_blank" rel="noopener" class="events-poster-link" aria-label="Abrir invitación oficial del evento en PDF">
+          <img src="./invitacion-preview.png" alt="Vista previa de la invitación oficial del evento AI-Powered Export Forecasting" class="events-poster-image" loading="lazy" decoding="async">
+          <div class="events-poster-badges" aria-hidden="true">
+            <span class="events-poster-chip">Preview real</span>
+            <span class="events-poster-chip">08 abril 2026</span>
           </div>
-          <h3 class="events-invite-title">AI-Powered Export Forecasting</h3>
-          <p class="events-invite-sub">Una presentación ejecutiva enfocada en cómo pasar de datos atrasados a decisiones anticipadas.</p>
-          <div class="events-invite-grid">
-            <div class="events-invite-block">
-              <strong>Lugar</strong>
-              <span>Edificio Emporium, Puerto Santa Ana, Guayaquil.</span>
+          <div class="events-poster-overlay">
+            <div>
+              <strong>Invitación oficial</strong>
+              <span>Haz clic para abrir el PDF completo.</span>
             </div>
-            <div class="events-invite-block">
-              <strong>Formato</strong>
-              <span>Sesión ejecutiva con foco en forecasting para banano y camarón.</span>
+            <div class="events-poster-cta">
+              <span>Abrir PDF</span>
+              <svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
             </div>
           </div>
-          <div class="events-invite-note">Dirigido a clientes, aliados y tomadores de decisión que necesitan anticipar mercado con inteligencia aplicada.</div>
-          <div class="events-invite-foot">
-            <span>Cupos limitados</span>
-            <span>Confirmación previa requerida</span>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
